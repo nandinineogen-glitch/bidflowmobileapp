@@ -1,0 +1,83 @@
+import React from 'react';
+import { View, Text, TextInput, TouchableOpacity,ScrollView } from 'react-native';
+import utils from '../../utils';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Eye, ChevronLeft } from 'lucide-react-native';
+const RegisterScreen = () => {
+  return (
+      <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white}} >
+      <ScrollView className="p-10">
+
+        < View className="mt-2" style={{ backgroundColor: utils.colors.white }}>
+         <Text className="text-4xl font-bold" style={{ color: utils.colors.black }}>
+                <ChevronLeft size={25} strokeWidth={3}/>
+          </Text>
+        
+          <View className="mt-12">
+          <utils.components.Header label="Create Account" /> 
+          </View>
+            <Text className="text-lg  mt-2 mb-10 font-bold" style={{ color: utils.colors.grey }}>
+            Sign up to get started!
+          </Text>
+            <Text className="text-lg mb-2" style={{ color: utils.colors.black }}>
+              Full Name
+            </Text>
+            <View className="border rounded-xl px-4" style={{ borderColor: utils.colors.lightGrey }}>
+              <TextInput
+                placeholder="Enter your name"
+                className='h-14'>
+              </TextInput>
+            </View> 
+             <Text className="text-lg mb-2 mt-6" style={{ color: utils.colors.black }}>
+            Email
+          </Text>
+          <View className="border rounded-xl px-4" style={{ borderColor: utils.colors.lightGrey }}>
+            <TextInput
+              placeholder="Enter your email"
+              className='h-14'>
+
+            </TextInput>
+          </View>
+          <Text className="text-lg mt-6 mb-2" style={{ color: utils.colors.black }}>
+            Phone Number
+          </Text>
+          <View className="border rounded-xl px-4" style={{ borderColor: utils.colors.lightGrey }}>
+            <TextInput
+              placeholder="Enter your phone number"
+              className='h-14'
+              keyboardType="numeric"
+              maxLength={10}
+              >
+            </TextInput>
+          </View>
+           <Text className="text-lg mt-6 mb-2" style={{ color: utils.colors.black }}>
+            Password
+          </Text>
+          <View className="border rounded-xl px-4 flex-row items-center" style={{ borderColor: utils.colors.lightGrey }}>
+
+            <TextInput
+              placeholder="Enter your Password"
+              className='h-14 flex-1'
+              secureTextEntry={true}
+            >
+
+            </TextInput>
+            <Eye size={20} />
+          </View>
+           <TouchableOpacity className="rounded-xl py-4 mt-8" style={{ backgroundColor: utils.colors.blue }}>
+            <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Sign Up</Text>
+          </TouchableOpacity>
+          <View className="flex-row justify-center mt-6">
+            <Text style={{ color: utils.colors.black }}>Already have an account? </Text>
+            <TouchableOpacity>
+              <Text className="font-bold" style={{ color: utils.colors.blue }}>Login</Text>
+            </TouchableOpacity>
+
+          </View>
+       </View>
+       </ScrollView>
+      </SafeAreaView>
+  );
+};
+
+export default RegisterScreen;
