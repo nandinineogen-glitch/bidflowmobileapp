@@ -37,7 +37,7 @@ const LoginScreen = () => {
             >
 
             </TextInput>
-            <Eye size={20} />
+            <Eye size={20} style={{ backgroundColor: utils.colors.grey }}/>
           </View>
           
           <TouchableOpacity className="items-end mt-7 mb-10">

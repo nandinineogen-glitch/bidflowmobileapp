@@ -2,16 +2,13 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity,ScrollView } from 'react-native';
 import utils from '../../utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Eye, ChevronLeft } from 'lucide-react-native';
+import { Eye } from 'lucide-react-native';
 const RegisterScreen = () => {
   return (
       <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white}} >
       <ScrollView className="p-10">
 
         < View className="mt-2" style={{ backgroundColor: utils.colors.white }}>
-         <Text className="text-4xl font-bold" style={{ color: utils.colors.black }}>
-                <ChevronLeft size={25} strokeWidth={3}/>
-          </Text>
         
           <View className="mt-12">
           <utils.components.Header label="Create Account" /> 
@@ -62,7 +59,7 @@ const RegisterScreen = () => {
             >
 
             </TextInput>
-            <Eye size={20} />
+            <Eye size={20} style={{ backgroundColor: utils.colors.grey }}/>
           </View>
            <TouchableOpacity className="rounded-xl py-4 mt-8" style={{ backgroundColor: utils.colors.blue }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Sign Up</Text>

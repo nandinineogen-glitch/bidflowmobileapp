@@ -4,7 +4,8 @@ const assets = {
   seller: require('../assets/images/sellerimage.png'),
   onboarding_bid: require('../assets/images/onboarding_bid.png'),
   onboarding_win: require('../assets/images/onboarding_win.png'),
-  onboarding_own: require('../assets/images/onboarding_own.png')
+  onboarding_own: require('../assets/images/onboarding_own.png'),
+  profile: require('../assets/images/profile.png')
 };
 
 export default assets;

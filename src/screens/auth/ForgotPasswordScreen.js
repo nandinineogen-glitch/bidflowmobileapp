@@ -28,7 +28,7 @@ const ForgotPasswordScreen = () => {
             >
 
             </TextInput>
-            <Eye size={20} />
+            <Eye size={20} style={{ backgroundColor: utils.colors.grey }}/>
           </View>
 
          
