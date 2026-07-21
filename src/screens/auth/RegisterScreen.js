@@ -3,7 +3,9 @@ import { View, Text, TextInput, TouchableOpacity,ScrollView } from 'react-native
 import utils from '../../utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Eye } from 'lucide-react-native';
-const RegisterScreen = () => {
+
+
+const RegisterScreen = ({navigation}) => {
   return (
       <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white}} >
       <ScrollView className="p-10">
@@ -59,14 +61,16 @@ const RegisterScreen = () => {
             >
 
             </TextInput>
-            <Eye size={20} style={{ backgroundColor: utils.colors.grey }}/>
+            <Eye size={20} style={{ color: utils.colors.grey }}/>
           </View>
            <TouchableOpacity className="rounded-xl py-4 mt-8" style={{ backgroundColor: utils.colors.blue }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Sign Up</Text>
           </TouchableOpacity>
           <View className="flex-row justify-center mt-6">
             <Text style={{ color: utils.colors.black }}>Already have an account? </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+              navigation.navigate('Login')
+            }>
               <Text className="font-bold" style={{ color: utils.colors.blue }}>Login</Text>
             </TouchableOpacity>
 

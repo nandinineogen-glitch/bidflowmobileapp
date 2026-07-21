@@ -6,18 +6,20 @@ import ForgotPasswordScreen from './src/screens/auth/ForgotPasswordScreen';
 import OTPScreen from './src/screens/auth/OTPScreen';
 import RoleSelectionScreen from './src/screens/auth/RoleSelectiomScreen';
 import OnBoardingScreen from './src/screens/auth/OnBoardingScreen';
-import { NavigationContainer } from '@react-navigation/native';
 import SellerBottomTabNavigator from './src/navigation/SellerBottomTabNavigator';
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import './global.css';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AppNavigator from './src/navigation/AppNavigator';
 
+import CompleteProfileScreen from './src/screens/seller/CompleteProfileScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-     <NavigationContainer>
-
-    <SellerBottomTabNavigator />
-    </NavigationContainer>
+    <SafeAreaProvider>
+    <CompleteProfileScreen />
+    </SafeAreaProvider>
   );
 }

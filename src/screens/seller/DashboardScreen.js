@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity,ScrollView } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import utils from '../../utils'; 
 
 
@@ -77,6 +77,7 @@ export default function DashboardScreen() {
   );
 
   return (
+ 
     <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
        
     <View style={{ backgroundColor: utils.colors.white }}>
@@ -162,6 +163,7 @@ export default function DashboardScreen() {
       />
     
     </SafeAreaView>
+   
   );
 }
 

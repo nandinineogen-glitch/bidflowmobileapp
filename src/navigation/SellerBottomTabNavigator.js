@@ -1,25 +1,31 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home , Gavel, CirclePlus, CalendarArrowDown, User} from 'lucide-react-native'
+import { Home , Gavel, CirclePlus, CalendarArrowDown, User, Navigation} from 'lucide-react-native'
 import DashboardScreen from '../screens/seller/DashboardScreen';
 import AuctionScreen from '../screens/seller/AuctionScreen';
 import OrderScreen from '../screens/seller/OrderScreen';
 import MoreScreen from '../screens/seller/MoreScreen';
 import AddProductScreen from '../screens/seller/AddProductScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 
 const Tab = createBottomTabNavigator();
 
+
 export default function SellerBottomTabNavigator() {
+  const insets = useSafeAreaInsets();
   return (
+    <NavigationContainer>
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarActiveTintColor: '#007bff',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
-          height: 60,
-          paddingBottom: 6,
           paddingTop: 6,
+          height: 60 + insets.bottom, 
+          paddingBottom: insets.bottom,
         },
        
       
@@ -63,5 +69,6 @@ export default function SellerBottomTabNavigator() {
        
       
     </Tab.Navigator>
+    </NavigationContainer>
   );
 }

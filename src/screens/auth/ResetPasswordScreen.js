@@ -25,7 +25,7 @@ const ResetPasswordScreen = () => {
             >
 
             </TextInput>
-            <Eye size={20} style={{ backgroundColor: utils.colors.grey }}/>
+            <Eye size={20} style={{ color: utils.colors.grey }}/>
           </View>
 
          <Text className="text-lg mt-10 mb-2" style={{ color: utils.colors.black }}>
@@ -40,7 +40,7 @@ const ResetPasswordScreen = () => {
             >
 
             </TextInput>
-            <Eye size={20} style={{ backgroundColor: utils.colors.grey }}/>
+            <Eye size={20} style={{ color: utils.colors.grey }}/>
           </View>
 
          <Text className="text-lg mt-10 mb-2" style={{ color: utils.colors.black }}>
@@ -55,7 +55,7 @@ const ResetPasswordScreen = () => {
             >
 
             </TextInput>
-            <Eye size={20} style={{ backgroundColor: utils.colors.grey }}/>
+            <Eye size={20} style={{ color: utils.colors.grey }}/>
           </View>
 
          

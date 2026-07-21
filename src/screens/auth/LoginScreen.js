@@ -4,7 +4,8 @@ import utils from '../../utils';
 import { Eye } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const LoginScreen = () => {
+
+const LoginScreen = ({navigation}) => {
   return (
       <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white}} >
       <ScrollView className="p-10">
@@ -37,10 +38,11 @@ const LoginScreen = () => {
             >
 
             </TextInput>
-            <Eye size={20} style={{ backgroundColor: utils.colors.grey }}/>
+            <Eye size={20} style={{ color: utils.colors.grey }}/>
           </View>
           
-          <TouchableOpacity className="items-end mt-7 mb-10">
+          <TouchableOpacity className="items-end mt-7 mb-10" onPress={() =>
+          navigation.navigate('Forgot')}>
             <Text className="font-bold" style={{ color: utils.colors.blue }}>Forgot Password?</Text>
           </TouchableOpacity>
           <TouchableOpacity className="rounded-xl py-4 mb-4" style={{ backgroundColor: utils.colors.blue }}>
@@ -48,7 +50,9 @@ const LoginScreen = () => {
           </TouchableOpacity>
           <View className="flex-row justify-center mt-7">
             <Text style={{ color: utils.colors.black }}>Don't have an account? </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+          navigation.navigate('Register')
+        }>
               <Text className="font-bold" style={{ color: utils.colors.blue }}>Sign Up</Text>
             </TouchableOpacity>
 
