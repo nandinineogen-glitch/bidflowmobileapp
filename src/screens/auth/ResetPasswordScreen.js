@@ -22,6 +22,7 @@ const ResetPasswordScreen = () => {
               placeholder="Your Current Password"
               className='h-14 flex-1'
               secureTextEntry={true}
+              style={{ color: utils.colors.black }}
             >
 
             </TextInput>
@@ -37,6 +38,7 @@ const ResetPasswordScreen = () => {
               placeholder="Enter New Password"
               className='h-14 flex-1'
               secureTextEntry={true}
+              style={{ color: utils.colors.black }}
             >
 
             </TextInput>
@@ -52,6 +54,7 @@ const ResetPasswordScreen = () => {
               placeholder="Confirm Your Password"
               className='h-14 flex-1'
               secureTextEntry={true}
+              style={{ color: utils.colors.black }}
             >
 
             </TextInput>

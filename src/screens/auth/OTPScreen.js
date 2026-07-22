@@ -22,32 +22,39 @@ const OTPScreen = () => {
             maxLength={1}
             keyboardType='numeric'
             className="w-12 h-14 border border-gray-300 rounded-xl text-center text-xl font-bold"
+            style={{ color: utils.colors.black }}
             />
              <TextInput
             maxLength={1}
             keyboardType='numeric'
             className="w-12 h-14 border border-gray-300 rounded-xl text-center text-xl font-bold"
+            style={{ color: utils.colors.black }}
             />
              <TextInput
             maxLength={1}
             keyboardType='numeric'
             className="w-12 h-14 border border-gray-300 rounded-xl text-center text-xl font-bold"
+            style={{ color: utils.colors.black }}
             />
              <TextInput
             maxLength={1}
             keyboardType='numeric'
             className="w-12 h-14 border border-gray-300 rounded-xl text-center text-xl font-bold"
+            style={{ color: utils.colors.black }}
             />
              <TextInput
             maxLength={1}
             keyboardType='numeric'
             className="w-12 h-14 border border-gray-300 rounded-xl text-center text-xl font-bold"
+            style={{ color: utils.colors.black }}
             />
              <TextInput
             maxLength={1}
             keyboardType='numeric'
             className="w-12 h-14 border border-gray-300 rounded-xl text-center text-xl font-bold"
+            style={{ color: utils.colors.black }}
             />
+
 
             </View>
 

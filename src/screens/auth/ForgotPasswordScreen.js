@@ -3,8 +3,17 @@ import { View, Text, TextInput, TouchableOpacity,ScrollView } from 'react-native
 import utils from '../../utils';
 import { Eye } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
 const ForgotPasswordScreen = () => {
+  
+const [showPassword, setShowPassword] = useState(false);
+
+  
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
   return (
+    
       <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white}} >
       <ScrollView className="p-10">
         < View className="mt-28" style={{ backgroundColor: utils.colors.white }}>
@@ -25,12 +34,13 @@ const ForgotPasswordScreen = () => {
               secureTextEntry={true}
               keyboardType="numeric"
                maxLength={10}
+               style={{ color: utils.colors.black }}
             >
 
             </TextInput>
-            <Eye size={20} style={{ color: utils.colors.grey }}/>
+            <Eye size={20} style={{ color: utils.colors.grey }} onClick={toggleShowPassword}/>
           </View>
-
+          
          
           <TouchableOpacity className="rounded-xl py-4 mb-4 mt-10" style={{ backgroundColor: utils.colors.blue }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Send OTP</Text>

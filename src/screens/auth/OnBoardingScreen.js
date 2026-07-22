@@ -36,7 +36,7 @@ const DATA = [
   },
 ];
 
-const OnBoardingScreen = () => {
+const OnBoardingScreen = ({ navigation }) => {
   const [current, setCurrent] = useState(0);
 
   const flatlistRef = useRef(null);
@@ -47,6 +47,9 @@ const OnBoardingScreen = () => {
         index: current + 1,
         animated: true,
       });
+    }
+    else {
+      navigation.replace('Roleselection');
     }
   };
 
