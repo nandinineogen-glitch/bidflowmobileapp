@@ -1,12 +1,20 @@
-import React, { useContext } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useContext, useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import utils from '../../utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Eye } from 'lucide-react-native';
+import { Eye, EyeOff } from 'lucide-react-native';
 import { AuthContext } from '../../context/AuthContext';
 
 const RegisterScreen = ({ navigation }) => {
   const { role, setIsLoggedIn } = useContext(AuthContext);
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSignUp = () => {
     setIsLoggedIn(true);
@@ -109,14 +117,25 @@ const RegisterScreen = ({ navigation }) => {
             <TextInput
               placeholder="Enter your Password"
               className="h-14 flex-1"
-              secureTextEntry={true}
+              secureTextEntry={!showPassword}
               style={{ color: utils.colors.black }}
             />
 
-            <Eye
-              size={20}
-              style={{ color: utils.colors.grey }}
-            />
+            <TouchableOpacity
+              onPress={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? (
+                <Eye
+                  size={20}
+                  color={utils.colors.grey}
+                />
+              ) : (
+                <EyeOff
+                  size={20}
+                  color={utils.colors.grey}
+                />
+              )}
+            </TouchableOpacity>
           </View>
 
           <TouchableOpacity

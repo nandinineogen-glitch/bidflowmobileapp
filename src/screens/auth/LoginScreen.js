@@ -1,12 +1,20 @@
-import React, { useContext } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useContext, useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import utils from '../../utils';
-import { Eye } from 'lucide-react-native';
+import { Eye, EyeOff } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AuthContext } from '../../context/AuthContext';
 
 const LoginScreen = ({ navigation }) => {
   const { role, setIsLoggedIn } = useContext(AuthContext);
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -19,9 +27,15 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: utils.colors.white }}
+    >
       <ScrollView className="p-10">
-        <View className="mt-28" style={{ backgroundColor: utils.colors.white }}>
+        <View
+          className="mt-28"
+          style={{ backgroundColor: utils.colors.white }}
+        >
           <utils.components.Header label="Welcome Back!" />
 
           <Text
@@ -44,7 +58,8 @@ const LoginScreen = ({ navigation }) => {
           >
             <TextInput
               placeholder="Enter your email"
-              className="h-14" style={{ color: utils.colors.black }}
+              className="h-14"
+              style={{ color: utils.colors.black }}
             />
           </View>
 
@@ -62,14 +77,25 @@ const LoginScreen = ({ navigation }) => {
             <TextInput
               placeholder="Enter your password"
               className="h-14 flex-1"
-              secureTextEntry={true}
+              secureTextEntry={!showPassword}
               style={{ color: utils.colors.black }}
             />
 
-            <Eye
-              size={20}
-              style={{ color: utils.colors.grey }}
-            />
+            <TouchableOpacity
+              onPress={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? (
+                <Eye
+                  size={20}
+                  color={utils.colors.grey}
+                />
+              ) : (
+                <EyeOff
+                  size={20}
+                  color={utils.colors.grey}
+                />
+              )}
+            </TouchableOpacity>
           </View>
 
           <TouchableOpacity

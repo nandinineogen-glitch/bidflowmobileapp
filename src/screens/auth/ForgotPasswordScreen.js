@@ -1,53 +1,68 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity,ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import utils from '../../utils';
-import { Eye } from 'lucide-react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const ForgotPasswordScreen = () => {
-  
-const [showPassword, setShowPassword] = useState(false);
-
-  
-    const toggleShowPassword = () => {
-        setShowPassword(!showPassword);
-    };
   return (
-    
-      <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white}} >
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: utils.colors.white }}
+    >
       <ScrollView className="p-10">
-        < View className="mt-28" style={{ backgroundColor: utils.colors.white }}>
-          
-            <utils.components.Header label=" Forgot Password?" /> 
-          <Text className="text-lg  mt-2 mb-20 font-bold" style={{ color: utils.colors.grey }}>
+        <View
+          className="mt-28"
+          style={{ backgroundColor: utils.colors.white }}
+        >
+          <utils.components.Header label="Forgot Password?" />
+
+          <Text
+            className="text-lg mt-2 mb-20 font-bold"
+            style={{ color: utils.colors.grey }}
+          >
             Enter your phone number to reset password
           </Text>
 
-        <Text className="text-lg mb-2" style={{ color: utils.colors.black }}>
+          <Text
+            className="text-lg mb-2"
+            style={{ color: utils.colors.black }}
+          >
             Phone Number
           </Text>
-          <View className="border rounded-xl px-4 flex-row items-center" style={{ borderColor: utils.colors.lightGrey }}>
 
+          <View
+            className="border rounded-xl px-4"
+            style={{ borderColor: utils.colors.lightGrey }}
+          >
             <TextInput
               placeholder="Enter Your Phone Number"
-              className='h-14 flex-1'
-              secureTextEntry={true}
+              className="h-14"
               keyboardType="numeric"
-               maxLength={10}
-               style={{ color: utils.colors.black }}
-            >
-
-            </TextInput>
-            <Eye size={20} style={{ color: utils.colors.grey }} onClick={toggleShowPassword}/>
+              maxLength={10}
+              style={{ color: utils.colors.black }}
+            />
           </View>
-          
-         
-          <TouchableOpacity className="rounded-xl py-4 mb-4 mt-10" style={{ backgroundColor: utils.colors.blue }}>
-            <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Send OTP</Text>
+
+          <TouchableOpacity
+            className="rounded-xl py-4 mb-4 mt-10"
+            style={{ backgroundColor: utils.colors.blue }}
+          >
+            <Text
+              className="text-center text-lg font-bold"
+              style={{ color: utils.colors.white }}
+            >
+              Send OTP
+            </Text>
           </TouchableOpacity>
         </View>
-       </ScrollView>
-      </SafeAreaView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
