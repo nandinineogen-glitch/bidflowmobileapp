@@ -4,6 +4,7 @@ const colors = {
   lightGrey: '#D3D3D3',
   blue: '#157ff1',
   lightblue: '#E6F0FF',
-  white: '#FFFFFF',};
-  
+  white: '#FFFFFF',
+  green: '#57c97b'
+}
   export default colors;

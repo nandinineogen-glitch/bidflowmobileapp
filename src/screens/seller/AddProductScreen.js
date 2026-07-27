@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, TextInput } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils'; 
 
-export default function AddProductScreen() {
+export default function AddProductScreen({ navigation }) {
  const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
 
@@ -17,7 +17,9 @@ export default function AddProductScreen() {
     setSelectedValue(option);
     setIsOpen(false); 
   };
-
+const handleSave = () => {
+    navigation.navigate('ProductImages');
+  };
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
        
@@ -53,8 +55,8 @@ export default function AddProductScreen() {
                 <View className="border rounded-xl px-4" style={{ borderColor: utils.colors.lightGrey }}>
                   <TextInput
                     placeholder=""
-                    className='h-14'>
-      
+                    className='h-14'
+                     style={{ color: utils.colors.black }}>
                   </TextInput>
                 </View>
 
@@ -62,7 +64,7 @@ export default function AddProductScreen() {
       <Text className="text-lg font-bold" style={{ color: utils.colors.black}}>Category</Text>
       <TouchableOpacity
         onPress={() => setIsOpen(!isOpen)}
-        className="flex-row justify-between items-center w-full px-4 py-3 rounded-lg shadow-sm"
+        className="flex-row justify-between items-center w-full h-16 px-4 py-3 rounded-lg shadow-sm border mt-2"
         style={{ borderColor: utils.colors.lightGrey , backgroundColor: utils.colors.white}}
       >
         <Text className="text-base">
@@ -94,7 +96,7 @@ export default function AddProductScreen() {
         </View>
       )}
     </View>
-                <TouchableOpacity className="rounded-xl py-4 mb-4 mt-52" style={{ backgroundColor: utils.colors.blue }}>
+                <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-52" style={{ backgroundColor: utils.colors.blue }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
     </View>    

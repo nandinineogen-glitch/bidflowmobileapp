@@ -30,8 +30,8 @@ const CompleteProfileScreen = ({ navigation }) => {
   };
 
   const handleSave = () => {
-    setProfileCompleted(true);
-    navigation.replace('SellerTabs');
+  
+    navigation.replace('BankPayout');
   };
 
   return (
@@ -162,7 +162,7 @@ const CompleteProfileScreen = ({ navigation }) => {
         </View>
 
         <TouchableOpacity
-          className="rounded-xl py-4 mt-6"
+          className="rounded-xl py-4 mt-20"
           style={{ backgroundColor: utils.colors.blue }}
           onPress={handleSave}
         >

@@ -10,7 +10,7 @@ import RoleSelectionScreen from '../screens/auth/RoleSelectionScreen';
 import CompleteProfileScreen from '../screens/seller/CompleteProfileScreen';
 import BuyerHomeScreen from '../screens/buyer/BuyerHomeScreen';
 import SellerBottomTabNavigator from './SellerBottomTabNavigator';
-
+import SellerNavigation from './SellerNavigation';
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -29,7 +29,7 @@ export default function AppNavigator() {
         profileCompleted ?(
           <Stack.Screen name="SellerBottomTab" component={SellerBottomTabNavigator} options={{ headerShown: false}} />
         ): (
-           <Stack.Screen name="SellerComplteProfileTab" component={CompleteProfileScreen} options={{ headerShown: false}} />
+           <Stack.Screen name="SellerNavigation" component={SellerNavigation} options={{ headerShown: false}} />
         )
       ) :
       (
