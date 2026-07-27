@@ -53,7 +53,7 @@ export default function ProductImages({ navigation }) {
         </View>
         </View>
 
-         <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-52" style={{ backgroundColor: utils.colors.blue }}>
+         <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-44" style={{ backgroundColor: utils.colors.blue }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
     </View>    

@@ -131,7 +131,7 @@ export default function BankPayoutScreen({ navigation }) {
 
         <TouchableOpacity
           onPress={handleSave}
-          className="rounded-xl py-4 mt-auto mb-6"
+          className="rounded-xl py-4 mt-44 mb-6"
           style={{ backgroundColor: utils.colors.blue }}
         >
           <Text

@@ -6,7 +6,9 @@ import utils from '../../utils';
 
 export default function ShippingandReturns({ navigation }) {
    
- 
+ const handleSave = () => {
+    navigation.navigate('ProductPreview');
+  };
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
        
@@ -97,7 +99,7 @@ export default function ShippingandReturns({ navigation }) {
           </View>
           
          
-          <TouchableOpacity className="rounded-xl py-4 mt-36" style={{ backgroundColor: utils.colors.blue }}>
+          <TouchableOpacity className="rounded-xl py-4 mt-56" onPress={handleSave} style={{ backgroundColor: utils.colors.blue }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
          </View>    
