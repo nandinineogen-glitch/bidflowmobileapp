@@ -162,7 +162,7 @@ const CompleteProfileScreen = ({ navigation }) => {
         </View>
 
         <TouchableOpacity
-          className="rounded-xl py-4 mt-20"
+          className="rounded-xl py-4 mt-6"
           style={{ backgroundColor: utils.colors.blue }}
           onPress={handleSave}
         >

@@ -4,7 +4,11 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import utils from '../../utils';
 
 export default function ProductPreview({navigation}) {
+  const handleSave = () => {
+    navigation.navigate('PendingApproval');
+  };
   return (
+    
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
@@ -128,40 +132,13 @@ export default function ProductPreview({navigation}) {
               </Text>
             </View>
           </View>
-
-          <View className="flex-row justify-center mt-8">
-            <View
-              className="rounded-full mx-1"
-              style={{
-                width: 10,
-                height: 10,
-                backgroundColor: '#7C3AED',
-              }}
-            />
-
-            <View
-              className="rounded-full mx-1"
-              style={{
-                width: 10,
-                height: 10,
-                backgroundColor: utils.colors.lightGrey,
-              }}
-            />
-
-            <View
-              className="rounded-full mx-1"
-              style={{
-                width: 10,
-                height: 10,
-                backgroundColor: utils.colors.lightGrey,
-              }}
-            />
-          </View>
         </View>
 
         <TouchableOpacity
-          className="rounded-xl items-center py-4 mt-16"
-          style={{backgroundColor: utils.colors.blue}}>
+          className="rounded-xl items-center py-4 mt-12"
+          style={{backgroundColor: utils.colors.blue}}
+          onPress={handleSave}
+          >
           <Text
             className="text-lg font-bold"
             style={{color: utils.colors.white}}>

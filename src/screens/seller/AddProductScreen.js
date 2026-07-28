@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import { View, Text, FlatList, TouchableOpacity, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils'; 
+import { AuthContext } from '../../context/AuthContext';
 
 export default function AddProductScreen({ navigation }) {
  const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
+  const { setProfileCompleted } = useContext(AuthContext);
 
   const options = [
     { label: 'Mobile', value: 'mobile' },
@@ -18,7 +20,8 @@ export default function AddProductScreen({ navigation }) {
     setIsOpen(false); 
   };
 const handleSave = () => {
-    navigation.navigate('ProductImages');
+  setProfileCompleted(true);
+    navigation.navigate('SellerNavigator');
   };
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
@@ -96,7 +99,7 @@ const handleSave = () => {
         </View>
       )}
     </View>
-                <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-64" style={{ backgroundColor: utils.colors.blue }}>
+                <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-48" style={{ backgroundColor: utils.colors.blue }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
     </View>    

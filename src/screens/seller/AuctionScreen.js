@@ -46,7 +46,11 @@ const AUCTIONS_DATA = [
 
 const TABS = ['All', 'Active', 'Scheduled', 'Ended'];
 
-export default function AuctionScreen() {
+export default function AuctionScreen({navigation}) {
+  const handleSave = () =>
+  {
+    navigation.navigate('SellerAuctionNavigator')
+  }
   const [selectedTab, setSelectedTab] = useState('All');
 
  
@@ -91,7 +95,7 @@ export default function AuctionScreen() {
 
   const renderAuctionItem = ({ item }) => (
     <View className="flex-row items-center justify-between px-5 py-4 border-b" style={{ borderColor: utils.colors.lightGrey }}>
-      <View className="flex-row items-center flex-1 mr-3">
+      <TouchableOpacity className="flex-row items-center flex-1 mr-3" onPress={handleSave}>
        
         <View className="h-16 w-16 rounded-2xl items-center justify-center mr-4 border" style={{ borderColor: utils.colors.lightGrey }}>
           <Image
@@ -113,7 +117,7 @@ export default function AuctionScreen() {
             {item.bidsCount}
           </Text>
         </View>
-      </View>
+      </TouchableOpacity>
 
    
       <View className="items-end justify-center">

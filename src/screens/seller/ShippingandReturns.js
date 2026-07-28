@@ -99,7 +99,7 @@ export default function ShippingandReturns({ navigation }) {
           </View>
           
          
-          <TouchableOpacity className="rounded-xl py-4 mt-56" onPress={handleSave} style={{ backgroundColor: utils.colors.blue }}>
+          <TouchableOpacity className="rounded-xl py-4 mt-40" onPress={handleSave} style={{ backgroundColor: utils.colors.blue }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
          </View>    

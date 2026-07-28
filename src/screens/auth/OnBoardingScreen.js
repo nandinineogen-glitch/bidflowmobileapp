@@ -79,7 +79,7 @@ const OnBoardingScreen = ({ navigation }) => {
                   className={
                     item.highlight === 'Bid.'
                       ? 'text-black'
-                      : 'text-blue-600'
+                      : 'text-blue-950'
                   }
                   style={{ fontSize: 30, fontWeight: '700' }}
                 >
@@ -90,7 +90,7 @@ const OnBoardingScreen = ({ navigation }) => {
                   className={
                     item.highlight === 'Win.'
                       ? 'text-black'
-                      : 'text-blue-600'
+                      : 'text-blue-950'
                   }
                   style={{ fontSize: 30, fontWeight: '700' }}
                 >
@@ -101,7 +101,7 @@ const OnBoardingScreen = ({ navigation }) => {
                   className={
                     item.highlight === 'Own.'
                       ? 'text-black'
-                      : 'text-blue-600'
+                      : 'text-blue-700'
                   }
                   style={{ fontSize: 30, fontWeight: '700' }}
                 >
