@@ -61,7 +61,7 @@ const OTPScreen = () => {
           <Text className="text-lg  mt-20 font-bold text-center" style={{ color: utils.colors.grey }}>
             Resend OTP in 00:45
           </Text>
-          <TouchableOpacity className="rounded-xl py-4 mb-4 mt-28" style={{ backgroundColor: utils.colors.blue }}>
+          <TouchableOpacity className="rounded-xl py-4 mb-4 mt-28" style={{ backgroundColor: utils.colors.theme_color }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Verify</Text>
           </TouchableOpacity>
         </View>

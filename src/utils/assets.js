@@ -6,7 +6,7 @@ const assets = {
   onboarding_win: require('../assets/images/onboarding_win.png'),
   onboarding_own: require('../assets/images/onboarding_own.png'),
   profile: require('../assets/images/profile.png'),
-  sand_clock: require('../assets/images/sand_clock.jpg')
+  sand_clock: require('../assets/images/sand_clock.png')
 };
 
 export default assets;

@@ -28,10 +28,10 @@ export default function BankPayoutScreen({ navigation }) {
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
       <View className="flex-1 px-8 pt-10">
-        <utils.components.Header label="Payout Details" />
+        <utils.components.Header label="Payout Settings" />
 
         <Text className="text-base mt-2 mb-8" style={{ color: utils.colors.grey }}>
-          Add your bank account to receive payouts securely.
+          Add your bank details to receive payments.
         </Text>
 
         <Text className="text-lg font-bold mb-2" style={{ color: utils.colors.black }}>
@@ -132,7 +132,7 @@ export default function BankPayoutScreen({ navigation }) {
         <TouchableOpacity
           onPress={handleSave}
           className="rounded-xl py-4 mt-28 mb-6"
-          style={{ backgroundColor: utils.colors.blue }}
+          style={{ backgroundColor: utils.colors.theme_color }}
         >
           <Text
             className="text-center text-lg font-bold"

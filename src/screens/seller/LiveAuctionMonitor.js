@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
+  Image
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils';
@@ -15,18 +16,21 @@ const DATA = [
     name: 'Rahul Sharma',
     amount: '₹62,500',
     time: 'Just now',
+    url: utils.assets.profile
   },
   {
     id: '2',
     name: 'Neha Patel',
     amount: '₹61,000',
     time: '30s ago',
+    url: utils.assets.profile
   },
   {
     id: '3',
     name: 'Ankit Verma',
     amount: '₹60,500',
     time: '1m ago',
+    url: utils.assets.profile
   },
 ];
 
@@ -43,7 +47,13 @@ export default function LiveAuctionMonitorScreen({ navigation }) {
           className="w-10 h-10 rounded-full items-center justify-center"
           style={{ backgroundColor: utils.colors.lightGrey }}
         >
-          
+           <Image
+            source={item.url}
+            style={{
+              width: 40,
+              height: 40,
+            }}
+          />
         </View>
 
         <Text
@@ -80,7 +90,7 @@ export default function LiveAuctionMonitorScreen({ navigation }) {
 
     <SafeAreaView
       className="flex-1"
-      style={{ backgroundColor: utils.colors.blue }}
+      style={{ backgroundColor: utils.colors.theme_color }}
     >
 
       <View className="px-6 pt-3">
@@ -110,17 +120,17 @@ export default function LiveAuctionMonitorScreen({ navigation }) {
             </View>
 
           </View>
-
-      
-
         </View>
-
         <View className="h-48 items-center justify-center">
-
+         <Image
+            source={utils.assets.profile}
+            style={{
+              width: 150,
+              height: 168,
+            }}
+          />
         </View>
-
       </View>
-
       <View
         className="flex-1 rounded-t-[35px] px-6 pt-8"
         style={{ backgroundColor: utils.colors.white }}
@@ -236,7 +246,7 @@ export default function LiveAuctionMonitorScreen({ navigation }) {
 
         <TouchableOpacity
           className="rounded-xl py-4 mb-6 mt-4"
-          style={{ backgroundColor: utils.colors.blue }}
+          style={{ backgroundColor: utils.colors.theme_color }}
         >
           <Text
             className="text-center text-xl font-bold"

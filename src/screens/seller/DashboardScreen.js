@@ -99,7 +99,7 @@ export default function DashboardScreen() {
       </View>
 
       
-      <View className="mx-5 my-3 rounded-2xl p-5" style={{ backgroundColor: utils.colors.blue }}>
+      <View className="mx-5 my-3 rounded-2xl p-5" style={{ backgroundColor: utils.colors.theme_color }}>
         
         <View className="flex-row justify-between items-start">
           <View>
@@ -119,7 +119,7 @@ export default function DashboardScreen() {
             className="rounded-xl px-5 py-2.5 " 
             style={{ backgroundColor: utils.colors.white }}
           >
-            <Text className="font-bold" style={{ color: utils.colors.blue }}>
+            <Text className="font-bold" style={{ color: utils.colors.theme_color }}>
               Withdraw
             </Text>
           </TouchableOpacity>

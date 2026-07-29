@@ -140,7 +140,7 @@ const RegisterScreen = ({ navigation }) => {
 
           <TouchableOpacity
             className="rounded-xl py-4 mt-8"
-            style={{ backgroundColor: utils.colors.blue }}
+            style={{ backgroundColor: utils.colors.theme_color }}
             onPress={handleSignUp}
           >
             <Text
@@ -161,7 +161,7 @@ const RegisterScreen = ({ navigation }) => {
             >
               <Text
                 className="font-bold"
-                style={{ color: utils.colors.blue }}
+                style={{ color: utils.colors.theme_color }}
               >
                 {' '}Login
               </Text>

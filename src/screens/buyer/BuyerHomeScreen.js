@@ -65,7 +65,7 @@ export default function BuyerHomeScreen() {
 
           <Text
             className="text-xl font-bold mt-1"
-            style={{ color: utils.colors.blue }}
+            style={{ color: utils.colors.theme_color }}
           >
             {item.currentBid}
           </Text>
@@ -74,7 +74,7 @@ export default function BuyerHomeScreen() {
 
       <TouchableOpacity
         className="rounded-xl py-3 mt-4"
-        style={{ backgroundColor: utils.colors.blue }}
+        style={{ backgroundColor: utils.colors.theme_color }}
       >
         <Text
           className="text-center font-bold"

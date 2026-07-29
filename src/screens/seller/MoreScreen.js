@@ -27,7 +27,7 @@ export default function MoreScreen({navigation}) {
       style={{
         backgroundColor: utils.colors.white,
         borderLeftWidth: 5,
-        borderLeftColor: utils.colors.blue,
+        borderLeftColor: utils.colors.theme_color,
         elevation: 5,
         shadowColor: utils.colors.black,
         shadowOpacity: 0.08,

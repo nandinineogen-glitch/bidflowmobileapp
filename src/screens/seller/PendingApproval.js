@@ -57,7 +57,7 @@ export default function PendingApproval({ navigation }) {
         <View className="px-6 py-16">
           <TouchableOpacity
             className="rounded-xl py-4 "
-            style={{ backgroundColor: utils.colors.blue }}
+            style={{ backgroundColor: utils.colors.theme_color }}
             onPress={handleSave}
           >
             <Text

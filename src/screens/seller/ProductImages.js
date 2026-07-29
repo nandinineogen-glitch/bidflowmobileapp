@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, FlatList, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, TextInput, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils'; 
 
@@ -28,16 +28,24 @@ export default function ProductImages({ navigation }) {
           </View>
         </View>
       </View>    
-      <View className="flex-row justify-between px-2 py-4">
+      <View className="flex-row justify-between">
        
-        <View className="border rounded-xl items-center flex-1 py-28 mx-3" style={{ borderColor: utils.colors.lightGrey }}>
-         
-        </View>
+       
+          <Image className="border rounded-xl items-center flex-1 py-28 mx-3"
+                     source={utils.assets.buyer}
+                      style={{
+                        width: 150,
+                        height: 160,
+                      }}/>
+      
         
         
-        <View className="border rounded-xl items-center flex-1 py-28 mx-3"  style={{ borderColor: utils.colors.lightGrey }} >
-         
-        </View>
+        <Image className="border rounded-xl items-center flex-1 py-28 mx-3"
+                     source={utils.assets.buyer}
+                      style={{
+                        width: 150,
+                        height: 160,
+                      }}/>
         </View>
 
          <View className="flex-row justify-between px-2 py-4">
@@ -53,7 +61,7 @@ export default function ProductImages({ navigation }) {
         </View>
         </View>
 
-         <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-28" style={{ backgroundColor: utils.colors.blue }}>
+         <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-28" style={{ backgroundColor: utils.colors.theme_color }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
     </View>    

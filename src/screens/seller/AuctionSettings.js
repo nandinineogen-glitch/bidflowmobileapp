@@ -117,7 +117,7 @@ export default function AuctionSettings({ navigation }) {
               style={{ color: utils.colors.black }}
             />
           </View>
-          <TouchableOpacity className="rounded-xl py-4 mt-10"  onPress={handleSave} style={{ backgroundColor: utils.colors.blue }}>
+          <TouchableOpacity className="rounded-xl py-4 mt-10"  onPress={handleSave} style={{ backgroundColor: utils.colors.theme_color }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
          </View>    

@@ -51,7 +51,7 @@ const ForgotPasswordScreen = () => {
 
           <TouchableOpacity
             className="rounded-xl py-4 mb-4 mt-10"
-            style={{ backgroundColor: utils.colors.blue }}
+            style={{ backgroundColor: utils.colors.theme_color }}
           >
             <Text
               className="text-center text-lg font-bold"

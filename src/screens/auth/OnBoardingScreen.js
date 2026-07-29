@@ -76,34 +76,38 @@ const OnBoardingScreen = ({ navigation }) => {
             <View className="px-9" style={{ width }}>
               <View className="px-16 flex-row justify-between items-center">
                 <Text
-                  className={
-                    item.highlight === 'Bid.'
-                      ? 'text-black'
-                      : 'text-blue-950'
-                  }
-                  style={{ fontSize: 30, fontWeight: '700' }}
+                   style={{
+                  color:
+                    item.highlight ===  "Bid."
+                      ? utils.colors.black
+                      : utils.colors.theme_color
+                }}
+                 className='text-4xl font-bold'
                 >
                   Bid.
                 </Text>
 
                 <Text
-                  className={
-                    item.highlight === 'Win.'
-                      ? 'text-black'
-                      : 'text-blue-950'
-                  }
-                  style={{ fontSize: 30, fontWeight: '700' }}
+           
+                  style={{
+                  color:
+                    item.highlight ===  "Win."
+                      ? utils.colors.black
+                      : utils.colors.theme_color
+                }}
+                 className='text-4xl font-bold'
                 >
                   Win.
                 </Text>
 
                 <Text
-                  className={
-                    item.highlight === 'Own.'
-                      ? 'text-black'
-                      : 'text-blue-700'
-                  }
-                  style={{ fontSize: 30, fontWeight: '700' }}
+                    style={{
+                  color:
+                    item.highlight ===  "Own."
+                      ? utils.colors.black
+                      : utils.colors.theme_color
+                }}
+                 className='text-4xl font-bold'
                 >
                   Own.
                 </Text>
@@ -134,23 +138,22 @@ const OnBoardingScreen = ({ navigation }) => {
           {DATA.map((_, index) => (
             <View
               key={index}
+             
+              className="h-10 w-10 border-r-10 mx-6"
               style={{
-                height: 10,
-                width: 10,
-                borderRadius: 10,
-                marginHorizontal: 6,
-              }}
-              className={
-                current === index ? 'bg-blue-600' : 'bg-slate-700'
-              }
+                  color:
+                    current ==  index
+                      ? utils.colors.black
+                      : utils.colors.theme_color
+                }}
             />
           ))}
         </View>
 
-        <View className="flex-row justify-between mt-2 px-12">
+        <View className="flex-row justify-between mt-28 px-12">
           <Text
             className="text-lg mt-10 font-bold text-center"
-            style={{ color: utils.colors.blue }}
+            style={{ color: utils.colors.theme_color }}
           >
             Skip
           </Text>
@@ -158,7 +161,7 @@ const OnBoardingScreen = ({ navigation }) => {
           <TouchableOpacity
             className="rounded-3xl py-3 px-6 mb-4 mt-10"
             onPress={nextPage}
-            style={{ backgroundColor: utils.colors.blue }}
+            style={{ backgroundColor: utils.colors.theme_color }}
           >
             <Text
               className="text-center text-lg font-bold"

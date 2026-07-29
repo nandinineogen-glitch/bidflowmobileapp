@@ -46,9 +46,9 @@ const handleSave = () => {
         
         <View className="flex-row justify-between items-center text-center align-middle">
           <View>
-            <Text className="text-xl font-bold" style={{ color: utils.colors.blue }}>Upload Photos</Text>
+            <Text className="text-xl font-bold" style={{ color: utils.colors.theme_color }}>Upload Photos</Text>
             <Text className="text" style={{ color: utils.colors.grey }}>Minimum 3 photos</Text>
-            <Text className="text-4xl ml-14 mt-4 font-bold" style={{ color: utils.colors.blue }}>+</Text>
+            <Text className="text-4xl ml-14 mt-4 font-bold" style={{ color: utils.colors.theme_color }}>+</Text>
           </View>
         </View>
       </View>  
@@ -99,7 +99,7 @@ const handleSave = () => {
         </View>
       )}
     </View>
-                <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-48" style={{ backgroundColor: utils.colors.blue }}>
+                <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-48" style={{ backgroundColor: utils.colors.theme_color }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
     </View>    

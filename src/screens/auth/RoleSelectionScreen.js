@@ -38,7 +38,7 @@ const RoleSelectionScreen = ({ navigation }) => {
 
           <View className="self-center mt-8">
             <Text
-              className="mt-2 mb-10 px-7"
+              className="mt-2 mb-10"
               style={{ color: utils.colors.grey }}
             >
               Select{' '}
@@ -67,7 +67,7 @@ const RoleSelectionScreen = ({ navigation }) => {
               style={{
                 borderColor:
                   selectedRole === 'buyer'
-                    ? utils.colors.blue
+                    ? utils.colors.theme_color
                     : utils.colors.lightGrey,
               }}
             >
@@ -80,7 +80,7 @@ const RoleSelectionScreen = ({ navigation }) => {
                 style={{
                   color:
                     selectedRole === 'buyer'
-                      ? utils.colors.blue
+                      ? utils.colors.theme_color
                       : utils.colors.black,
                 }}
               >
@@ -95,7 +95,7 @@ const RoleSelectionScreen = ({ navigation }) => {
               style={{
                 borderColor:
                   selectedRole === 'seller'
-                    ? utils.colors.blue
+                    ? utils.colors.theme_color
                     : utils.colors.lightGrey,
               }}
             >
@@ -108,7 +108,7 @@ const RoleSelectionScreen = ({ navigation }) => {
                 style={{
                   color:
                     selectedRole === 'seller'
-                      ? utils.colors.blue
+                      ? utils.colors.theme_color
                       : utils.colors.black,
                 }}
               >
@@ -119,7 +119,7 @@ const RoleSelectionScreen = ({ navigation }) => {
 
           <TouchableOpacity
             className="rounded-xl py-2 mt-14"
-            style={{ backgroundColor: utils.colors.blue }}
+            style={{ backgroundColor: utils.colors.theme_color }}
             onPress={handleContinue}
           >
             <Text

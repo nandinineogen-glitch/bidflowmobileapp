@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, Image} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import utils from '../../utils';
 
@@ -9,18 +9,21 @@ const DATA = [
     name: 'Rahul Sharma',
     amount: '₹62,500',
     time: 'Just now',
+    url: utils.assets.profile
   },
   {
     id: '2',
     name: 'Neha Patel',
     amount: '₹61,000',
     time: '30s ago',
+    url: utils.assets.profile
   },
   {
     id: '3',
     name: 'Ankit Verma',
     amount: '₹60,500',
     time: '1m ago',
+    url: utils.assets.profile
   },
 ];
 
@@ -35,7 +38,13 @@ export default function BidHistory() {
           className="w-10 h-10 rounded-full items-center justify-center"
           style={{ backgroundColor: utils.colors.lightGrey }}
         >
-          
+          <Image
+                      source={item.url}
+                      style={{
+                        width: 40,
+                        height: 40,
+                      }}
+                    />
         </View>
 
         <Text

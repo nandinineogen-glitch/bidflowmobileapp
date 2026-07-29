@@ -67,7 +67,6 @@ const CompleteProfileScreen = ({ navigation }) => {
             style={{
               width: 150,
               height: 150,
-              borderColor: utils.colors.white,
             }}
           />
         </View>
@@ -163,7 +162,7 @@ const CompleteProfileScreen = ({ navigation }) => {
 
         <TouchableOpacity
           className="rounded-xl py-4 mt-6"
-          style={{ backgroundColor: utils.colors.blue }}
+          style={{ backgroundColor: utils.colors.theme_color }}
           onPress={handleSave}
         >
           <Text

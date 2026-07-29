@@ -104,7 +104,7 @@ const LoginScreen = ({ navigation }) => {
           >
             <Text
               className="font-bold"
-              style={{ color: utils.colors.blue }}
+              style={{ color: utils.colors.theme_color }}
             >
               Forgot Password?
             </Text>
@@ -112,7 +112,7 @@ const LoginScreen = ({ navigation }) => {
 
           <TouchableOpacity
             className="rounded-xl py-4 mb-4"
-            style={{ backgroundColor: utils.colors.blue }}
+            style={{ backgroundColor: utils.colors.theme_color }}
             onPress={handleLogin}
           >
             <Text
@@ -133,7 +133,7 @@ const LoginScreen = ({ navigation }) => {
             >
               <Text
                 className="font-bold"
-                style={{ color: utils.colors.blue }}
+                style={{ color: utils.colors.theme_color }}
               >
                 {' '}Sign Up
               </Text>

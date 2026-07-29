@@ -130,8 +130,8 @@ export default function OrderScreen() {
                 onPress={() => setSelectedTab(item)}
                 className="px-5 py-3 rounded-xl border"
                 style={{
-                  backgroundColor: isActive ? utils.colors.blue : 'transparent',
-                  borderColor: isActive ? utils.colors.blue : '#E5E7EB', 
+                  backgroundColor: isActive ? utils.colors.theme_color : 'transparent',
+                  borderColor: isActive ? utils.colors.theme_color : '#E5E7EB', 
                 }}
               >
                 <Text

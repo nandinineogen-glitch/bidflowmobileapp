@@ -136,7 +136,7 @@ export default function ProductPreview({navigation}) {
 
         <TouchableOpacity
           className="rounded-xl items-center py-4 mt-12"
-          style={{backgroundColor: utils.colors.blue}}
+          style={{backgroundColor: utils.colors.theme_color}}
           onPress={handleSave}
           >
           <Text

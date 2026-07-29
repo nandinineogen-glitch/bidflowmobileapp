@@ -15,6 +15,7 @@ const Stack = createNativeStackNavigator();
 export default function SellerNavigator() {
     return (
      <Stack.Navigator>
+      
         <Stack.Screen name="ProductImages" component={ProductImages} options={{ headerShown: false }}/>
           <Stack.Screen name="AuctionSettings" component={AuctionSettings} options={{ headerShown: false }}/>
           <Stack.Screen name="ShippingandReturns" component={ShippingandReturns} options={{ headerShown: false }}/>
