@@ -21,7 +21,7 @@ const RoleSelectionScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ backgroundColor: utils.colors.white }}>
       <ScrollView className="p-10">
-        <View className="mt-6 justify-center">
+        <View className="mt-6 justify-center mb-10">
           <View
             className="self-center"
             style={{ backgroundColor: utils.colors.white }}

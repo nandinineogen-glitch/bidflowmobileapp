@@ -5,6 +5,7 @@ const colors = {
   theme_color: '#4969E9',
   lightblue: '#E6F0FF',
   white: '#FFFFFF',
-  green: '#57c97b'
+  green: '#57c97b',
+  red: '#D22B2B'
 }
   export default colors;

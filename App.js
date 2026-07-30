@@ -12,13 +12,14 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppNavigator from './src/navigation/AppNavigator';
 import AuthProvider from './src/context/AuthContext.js';
 import CompleteProfileScreen from './src/screens/seller/CompleteProfileScreen';
+import ProfileScreen from './src/screens/seller/ProfileScreen';
+import EarningScreen from './src/screens/seller/EarningScreen.js';
+import SettingScreen from './src/screens/seller/SettingScreen.js';
+import  WalletScreen  from './src/screens/seller/WalletScreen.js';
+import NotificationScreen from './src/screens/seller/NotificationScreen.js';
 
 export default function App() {
   return (
-    <AuthProvider>
-    <SafeAreaProvider>
-    <AppNavigator />
-    </SafeAreaProvider>
-    </AuthProvider>
+   <NotificationScreen />
   );
-}
+} 

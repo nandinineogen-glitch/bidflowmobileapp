@@ -31,28 +31,31 @@ export default function ProductImages({ navigation }) {
       <View className="flex-row justify-between">
        
        
-          <Image className="border rounded-xl items-center flex-1 py-28 mx-3"
-                     source={utils.assets.buyer}
+          <Image className="rounded-xl items-center flex-1 py-24 mx-3"
+                     source={utils.assets.profile}
                       style={{
-                        width: 150,
-                        height: 160,
+                      
+                        height: 150,
                       }}/>
       
         
         
-        <Image className="border rounded-xl items-center flex-1 py-28 mx-3"
-                     source={utils.assets.buyer}
+        <Image className="rounded-xl items-center flex-1 py-24 mx-3"
+                     source={utils.assets.profile}
                       style={{
-                        width: 150,
+                      
                         height: 160,
                       }}/>
         </View>
 
          <View className="flex-row justify-between px-2 py-4">
        
-        <View className="border rounded-xl items-center flex-1 py-20 px-1 mx-3" style={{ borderColor: utils.colors.lightGrey }}>
-          
-        </View>
+        <Image className="rounded-xl items-center flex-1 py-24 mx-3"
+                     source={utils.assets.profile}
+                      style={{
+                      
+                        height: 160,
+                      }}/>
         
         
          <View className="border-4 border-dotted rounded-xl items-center flex-1 py-20 mx-3" style={{ borderColor: utils.colors.lightGrey }}>
@@ -61,7 +64,7 @@ export default function ProductImages({ navigation }) {
         </View>
         </View>
 
-         <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-28" style={{ backgroundColor: utils.colors.theme_color }}>
+         <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-44" style={{ backgroundColor: utils.colors.theme_color }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
     </View>    
