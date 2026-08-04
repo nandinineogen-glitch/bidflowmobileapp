@@ -62,28 +62,23 @@ export default function NotificationScreen({navigation}) {
     switch (item.status) {
       case 'Alerts':
         return (
-          <View className="flex-row items-center bg-green-50 px-2 py-1 rounded border border-green-200">
-            <View className="h-2 w-2 rounded-full bg-green-500 mr-2" />
-            <Text className="text-green-600 text-[10px] font-bold uppercase">Live</Text>
+          <View className="flex-row items-center  bg-red-50 px-3 py-3 rounded-full border border-red-200">
+            <View className="h-3 w-3 rounded-full bg-red-500" />
+           
           </View>
         );
       case 'Orders':
         return (
-          <View className="items-end">
-            <View className="bg-blue-50 px-2 py-1 rounded border border-blue-100">
-              <Text className="text-blue-600 text-[10px] font-bold">Scheduled</Text>
-            </View>
-            {item.timeRemaining && (
-              <Text className="text-red-500 text-[9px] mt-1 font-medium">
-                {item.timeRemaining}
-              </Text>
-            )}
+         <View className="flex-row items-center  bg-green-50 px-3 py-3 rounded-full border border-green-200">
+            <View className="h-3 w-3 rounded-full bg-green-500" />
+           
           </View>
         );
       case 'Auctions':
         return (
-          <View className="bg-gray-100 px-2 py-1 rounded">
-            <Text className="text-gray-500 text-[10px] font-bold">Ended</Text>
+        <View className="flex-row items-center  bg-blue-50 px-3 py-3 rounded-full border border-blue-200">
+            <View className="h-3 w-3 rounded-full bg-blue-500" />
+           
           </View>
         );
       default:
