@@ -9,12 +9,14 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ChevronRight, ChevronDown} from 'lucide-react-native';
 import utils from '../../utils';
-
+import LogoutScreen from './LogoutScreen';
 export default function SettingScreen({navigation}) {
   const [auctionAlerts, setAuctionAlerts] = useState(true);
   const [bidUpdates, setBidUpdates] = useState(false);
   const [marketingEmails, setMarketingEmails] = useState(true);
-
+  const handleLogout = () => {
+      navigation.navigate(LogoutScreen);
+    };
   const Row = ({title, value}) => (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -178,15 +180,18 @@ export default function SettingScreen({navigation}) {
                 height: 1,
                 backgroundColor: utils.colors.lightGrey,
               }}
-              className='w-400 mt-32'
+              className='w-400 mt-32 mb-5'
             />
          
-            <Text
-              className="text-lg font-bold mt-5 ml-5"
-              style={{color: utils.colors.red}}>
-              Logout
-            </Text>
-         
+            <TouchableOpacity
+                       activeOpacity={0.7}
+                       onPress={handleLogout}>
+                       <Text
+                         className="text-lg font-bold ml-5"
+                         style={{color: utils.colors.red}}>
+                         Logout
+                       </Text>
+            </TouchableOpacity>
 
         </View>
       </ScrollView>

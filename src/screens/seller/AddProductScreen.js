@@ -19,10 +19,10 @@ export default function AddProductScreen({ navigation }) {
     setSelectedValue(option);
     setIsOpen(false); 
   };
-const handleSave = () => {
-  setProfileCompleted(true);
-    navigation.navigate('SellerNavigator');
-  };
+ 
+  const handleSave = () => {
+  navigation.navigate('ProductImages');
+};
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
        

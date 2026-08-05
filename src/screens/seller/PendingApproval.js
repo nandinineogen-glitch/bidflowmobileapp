@@ -1,4 +1,5 @@
-import React  from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils';
@@ -7,11 +8,19 @@ import utils from '../../utils';
 
 export default function PendingApproval({ navigation }) {
   
+ const { setProfileCompleted } = useContext(AuthContext);
+const handleSave = () => {
+  setProfileCompleted(true);
 
-  const handleSave = () => {
-    
-   navigation.navigate('SellerBottomTab');
-  }
+  navigation.reset({
+    index: 0,
+    routes: [
+      {
+        name: 'SellerNavigator',
+      },
+    ],
+  });
+};
   return (
     <SafeAreaView
       className="flex-1"

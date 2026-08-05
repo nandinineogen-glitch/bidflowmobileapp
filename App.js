@@ -20,6 +20,10 @@ import NotificationScreen from './src/screens/seller/NotificationScreen.js';
 
 export default function App() {
   return (
-   <NotificationScreen />
+   <SafeAreaProvider>
+      <AuthProvider>
+        <AppNavigator />
+      </AuthProvider>
+    </SafeAreaProvider>
   );
 } 

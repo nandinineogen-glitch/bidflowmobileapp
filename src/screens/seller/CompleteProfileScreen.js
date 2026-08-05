@@ -31,7 +31,7 @@ const CompleteProfileScreen = ({ navigation }) => {
 
   const handleSave = () => {
   
-    navigation.replace('BankPayout');
+    navigation.replace('AddressScreen');
   };
 
   return (
@@ -140,24 +140,6 @@ const CompleteProfileScreen = ({ navigation }) => {
               />
             </View>
           )}
-        </View>
-
-        <Text
-          className="text-lg mb-2 mt-6 font-bold"
-          style={{ color: utils.colors.black }}
-        >
-          Address
-        </Text>
-
-        <View
-          className="border rounded-xl px-4"
-          style={{ borderColor: utils.colors.lightGrey }}
-        >
-          <TextInput
-            placeholder=""
-            className="h-14"
-            style={{ color: utils.colors.black }}
-          />
         </View>
 
         <TouchableOpacity

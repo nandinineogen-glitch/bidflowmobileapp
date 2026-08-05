@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import utils from '../../utils';
 
@@ -49,13 +49,15 @@ export default function ProductPreview({navigation}) {
           </View>
 
           <View className="items-center">
-            <View
+            <Image
+            source={utils.assets.profile}
               className="rounded-2xl"
               style={{
                 width: 170,
                 height: 190,
-                backgroundColor: utils.colors.lightGrey,
+                
               }}
+              
             />
           </View>
 

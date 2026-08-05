@@ -14,6 +14,7 @@ import AuctionScreen from '../screens/seller/AuctionScreen';
 import OrderScreen from '../screens/seller/OrderScreen';
 import MoreScreen from '../screens/seller/MoreScreen';
 import AddProductScreen from '../screens/seller/AddProductScreen';
+import utils from '../utils'; 
 
 const Tab = createBottomTabNavigator();
 
@@ -22,14 +23,15 @@ export default function SellerBottomTabNavigator() {
 
   return (
     <Tab.Navigator
+      initialRouteName="Dashboard"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#007bff',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: utils.colors.theme_color,
+        tabBarInactiveTintColor: utils.colors.grey,
         tabBarStyle: {
-          paddingTop: 6,
           height: 60 + insets.bottom,
           paddingBottom: insets.bottom,
+          paddingTop: 6,
         },
       }}
     >
@@ -54,9 +56,10 @@ export default function SellerBottomTabNavigator() {
       />
 
       <Tab.Screen
-        name="Add"
+        name="AddProduct"
         component={AddProductScreen}
         options={{
+          title: 'Add',
           tabBarIcon: ({ color, size }) => (
             <CirclePlus color={color} size={size} />
           ),
