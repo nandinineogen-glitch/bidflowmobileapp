@@ -17,13 +17,15 @@ import EarningScreen from './src/screens/seller/EarningScreen.js';
 import SettingScreen from './src/screens/seller/SettingScreen.js';
 import  WalletScreen  from './src/screens/seller/WalletScreen.js';
 import NotificationScreen from './src/screens/seller/NotificationScreen.js';
-
+import LogoutScreen from './src/screens/seller/LogoutScreen.js';
+import AnalyticsScreen from './src/screens/seller/AnalyticsScreen.js';
+import AddressScreen from './src/screens/seller/AddressScreen.js';
+import DashboardScreen from './src/screens/buyer/DashboardScreen.js';
+import FilterScreen from './src/screens/buyer/FilterScreen.js';
+import CategoriesScreen from './src/screens/buyer/CategoriesScreen.js';
+import SearchScreen from './src/screens/buyer/SearchScreen.js';
+import ProductListingScreen from './src/screens/buyer/ProductListingScreen.js';
 export default function App() {
-  return (
-   <SafeAreaProvider>
-      <AuthProvider>
-        <AppNavigator />
-      </AuthProvider>
-    </SafeAreaProvider>
-  );
+  
 } 
+
