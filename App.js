@@ -26,10 +26,6 @@ import CategoriesScreen from './src/screens/buyer/CategoriesScreen.js';
 import SearchScreen from './src/screens/buyer/SearchScreen.js';
 import ProductListingScreen from './src/screens/buyer/ProductListingScreen.js';
 export default function App() {
-  return (
-    <SafeAreaProvider>
-   <DashboardScreen />
-   </SafeAreaProvider>
-  );
+  
 } 
 
