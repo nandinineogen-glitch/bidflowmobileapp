@@ -1,145 +1,241 @@
-import React from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity,ScrollView,TextInput } from 'react-native';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import utils from '../../utils'; 
-import { Search , ChevronRight } from 'lucide-react-native';
+import React, {useMemo, useState} from 'react';
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  ScrollView,
+} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {
+  Search,
+ 
+} from 'lucide-react-native';
+import utils from '../../utils';
 
-const DATA = [
-  {
+const CATEGORIES = [
+  {id: '1', name: 'Electronics',  image: utils.assets.onboarding_bid},
+  {id: '2', name: 'Watches', image: utils.assets.onboarding_bid},
+  {id: '3', name: 'Fashion', image: utils.assets.onboarding_bid},
+  {id: '4', name: 'Phones', image: utils.assets.onboarding_bide},
+  {id: '5', name: 'Laptops', image: utils.assets.onboarding_bid},
+  {id: '6', name: 'Cameras', image: utils.assets.onboarding_bid},
+  {id: '7', name: 'Audio', image: utils.assets.onboarding_bid},
+  {id: '8', name: 'Home', image: utils.assets.onboarding_bid},
+  {id: '9', name: 'Gaming', image: utils.assets.onboarding_bid},
+  {id: '10', name: 'Vehicles', image: utils.assets.onboarding_bid},
+  {id: '11', name: 'Collectibles', image: utils.assets.onboarding_bid},
+  {id: '12', name: 'More', image: utils.assets.onboarding_bid},
+];
 
-    id: 1,
-    Activity: 'New order received',
-    name: 'iPhone 14 Pro Max',
-    image: utils.assets.onboarding_bid, 
-    time: "2m ago"
-  },
+const AUCTIONS = [
   {
-    id: 2,
-    Activity: 'New bid placed',
-    name: 'On Bbock for trade',
-    image: utils.assets.onboarding_bid, 
-    time: "5m ago"
-  },
-  {
-    id: 3,
-    Activity: 'Auction ending soon',
-    name: 'MacBook Air M2',
+    id: '1',
+    title: 'iPhone 14 Pro Max',
+    subtitle: '256GB Deep Purple',
+    price: 45000,
+    bids: 32,
+    time: '02h 15m 30s',
+    category: 'Electronics',
     image: utils.assets.onboarding_bid,
-    time: "15m ago"
   },
   {
-    id: 4,
-    Activity: 'Auction ending soon',
-    name: 'MacBook Air M2',
+    id: '2',
+    title: 'MacBook Air M2',
+    subtitle: '13-inch Apple Laptop',
+    price: 78500,
+    bids: 18,
+    time: '01h 45m 10s',
+    category: 'Laptops',
     image: utils.assets.onboarding_bid,
-    time: "15m ago"
   },
   {
-    id: 5,
-    Activity: 'Auction ending soon',
-    name: 'MacBook Air M2',
+    id: '3',
+    title: 'Samsung Galaxy S23',
+    subtitle: '256GB Phantom Black',
+    price: 34000,
+    bids: 24,
+    time: '03h 10m 20s',
+    category: 'Phones',
     image: utils.assets.onboarding_bid,
-    time: "15m ago"
+  },
+  {
+    id: '4',
+    title: 'Premium Smart Watch',
+    subtitle: 'Series 8 GPS',
+    price: 12500,
+    bids: 15,
+    time: '04h 20m 15s',
+    category: 'Watches',
+    image: utils.assets.onboarding_bid,
   },
 ];
 
-const Categories = [
-  {
-    id: 1,
-    name: 'Electronics',
-    image: utils.assets.onboarding_bid, 
-  },
-  {
-    id: 2,
-    name: 'Fashion',
-    image: utils.assets.onboarding_bid, 
-  },
-  {
-    id: 3,
-    name: 'Home & Garden',
-    image: utils.assets.onboarding_bid, 
-  },
-  {
-    id: 4,
-    name: 'Sports',                           
-    image: utils.assets.onboarding_bid,
-  },
+const formatPrice = price => {
+  return `₹${price.toLocaleString('en-IN')}`;
+};
 
+export default function BuyerHomeScreen({navigation}) {
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
-];                
+  const filteredAuctions = useMemo(() => {
+    if (selectedCategory === 'All') {
+      return AUCTIONS;
+    }
 
-export default function BuyerHomeScreen() {
-  
-  const renderActivityItem = ({ item }) => (
-    <ScrollView>
-    <View className="flex-row items-center justify-between px-5 py-3.5 border-b" style={{ borderColor: utils.colors.lightGrey }}>
-      <View className="flex-row items-center flex-1">
-       
-        <View className="h-12 w-12 rounded-xl items-center justify-center mr-4 border" style={{ borderColor: utils.colors.lightGrey }} >
+    return AUCTIONS.filter(item => item.category === selectedCategory);
+  }, [selectedCategory]);
+
+  const renderCategory = ({item}) => {
+    const Image = item.image;
+    const active = selectedCategory === item.name;
+
+    return (
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() =>
+          setSelectedCategory(active ? 'All' : item.name)
+        }
+        className="items-center mr-5">
+        <View
+          className="w-14 h-14 rounded-2xl items-center justify-center"
+          style={{
+            backgroundColor: active
+              ? utils.colors.theme_color
+              : '#F7F7FA',
+          }}>
           <Image
-            source={item.image}
-            style={{ width: 26, height: 26 }}
+            size={24}
+            color={
+             utils.colors.white
+            }
+            
           />
         </View>
-        
-       
-        <View className="flex-1">
-          <Text style={{ color: utils.colors.black }} className="font-bold text-xl">
-            {item.Activity}
-          </Text>
-          <Text style={{ color: utils.colors.gray }} className="mt-0.5">
-            {item.name}
-          </Text>
+
+        <Text
+          className="text-[11px] font-semibold mt-2"
+          style={{
+            color: active
+              ? utils.colors.theme_color
+              : utils.colors.grey,
+          }}>
+          {item.name}
+        </Text>
+      </TouchableOpacity>
+    );
+  };
+
+  const renderAuction = ({item}) => {
+    return (
+      <ScrollView>
+      <TouchableOpacity
+        activeOpacity={0.85}
+        onPress={() =>
+          navigation.navigate('AuctionDetails', {
+            auction: item,
+          })
+        }
+        className="flex-row items-center py-4 border-b"
+        style={{borderColor: utils.colors.lightGrey}}>
+        <View className="w-24 h-24 rounded-2xl bg-gray-50 items-center justify-center overflow-hidden">
+          <Image
+            source={item.image}
+            className="w-full h-full"
+            resizeMode="contain"
+          />
         </View>
-      </View>
 
-      
-      <Text style={{ color: utils.colors.gray }}>
-        {item.time}
-      </Text>
-    </View>
-    </ScrollView>
-  );
+        <View className="flex-1 ml-4">
+          <Text
+            numberOfLines={1}
+            className="text-[15px] font-bold"
+            style={{color: utils.colors.black}}>
+            {item.title}
+          </Text>
 
-  const renderCategoryItem = ({ item }) => (
-    <ScrollView>
-  <View className="flex-row justify-between px-4 py-4">
-    <View>
-      
-      
-        <Image
-          source={item.image}
-          style={{ width: 40, height: 40 }}
-        />
-      
-      <Text style={{ color: utils.colors.black }} className="mt-2">
-        {item.name}
-      </Text>
-    </View>
-</View>
-    </ScrollView>
-  );
+          <Text
+            numberOfLines={1}
+            className="text-xs mt-1"
+            style={{color: utils.colors.grey}}>
+            {item.subtitle}
+          </Text>
+        <View className="flex-row items-center mt-1">
+          <Text
+            className="text-[15px] font-black"
+            style={{color: utils.colors.black}}>
+            {formatPrice(item.price)}
+          </Text>
 
+          <View className="flex-row ml-6 justify-between items-center">
+            <Clock3
+              size={13}
+              color={utils.colors.red}
+              className="-ml-0.5"
+            />
+
+            <Text
+              className="text-xs font-bold ml-1"
+              style={{color: utils.colors.red}}>
+              {item.time}
+            </Text>
+
+             <Text
+            className="text-xs ml-12"
+            style={{color: utils.colors.grey}}>
+            {item.bids} Bids
+          </Text>
+          </View>
+        </View>
+         </View>
+        <View className="items-end">
+         
+
+         
+        </View>
+      </TouchableOpacity>
+      </ScrollView>
+    );
+  };
 
   return (
- 
-    <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
-       
-    <View style={{ backgroundColor: utils.colors.white }}>
-      
-     
-      <View className="flex-row items-center justify-between px-5 pt-6 pb-4">
-        <View>
-          <Text className="text-3xl font-bold" style={{ color: utils.colors.grey }}>
-           Hello, John
-          </Text>
-        </View>
-        <Image
-          source={utils.assets.profile}
-          style={{ width: 50, height: 50 }}
-        />
-      </View>
-      <View className="flex-row items-center border rounded-xl mx-5 px-3 py-2" style={{ borderColor: utils.colors.lightGrey }}>
+    <SafeAreaView
+      className="flex-1"
+      style={{backgroundColor: utils.colors.white}}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: 25}}>
+        <View className="px-5 pt-4">
+          <View className="flex-row items-center justify-between">
+            <View>
+              <Text
+                 className="text-2xl font-black mt-1"
+                style={{color: utils.colors.black}}>
+                Hello, John 👋
+              </Text>
+
+             
+            </View>
+
+            <TouchableOpacity
+            
+              className="w-11 h-11 rounded-full items-center justify-center"
+              onPress={() =>
+                navigation.navigate('NotificationScreen')
+              }>
+              <Image
+                source={utils.assets.profile}
+                size={24}
+                color={utils.colors.theme_color}
+                className="w-14 h-14 rounded-full"
+              />
+            </TouchableOpacity>
+          
+             
+          </View>
+          <View className="flex-row items-center border rounded-xl mt-5 px-3 py-1" style={{ borderColor: utils.colors.lightGrey }}>
       
         <Search
           name="search"
@@ -156,67 +252,90 @@ export default function BuyerHomeScreen() {
        
         
       </View>
-      
-   
-      
-      <View className="mx-5 my-3 rounded-2xl p-5" style={{ backgroundColor: utils.colors.theme_color }}>
-        
-        <View className="flex-row justify-between items-start">
-          <View>
-            <Text className="text-2xl font-bold" style={{ color: utils.colors.white }}>Live Auctions</Text>
-            <Text className=" mt-1.5" style={{ color: utils.colors.white }}>Don't miss the deals!</Text>
+          <TouchableOpacity
+            activeOpacity={0.9}
+            className="h-28 rounded-2xl mt-5 px-5 flex-row items-center overflow-hidden"
+            style={{
+              backgroundColor: utils.colors.theme_color,
+            }}>
+            <View className="flex-1">
+              <Text className="text-white text-xl font-black">
+                Live Auctions
+              </Text>
+
+              <Text className="text-white text-xs ml-2 mt-2 font-bold">
+                Don't miss the deals!
+              </Text>
+
+           
+            </View>
+
+            <Image
+              source={utils.assets.gavel}
+              className="w-28 h-28"
+              size={70}
+
+            />
+          </TouchableOpacity>
+
+          <View className="flex-row items-center justify-between mt-6 mb-3">
+            <Text
+              className="text-lg font-black"
+              style={{color: utils.colors.black}}>
+              Categories
+            </Text>
+
+            <TouchableOpacity
+              onPress={() => navigation.navigate('SearchScreen')}>
+              <Search
+                size={22}
+                color={utils.colors.black}
+              />
+            </TouchableOpacity>
           </View>
-          
-           <Image
-          source={utils.assets.gavel}
-          style={{ width: 99, height: 90 }}
-          className="-mt-4 -mb-16"
+        </View>
+        <ScrollView>
+        <FlatList
+          horizontal
+          data={CATEGORIES}
+          renderItem={renderCategory}
+          keyExtractor={item => item.id}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingHorizontal: 20,
+          }}
         />
+        </ScrollView>
+        <View className="px-5 mt-7">
+          <View className="flex-row items-center justify-between">
+            <Text
+              className="text-lg font-black"
+              style={{color: utils.colors.black}}>
+              Live Auctions
+            </Text>
+
+           
+          </View>
+
+          {filteredAuctions.length > 0 ? (
+            <FlatList
+              data={filteredAuctions}
+              renderItem={renderAuction}
+              keyExtractor={item => item.id}
+              scrollEnabled={false}
+            />
+          ) : (
+            <View className="items-center py-14">
+              <Text
+                style={{color: utils.colors.grey}}>
+                No live auctions found.
+              </Text>
+            </View>
+          )}
         </View>
+      </ScrollView>
 
-       
-      </View>
-      <View className="flex-row justify-between">
-        <View>
-        <Text className="text-xl font-bold px-5 pt-5 pb-2" style={{ color: utils.colors.black }}>
-          Categories
-        </Text>
-        </View>
-        <View className="flex-row items-center px-5 pt-5 pb-2">
-          <TouchableOpacity className="font-bold text-lg" >
-        <ChevronRight size={20} color="black" />
-        </TouchableOpacity>
-      </View>
-      </View>
       
-      
-     <FlatList
-        data={DATA}
-        renderItem={renderCategoryItem}
-        keyExtractor={item => item.id.toString()}
-        
-        contentContainerStyle={{ paddingBottom: 30 }}
-
-      />
-
-     
-      <View className="h-[1px] bg-gray-100 mt-2 mx-5" />
-      <Text style={{ color: utils.colors.black }} className="text-xl font-bold px-5 pt-5 pb-2">
-        Recent Activity
-      </Text>
-    </View>
-      <FlatList
-        data={DATA}
-        renderItem={renderActivityItem}
-        keyExtractor={item => item.id.toString()}
-        
-        contentContainerStyle={{ paddingBottom: 30 }}
-
-      />
-    
     </SafeAreaView>
-   
   );
 }
-
-

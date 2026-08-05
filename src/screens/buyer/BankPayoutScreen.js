@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import { View, Text, TextInput, TouchableOpacity, FlatList, Switch } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function BankPayoutScreen({ navigation }) {
   const [bankOpen, setBankOpen] = useState(false);
@@ -20,9 +21,18 @@ export default function BankPayoutScreen({ navigation }) {
     setSelectedBank(item);
     setBankOpen(false);
   };
+ const { setProfileCompleted } = useContext(AuthContext);
+ const handleSave = () => {
+  setProfileCompleted(true);
 
-  const handleSave = () => {
-  navigation.navigate('AddProduct');
+  navigation.reset({
+    index: 0,
+    routes: [
+      {
+        name: 'BuyerNavigator',
+      },
+    ],
+  });
 };
 
   return (

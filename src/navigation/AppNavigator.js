@@ -7,7 +7,8 @@ import { AuthContext } from '../context/AuthContext';
 import AuthNavigator from './AuthNavigator';
 import SellerNavigator from './SellerNavigator';
 
-import BuyerHomeScreen from '../screens/buyer/BuyerHomeScreen';
+import BuyerNavigator from './BuyerNavigator';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -34,8 +35,9 @@ export default function AppNavigator() {
           />
         ) : (
           <Stack.Screen
-            name="BuyerHome"
-            component={BuyerHomeScreen}
+             key={profileCompleted ? 'completed' : 'incomplete'}
+            name="BuyerNavigator"
+            component={BuyerNavigator}
           />
         )}
       </Stack.Navigator>

@@ -42,7 +42,7 @@ const LoginScreen = ({navigation}) => {
             paddingHorizontal: 24,
             paddingBottom: 30,
           }}
-          keyboardShouldPersistTaps="handled"
+        
           showsVerticalScrollIndicator={false}>
 
           <View className="pt-5">
