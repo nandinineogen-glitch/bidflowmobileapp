@@ -108,7 +108,7 @@ export default function FilterScreen({navigation, route}) {
       route.params.onApply(filters);
     }
 
-    navigation.goBack();
+    navigation.navigate('ProductListing');
   };
 
   const renderDropdown = (
@@ -123,7 +123,7 @@ export default function FilterScreen({navigation, route}) {
     return (
       <View className="mt-6">
         <Text
-          className="text-sm font-bold mb-3"
+          className="font-bold mb-3"
           style={{color: utils.colors.black}}>
           {title}
         </Text>
@@ -194,15 +194,7 @@ export default function FilterScreen({navigation, route}) {
       style={{backgroundColor: utils.colors.white}}>
       <View className="px-5 pt-3 flex-row items-center justify-between">
         <View className="flex-row items-center">
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() => navigation.goBack()}
-            className="w-10 h-10 items-center justify-center">
-            <ChevronLeft
-              size={25}
-              color={utils.colors.black}
-            />
-          </TouchableOpacity>
+     
 
           <Text
             className="text-2xl font-black ml-2"

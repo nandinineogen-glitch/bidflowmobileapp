@@ -11,7 +11,7 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {
   Search,
- 
+ Clock3
 } from 'lucide-react-native';
 import utils from '../../utils';
 
@@ -89,7 +89,7 @@ export default function BuyerHomeScreen({navigation}) {
   }, [selectedCategory]);
 
   const renderCategory = ({item}) => {
-    const Image = item.image;
+  
     const active = selectedCategory === item.name;
 
     return (
@@ -111,6 +111,7 @@ export default function BuyerHomeScreen({navigation}) {
             color={
              utils.colors.white
             }
+            source={utils.assets.buyer}
             
           />
         </View>

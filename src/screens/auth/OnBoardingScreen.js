@@ -169,7 +169,7 @@ const OnBoardingScreen = ({navigation}) => {
           </Text>
 
           <TouchableOpacity
-            className="rounded-3xl py-3 px-6 mb-4 mt-10"
+            className="rounded-xl py-3.5 w-full mb-10 mr-9 mt-10"
             onPress={nextPage}
             style={{backgroundColor: utils.colors.theme_color}}>
             <Text

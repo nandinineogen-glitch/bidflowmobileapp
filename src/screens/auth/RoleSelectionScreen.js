@@ -118,7 +118,7 @@ const RoleSelectionScreen = ({ navigation }) => {
           </View>
 
           <TouchableOpacity
-            className="rounded-xl py-2 mt-14"
+            className="rounded-xl py-3.5 mt-14"
             style={{ backgroundColor: utils.colors.theme_color }}
             onPress={handleContinue}
           >

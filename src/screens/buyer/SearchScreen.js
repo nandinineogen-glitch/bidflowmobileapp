@@ -206,9 +206,9 @@ export default function SearchScreen({navigation}) {
 
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => navigation.navigate('FilterScreen')}
+              onPress={() => navigation.navigate('Filter')}
               className="w-12 h-12 rounded-xl items-center justify-center ml-2"
-              style={{backgroundColor: '#F3F0FF'}}>
+              >
               <Filter
                 size={20}
                 color={utils.colors.theme_color}

@@ -52,7 +52,7 @@ const AUCTIONS_DATA = [
 export default function ProductListingScreen({navigation}) {
   const handleSave = () =>
   {
-    navigation.navigate('SellerAuctionNavigator')
+    navigation.navigate('ProductDetails')
   }
 
 
@@ -114,9 +114,9 @@ export default function ProductListingScreen({navigation}) {
       </View>
          <TouchableOpacity
             activeOpacity={0.8}
-           
+             onPress={() => navigation.navigate('Filter')}
             className="w-11 h-11 rounded-xl items-center justify-center"
-            style={{backgroundColor: '#F3F0FF'}}>
+            >
             <Filter
               size={20}
               color={utils.colors.theme_color}
