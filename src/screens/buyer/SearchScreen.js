@@ -14,21 +14,10 @@ import {
   Search,
   X,
   Clock3,
-  Smartphone,
-  Watch,
-  Shirt,
-  Home,
-  Filter,
-  Laptop,
+  Filter
 } from 'lucide-react-native';
 import utils from '../../utils';
 
-const CATEGORIES = [
-  {id: '1', name: 'Electronics', icon: Smartphone},
-  {id: '2', name: 'Watches', icon: Watch},
-  {id: '3', name: 'Fashion', icon: Shirt},
-  {id: '4', name: 'Home', icon: Home},
-];
 
 const RECENT_SEARCHES = [
 ];
@@ -109,9 +98,7 @@ export default function SearchScreen({navigation}) {
     <TouchableOpacity
       activeOpacity={0.85}
       onPress={() =>
-        navigation.navigate('AuctionDetails', {
-          auction: item,
-        })
+        navigation.navigate('ProductDetails')
       }
       className="flex-row items-center py-4 border-b"
       style={{borderColor: utils.colors.lightGrey}}>
@@ -265,44 +252,7 @@ export default function SearchScreen({navigation}) {
                   </View>
                 ))}
               </View>
-
-              <Text
-                className="text-lg font-black mt-8"
-                style={{color: utils.colors.black}}>
-                Popular Categories
-              </Text>
-
               <View className="flex-row flex-wrap mt-5">
-                {CATEGORIES.map(item => {
-                  const Icon = item.icon;
-
-                  return (
-                    <TouchableOpacity
-                      key={item.id}
-                      activeOpacity={0.8}
-                      onPress={() =>
-                        navigation.navigate('CategoryScreen', {
-                          category: item.name,
-                        })
-                      }
-                      className="items-center mr-7 mb-6">
-                      <View
-                        className="w-14 h-14 rounded-2xl items-center justify-center"
-                        style={{backgroundColor: '#F7F7FA'}}>
-                        <Icon
-                          size={24}
-                          color={utils.colors.theme_color}
-                        />
-                      </View>
-
-                      <Text
-                        className="text-xs font-semibold mt-2"
-                        style={{color: utils.colors.grey}}>
-                        {item.name}
-                      </Text>
-                    </TouchableOpacity>
-                  );
-                })}
               </View>
             </>
           ) : (

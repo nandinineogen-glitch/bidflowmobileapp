@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {
-  ArrowLeft,
   Bell,
   Heart,
   MessageCircle,
@@ -45,7 +44,7 @@ export default function AuctionDetailsScreen({navigation, route}) {
             <View className="items-center justify-start ml-2">
   <TouchableOpacity
     className="h-10 w-10 items-center justify-center"
-    onPress={() => {}}
+    onPress={() => navigation.navigate('Notification')}
   >
     <Bell
       size={24}

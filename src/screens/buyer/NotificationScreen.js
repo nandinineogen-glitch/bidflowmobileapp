@@ -18,35 +18,35 @@ const NOTIFICATIONS_DATA = [
     id: '1',
     name: 'New Bid Placed',
     comment: 'On iPhone 14 Pro Max',
-    status: 'Active',
+    status: 'Alerts',
     time: '5m ago',
   },
   {
     id: '2',
     name: 'Order Received',
     comment: 'Order #sjfdkre',
-    status: 'Won',
+    status: 'Bids',
     time: '10m ago',
   },
   {
     id: '3',
     name: 'Auction Ending Soon',
     comment: 'MacBook Air M2',
-    status: 'Lost',
+    status: 'Auctions',
     time: '15m ago',
   },
   {
     id: '4',
     name: 'Payout Initiated',
     comment: '₹24,700 sent to bank',
-    status: 'Active',
+    status: 'Alerts',
     time: '2h ago',
   },
 ];
 
-const TABS = ['Active','Won','Lost'];
+const TABS = ['All', 'Bids', 'Auctions', 'Alerts'];
 
-export default function MybidsScreen({ navigation }) {
+export default function NotificationScreen({ navigation }) {
   const [selectedTab, setSelectedTab] = useState('All');
 
   const filteredData = NOTIFICATIONS_DATA.filter(item => {
@@ -75,13 +75,13 @@ export default function MybidsScreen({ navigation }) {
 
   const getNotificationBackground = status => {
     switch (status) {
-      case 'Active':
+      case 'Orders':
         return '#EFF6FF';
 
-      case 'Won':
+      case 'Auctions':
         return '#F5F3FF';
 
-      case 'Lost':
+      case 'Alerts':
         return '#FFF7ED';
 
       default:
@@ -140,26 +140,27 @@ export default function MybidsScreen({ navigation }) {
           style={{ color: utils.colors.black }}
           className="text-2xl font-black"
         >
-          My Bids
+          Notifications
         </Text>
 
         
       </View>
 
-      <View className="px-6 py-3 border-b-3">
+      <View className="px-6 py-3">
         <FlatList
           horizontal
           data={TABS}
           showsHorizontalScrollIndicator={false}
           keyExtractor={item => item}
-          contentContainerStyle={{ gap: 0 }}
+          contentContainerStyle={{ gap: 18 }}
           renderItem={({ item }) => {
             const isActive = selectedTab === item;
 
             return (
               <TouchableOpacity
+                activeOpacity={0.8}
                 onPress={() => setSelectedTab(item)}
-                className="px-12 py-3 rounded-xl border"
+                className="px-5 py-3 rounded-xl border"
                 style={{
                   backgroundColor: isActive
                     ? utils.colors.theme_color

@@ -10,6 +10,8 @@ import FilterScreen from '../screens/buyer/FilterScreen';
 import {AuthContext} from '../context/AuthContext';
 import LiveAuctionScreen from '../screens/buyer/LiveAuctionScreen';
 import BidSuccess from '../screens/buyer/BidSuccess';
+import NotificationScreen from '../screens/buyer/NotificationScreen';
+import SettingScreen from '../screens/seller/SettingScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,8 +35,9 @@ export default function BuyerNavigator() {
       <Stack.Screen name="ProductDetails" component={ProductDetails} />
       <Stack.Screen name="LiveAuction" component={LiveAuctionScreen} />
       <Stack.Screen name="BidSuccess" component={BidSuccess} /> 
+      <Stack.Screen name="Notification" component={NotificationScreen}/>
+      <Stack.Screen name="Settings" component={SettingScreen}/>
+ 
     </Stack.Navigator>
-
-
     );
 }

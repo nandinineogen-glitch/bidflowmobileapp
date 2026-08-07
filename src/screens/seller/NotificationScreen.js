@@ -143,24 +143,16 @@ export default function NotificationScreen({ navigation }) {
           Notifications
         </Text>
 
-        <Text
-          className="mt-1"
-          style={{
-            color: utils.colors.grey,
-            fontSize: 14,
-          }}
-        >
-          Stay updated with your latest activity
-        </Text>
+        
       </View>
 
-      <View className="px-5 py-3">
+      <View className="px-6 py-3">
         <FlatList
           horizontal
           data={TABS}
           showsHorizontalScrollIndicator={false}
           keyExtractor={item => item}
-          contentContainerStyle={{ gap: 8 }}
+          contentContainerStyle={{ gap: 12 }}
           renderItem={({ item }) => {
             const isActive = selectedTab === item;
 
@@ -194,12 +186,7 @@ export default function NotificationScreen({ navigation }) {
         />
       </View>
 
-      <View
-        className="h-[1px]"
-        style={{
-          backgroundColor: utils.colors.lightGrey,
-        }}
-      />
+     
 
       <FlatList
         data={filteredData}
