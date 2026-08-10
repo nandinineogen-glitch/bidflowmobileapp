@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   TextInput,
+  KeyboardAvoidingView,
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -202,12 +203,20 @@ export default function BuyerHomeScreen({navigation}) {
   };
 
   return (
-    <SafeAreaView
+     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 25}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+          >
         <View className="px-5 pt-4">
           <View className="flex-row items-center justify-between">
             <View>
@@ -287,7 +296,7 @@ export default function BuyerHomeScreen({navigation}) {
             </Text>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate('SearchScreen')}>
+              onPress={() => navigation.navigate('Categories')}>
               <Search
                 size={22}
                 color={utils.colors.black}
@@ -336,7 +345,7 @@ export default function BuyerHomeScreen({navigation}) {
         </View>
       </ScrollView>
 
-      
+ </KeyboardAvoidingView>     
     </SafeAreaView>
   );
 }

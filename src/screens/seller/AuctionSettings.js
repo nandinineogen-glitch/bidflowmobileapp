@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, FlatList, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils'; 
 
@@ -10,7 +10,21 @@ export default function AuctionSettings({ navigation }) {
   };
  
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
+     <SafeAreaView
+      className="flex-1"
+      style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
        
     <View style={{ backgroundColor: utils.colors.white }} className="mx-8">
       
@@ -121,7 +135,8 @@ export default function AuctionSettings({ navigation }) {
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
          </View>    
-
+     </ScrollView>
+     </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

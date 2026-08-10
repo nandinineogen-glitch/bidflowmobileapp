@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import utils from '../../utils';
 import { Eye, EyeOff } from 'lucide-react-native';
@@ -16,11 +17,20 @@ const ResetPasswordScreen = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <SafeAreaView
+        <SafeAreaView
       className="flex-1"
-      style={{ backgroundColor: utils.colors.white }}
-    >
-      <ScrollView className="p-10">
+      style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+          >
         <View
           className="mt-28"
           style={{ backgroundColor: utils.colors.white }}
@@ -156,6 +166,7 @@ const ResetPasswordScreen = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

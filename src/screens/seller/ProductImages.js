@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { View, Text, FlatList, TouchableOpacity, TextInput, Image } from 'react-native';
+import React from 'react';
+import { View, KeyboardAvoidingView, ScrollView, Text, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils'; 
 
@@ -10,7 +10,21 @@ export default function ProductImages({ navigation }) {
   };
  
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
+   <SafeAreaView
+         className="flex-1"
+         style={{backgroundColor: utils.colors.white}}>
+         <KeyboardAvoidingView
+           className="flex-1"
+           behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+           <ScrollView
+             className="flex-1"
+             contentContainerStyle={{
+               flexGrow: 1,
+               paddingHorizontal: 24,
+               paddingBottom: 30,
+             }}
+           
+             showsVerticalScrollIndicator={false}>
        
     <View style={{ backgroundColor: utils.colors.white }} className="mx-8">
       
@@ -68,7 +82,8 @@ export default function ProductImages({ navigation }) {
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
     </View>    
-
+    </ScrollView>
+    </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

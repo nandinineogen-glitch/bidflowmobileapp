@@ -7,6 +7,7 @@ import {
   ScrollView,
   Image,
   FlatList,
+  KeyboardAvoidingView,
 } from 'react-native';
 import utils from '../../utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -31,15 +32,25 @@ const ViewProfile = ({ navigation }) => {
 
   const handleSave = () => {
   
-    navigation.replace('BankPayout');
+    navigation.navigate('BankPayout');
   };
 
   return (
     <SafeAreaView
       className="flex-1"
-      style={{ backgroundColor: utils.colors.white }}
-    >
-      <ScrollView className="p-10">
+      style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
         <View
           className="mt-10 text-bold"
           style={{ backgroundColor: utils.colors.white }}
@@ -173,6 +184,7 @@ const ViewProfile = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

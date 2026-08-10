@@ -4,6 +4,7 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -48,6 +49,9 @@ const TABS = ['Active','Won','Lost'];
 
 export default function MybidsScreen({ navigation }) {
   const [selectedTab, setSelectedTab] = useState('All');
+  const handleSave = () => {
+    navigation.navigate('Order');
+  };
 
   const filteredData = NOTIFICATIONS_DATA.filter(item => {
     if (selectedTab === 'All') {
@@ -89,10 +93,14 @@ export default function MybidsScreen({ navigation }) {
     }
   };
 
-  const renderNotificationItem = ({ item }) => (
-    <TouchableOpacity
+  const renderNotificationItem = ({ item }) => {
+    const isLive = item.status === 'Won';
+
+    return (
+       <TouchableOpacity
       activeOpacity={0.8}
       className="flex-row items-center px-5 py-4"
+      onPress={isLive ? handleSave : undefined}
     >
       <View
         className="h-14 w-14 rounded-2xl items-center justify-center mr-4"
@@ -129,12 +137,20 @@ export default function MybidsScreen({ navigation }) {
       </View>
     </TouchableOpacity>
   );
-
+  }
   return (
     <SafeAreaView
       className="flex-1"
-      style={{ backgroundColor: utils.colors.white }}
-    >
+      style={{backgroundColor: utils.colors.white}}>
+     
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+          >
       <View className="px-5 pt-4 pb-2">
         <Text
           style={{ color: utils.colors.black }}
@@ -159,22 +175,18 @@ export default function MybidsScreen({ navigation }) {
             return (
               <TouchableOpacity
                 onPress={() => setSelectedTab(item)}
-                className="px-12 py-3 rounded-xl border"
+                className="px-12 py-3 border-b-2"
                 style={{
-                  backgroundColor: isActive
-                    ? utils.colors.theme_color
-                    : 'transparent',
+                  backgroundColor: utils.colors.white,
                   borderColor: isActive
                     ? utils.colors.theme_color
-                    : '#E5E7EB',
+                    : utils.colors.white,
                 }}
               >
                 <Text
                   className="font-bold"
                   style={{
-                    color: isActive
-                      ? utils.colors.white
-                      : '#6B7280',
+                    color: utils.colors.grey
                   }}
                 >
                   {item}
@@ -213,6 +225,7 @@ export default function MybidsScreen({ navigation }) {
           </View>
         }
       />
+      </ScrollView>
     </SafeAreaView>
   );
 }

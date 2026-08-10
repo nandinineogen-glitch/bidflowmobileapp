@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity,ScrollView,TextInput } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity,ScrollView,KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import utils from '../../utils'; 
 import { Search , ChevronRight } from 'lucide-react-native';
@@ -8,20 +8,56 @@ const DATA = [
   {
     id: '1',
     name: 'Electronics',
+    image:utils.assets.buyer
   },
   {
     id: '2',
     name: 'Clothing',
+    image:utils.assets.buyer
   },
   {
     id: '3',
-    name: 'Home & Kitchen',
+    name: 'Home',
+    image:utils.assets.buyer
+  },
+  {
+    id: '4',
+    name: 'Home',
+    image:utils.assets.buyer
+  },
+  {
+    id: '5',
+    name: 'Home',
+    image:utils.assets.buyer
+  },
+  {
+    id: '6',
+    name: 'Home',
+    image:utils.assets.buyer
+  },
+  {
+    id: '7',
+    name: 'Home',
+    image:utils.assets.buyer
   },
 ];
 
 export default function CategoriesScreen() {
     return (
-        <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
+         <SafeAreaView
+      className="flex-1"
+      style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+          >
             <View>
             <View className="flex-row justify-between px-4">
                 <View>
@@ -29,31 +65,45 @@ export default function CategoriesScreen() {
                 Categories
                 </Text>
                 </View>
-                <Text className="text-lg mt-6 mb-2" style={{ color: utils.colors.theme_color }}>
-                Clear All
-                </Text>
+                <TouchableOpacity className='mt-6 mb-2'>
+
+                
+               <Search
+                size={20}
+                color={utils.colors.black}
+                
+              />
+</TouchableOpacity>
                 </View>
                 <View className="flex-row justify-between px-4">
-
+ 
                 <View>
                 <FlatList
                     data={DATA}
                     keyExtractor={(item) => item.id}
+                    numColumns={3}
                     renderItem={({ item }) => (
-                        <TouchableOpacity className="py-3">
+                        <View className='flex-row justify-between px-4 '>
+                        <TouchableOpacity className="py-3 w-28 items-center border border-gray-300 rounded-xl mt-7">
+                           
+                              <Image
+                                        source={item.image}
+                                        className="w-20 h-20"
+                                       
+                                      />
                             <Text className="text-lg" style={{ color: utils.colors.black }}>
                                 {item.name}
                             </Text>
                         </TouchableOpacity>
+                        </View>
                     )}
                 />
                 </View>
                 </View>
                 </View>
+                </ScrollView>
+                </KeyboardAvoidingView>
                 </SafeAreaView>  
     );
-
-
-  
 }
 

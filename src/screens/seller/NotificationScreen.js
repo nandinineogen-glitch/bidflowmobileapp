@@ -4,6 +4,8 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
@@ -133,8 +135,19 @@ export default function NotificationScreen({ navigation }) {
   return (
     <SafeAreaView
       className="flex-1"
-      style={{ backgroundColor: utils.colors.white }}
-    >
+      style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
       <View className="px-5 pt-4 pb-2">
         <Text
           style={{ color: utils.colors.black }}
@@ -214,6 +227,8 @@ export default function NotificationScreen({ navigation }) {
           </View>
         }
       />
+      </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

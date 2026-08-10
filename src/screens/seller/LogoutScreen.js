@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Imag, ScrollViewe , KeyboardAvoidingView} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import utils from '../../utils';
 import { Check} from 'lucide-react-native';
@@ -9,6 +9,18 @@ export default function LogoutScreen({navigation}) {
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
       <View className="flex-1 justify-between px-4">
 
         <View className="flex-1 items-center justify-center">
@@ -48,7 +60,7 @@ export default function LogoutScreen({navigation}) {
         <TouchableOpacity
           className="rounded-xl mb-20 py-4 mx-2"
           style={{backgroundColor: utils.colors.theme_color}}
-          onPress={() => navigation.replace('Login')}>
+          onPress={() => navigation.navigate('Login')}>
           <Text
             className="text-center text-xl font-bold"
             style={{color: utils.colors.white}}>
@@ -57,6 +69,8 @@ export default function LogoutScreen({navigation}) {
         </TouchableOpacity>
 
       </View>
+      </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

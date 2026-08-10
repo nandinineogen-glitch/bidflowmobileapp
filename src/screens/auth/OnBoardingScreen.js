@@ -6,6 +6,8 @@ import {
   Dimensions,
   Image,
   FlatList,
+  KeyboardAvoidingView,
+  ScrollView
 } from 'react-native';
 import utils from '../../utils';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -48,14 +50,21 @@ const OnBoardingScreen = ({navigation}) => {
         animated: true,
       });
     } else {
-      navigation.replace('Roleselection');
+      navigation.navigate('Roleselection');
     }
   };
 
   return (
-    <SafeAreaView
-      className="flex-1"
+     <SafeAreaView
+      
       style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+       
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+        
+         
+          >
       <View
         className="flex-1"
         style={{backgroundColor: utils.colors.white}}>
@@ -180,6 +189,9 @@ const OnBoardingScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
       </View>
+      </ScrollView>
+      </KeyboardAvoidingView>
+      
     </SafeAreaView>
   );
 };

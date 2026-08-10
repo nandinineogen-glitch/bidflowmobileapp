@@ -5,6 +5,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -174,9 +175,18 @@ export default function AddressScreen({navigation}) {
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 40}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
         <View className="px-8 pt-10">
           <utils.components.Header label="Address Details" />
 
@@ -223,6 +233,7 @@ export default function AddressScreen({navigation}) {
           )}
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

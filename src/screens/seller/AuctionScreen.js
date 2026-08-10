@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity ,Scrollview, KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils';
 
@@ -110,8 +110,6 @@ export default function AuctionScreen({ navigation }) {
       >
         <TouchableOpacity
           className="flex-row items-center flex-1 mr-3"
-          activeOpacity={isLive ? 0.7 : 1}
-          disabled={!isLive}
           onPress={isLive ? handleSave : undefined}
         >
           <View
@@ -157,10 +155,21 @@ export default function AuctionScreen({ navigation }) {
   };
 
   return (
-    <SafeAreaView
+     <SafeAreaView
       className="flex-1"
-      style={{ backgroundColor: utils.colors.white }}
-    >
+      style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
       <View className="px-5 pt-4 pb-2">
         <Text
           style={{ color: utils.colors.black }}
@@ -229,6 +238,8 @@ export default function AuctionScreen({ navigation }) {
           </View>
         }
       />
+      </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

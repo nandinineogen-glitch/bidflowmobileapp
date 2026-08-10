@@ -44,12 +44,19 @@ export default function SettingScreen({navigation}) {
   );
 
   return (
-    <SafeAreaView
-      className="flex-1"
-      style={{backgroundColor: utils.colors.white}}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 30}}>
+      <SafeAreaView
+         className="flex-1"
+         style={{backgroundColor: utils.colors.white}}>
+        
+           <ScrollView
+             className="flex-1"
+             contentContainerStyle={{
+               flexGrow: 1,
+               paddingHorizontal: 24,
+               paddingBottom: 30,
+             }}
+           
+             showsVerticalScrollIndicator={false}>
 
         <View className="mx-7 pt-6">
 

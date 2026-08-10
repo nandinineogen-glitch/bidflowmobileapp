@@ -35,8 +35,13 @@ export default function AuctionDetailsScreen({navigation, route}) {
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
       <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 30}}>
+        className="flex-1"
+        contentContainerStyle={{
+          flexGrow: 1,
+          paddingHorizontal: 20,
+          paddingBottom: 30,
+        }}
+        showsVerticalScrollIndicator={false}>
         <View className="px-5 pt-2">
           <View className="flex-row items-center justify-between mb-4">
             <View/>

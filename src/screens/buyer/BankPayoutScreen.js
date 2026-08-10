@@ -1,5 +1,5 @@
 import React, { useState, useContext} from 'react';
-import { View, Text, TextInput, TouchableOpacity, FlatList, Switch } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, FlatList, Switch, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils';
 import { AuthContext } from '../../context/AuthContext';
@@ -36,7 +36,20 @@ export default function BankPayoutScreen({ navigation }) {
 };
 
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
+      <SafeAreaView
+      className="flex-1"
+      style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+          >
       <View className="flex-1 px-8 pt-10">
         <utils.components.Header label="Payout Settings" />
 
@@ -152,6 +165,8 @@ export default function BankPayoutScreen({ navigation }) {
           </Text>
         </TouchableOpacity>
       </View>
+      </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

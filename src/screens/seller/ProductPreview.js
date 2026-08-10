@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import utils from '../../utils';
 
@@ -9,9 +9,19 @@ export default function ProductPreview({navigation}) {
   };
   return (
     
-    <SafeAreaView
-      className="flex-1"
-      style={{backgroundColor: utils.colors.white}}>
+   <SafeAreaView
+         className="flex-1"
+         style={{backgroundColor: utils.colors.white}}>
+        
+           <ScrollView
+             className="flex-1"
+             contentContainerStyle={{
+               flexGrow: 1,
+               paddingHorizontal: 24,
+               paddingBottom: 30,
+             }}
+           
+             showsVerticalScrollIndicator={false}>
       <View className="flex-1 mx-8">
         <View className="pt-6 pb-6">
           <Text
@@ -148,6 +158,7 @@ export default function ProductPreview({navigation}) {
           </Text>
         </TouchableOpacity>
       </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }

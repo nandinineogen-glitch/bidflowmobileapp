@@ -4,7 +4,8 @@ import {
   Text,
   TouchableOpacity,
   FlatList,
-  Image
+  Image,
+  ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils';
@@ -88,10 +89,19 @@ export default function LiveAuctionMonitorScreen({ navigation }) {
 
   return (
 
-    <SafeAreaView
+     <SafeAreaView
       className="flex-1"
-      style={{ backgroundColor: utils.colors.theme_color }}
-    >
+      style={{backgroundColor: utils.colors.white}}>
+     
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
 
       <View className="px-6 pt-3">
 
@@ -258,7 +268,7 @@ export default function LiveAuctionMonitorScreen({ navigation }) {
         </TouchableOpacity>
 
       </View>
-
+    </ScrollView>
     </SafeAreaView>
   );
 }

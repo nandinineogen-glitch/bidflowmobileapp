@@ -1,11 +1,23 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity,ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity,ScrollView , KeyboardAvoidingView } from 'react-native';
 import utils from '../../utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
 const OTPScreen = () => {
   return (
-      <SafeAreaView style={{ backgroundColor: utils.colors.white}} >
-      <ScrollView className="p-10">
+     <SafeAreaView
+      className="flex-1"
+      style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+          >
         < View className="mt-28 justify-center" style={{ backgroundColor: utils.colors.white }}>
           <View className="self-center">
            <utils.components.Header label="Verify Your Phone" /> 
@@ -66,6 +78,7 @@ const OTPScreen = () => {
           </TouchableOpacity>
         </View>
        </ScrollView>
+       </KeyboardAvoidingView>
       </SafeAreaView>
   );
 };

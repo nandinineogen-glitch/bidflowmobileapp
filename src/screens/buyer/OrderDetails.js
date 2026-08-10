@@ -9,9 +9,6 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {
   ArrowLeft,
-  ChevronRight,
-  MapPin,
-  Package,
 } from 'lucide-react-native';
 import utils from '../../utils';
 
@@ -40,15 +37,10 @@ const OrderDetailsScreen = ({navigation}) => {
         </View>
 
         <View className="mt-5">
-          <utils.components.Header label="Order Details" />
+          <utils.components.Header label="Order #ORD123456" />
 
           <View className="flex-row items-center justify-between mt-5">
             <View>
-              <Text
-                className="text-lg font-bold"
-                style={{color: utils.colors.black}}>
-                Order #ORD123456
-              </Text>
 
               <Text
                 className="mt-1"
@@ -67,7 +59,7 @@ const OrderDetailsScreen = ({navigation}) => {
               <Text
                 className="font-bold"
                 style={{color: utils.colors.green}}>
-                Confirmed
+                Won
               </Text>
             </View>
           </View>
@@ -77,9 +69,7 @@ const OrderDetailsScreen = ({navigation}) => {
             style={{borderColor: utils.colors.lightGrey}}>
             <View className="flex-row">
               <Image
-                source={{
-                  uri: 'https://images.unsplash.com/photo-1592286927505-2fdc2d2f1b17',
-                }}
+                source={utils.assets.buyer}
                 className="w-20 h-20 rounded-xl"
                 resizeMode="cover"
               />
@@ -99,7 +89,7 @@ const OrderDetailsScreen = ({navigation}) => {
 
                 <Text
                   className="text-lg font-bold mt-2"
-                  style={{color: utils.colors.theme_color}}>
+                  style={{color: utils.colors.black}}>
                   ₹45,500
                 </Text>
 
@@ -153,7 +143,7 @@ const OrderDetailsScreen = ({navigation}) => {
 
               <Text
                 className="font-bold"
-                style={{color: utils.colors.theme_color}}>
+                style={{color: utils.colors.black}}>
                 ₹45,700
               </Text>
             </View>
@@ -165,11 +155,6 @@ const OrderDetailsScreen = ({navigation}) => {
           />
 
           <View className="flex-row items-center">
-            <MapPin
-              size={22}
-              color={utils.colors.theme_color}
-            />
-
             <Text
               className="text-lg font-bold ml-2"
               style={{color: utils.colors.black}}>

@@ -10,7 +10,6 @@ import {
   ArrowLeft,
   Check,
   Package,
-  Truck,
 } from 'lucide-react-native';
 import utils from '../../utils';
 
@@ -72,22 +71,11 @@ const TrackOrderScreen = ({navigation}) => {
         </View>
 
         <View className="mt-5">
-          <utils.components.Header label="Track Order" />
 
           <View
-            className="border rounded-2xl mt-6 p-5"
+            className="mt-1 p-5"
             style={{borderColor: utils.colors.lightGrey}}>
             <View className="flex-row items-center">
-              <View
-                className="h-12 w-12 rounded-full items-center justify-center"
-                style={{
-                  backgroundColor: utils.colors.theme_color,
-                }}>
-                <Package
-                  size={24}
-                  color={utils.colors.white}
-                />
-              </View>
 
               <View className="ml-4">
                 <Text
@@ -104,7 +92,7 @@ const TrackOrderScreen = ({navigation}) => {
               </View>
             </View>
 
-            <View className="mt-8">
+            <View className="mt-10">
               {TRACKING_DATA.map((item, index) => (
                 <View
                   key={item.title}
@@ -166,31 +154,6 @@ const TrackOrderScreen = ({navigation}) => {
                   </View>
                 </View>
               ))}
-            </View>
-          </View>
-
-          <View
-            className="border rounded-2xl p-4 mt-5"
-            style={{borderColor: utils.colors.lightGrey}}>
-            <View className="flex-row items-center">
-              <Truck
-                size={23}
-                color={utils.colors.theme_color}
-              />
-
-              <View className="ml-3 flex-1">
-                <Text
-                  className="font-bold"
-                  style={{color: utils.colors.black}}>
-                  Delivery Partner
-                </Text>
-
-                <Text
-                  className="mt-1"
-                  style={{color: utils.colors.grey}}>
-                  Your order is on the way
-                </Text>
-              </View>
             </View>
           </View>
         </View>

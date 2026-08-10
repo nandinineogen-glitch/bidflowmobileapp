@@ -12,6 +12,8 @@ import LiveAuctionScreen from '../screens/buyer/LiveAuctionScreen';
 import BidSuccess from '../screens/buyer/BidSuccess';
 import NotificationScreen from '../screens/buyer/NotificationScreen';
 import SettingScreen from '../screens/seller/SettingScreen';
+import OrderDetails from '../screens/buyer/OrderDetails';
+import TrackOrder from '../screens/buyer/TrackOrder';
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +39,9 @@ export default function BuyerNavigator() {
       <Stack.Screen name="BidSuccess" component={BidSuccess} /> 
       <Stack.Screen name="Notification" component={NotificationScreen}/>
       <Stack.Screen name="Settings" component={SettingScreen}/>
- 
+      <Stack.Screen name='Order' component={OrderDetails} />
+      <Stack.Screen name='TrackOrder' component={TrackOrder} /> 
+
     </Stack.Navigator>
     );
 }

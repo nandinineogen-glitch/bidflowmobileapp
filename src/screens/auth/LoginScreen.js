@@ -22,9 +22,9 @@ const LoginScreen = ({navigation}) => {
     setIsLoggedIn(true);
 
     if (role === 'seller') {
-      navigation.replace('CompleteProfile');
+      navigation.navigate('CompleteProfile');
     } else {
-      navigation.replace('BuyerHome');
+      navigation.navigate('AddressScreen');
     }
   };
 

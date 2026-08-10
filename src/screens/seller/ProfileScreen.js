@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
   Alert,
+  ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import utils from '../../utils';
@@ -93,8 +94,18 @@ export default function ProfileScreen({navigation}) {
 
   return (
     <SafeAreaView
-      className="flex-1"
-      style={{backgroundColor: utils.colors.theme_color}}>
+         className="flex-1"
+         style={{backgroundColor: utils.colors.white}}>
+        
+           <ScrollView
+             className="flex-1"
+             contentContainerStyle={{
+               flexGrow: 1,
+               paddingHorizontal: 24,
+               paddingBottom: 30,
+             }}
+           
+             showsVerticalScrollIndicator={false}>
       
       <View
         style={{
@@ -176,6 +187,7 @@ export default function ProfileScreen({navigation}) {
           shadowRadius: 12,
         }}
       />
+      </ScrollView>
     </SafeAreaView>
   );
 }

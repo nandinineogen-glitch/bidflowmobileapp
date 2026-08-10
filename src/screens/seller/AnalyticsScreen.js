@@ -47,9 +47,16 @@ export default function AnalyticsScreen() {
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 30}}>
+     
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
         
         <View style={{backgroundColor: utils.colors.white}}>
           <View className="flex-row items-center justify-between px-5 pt-6 pb-4">

@@ -23,9 +23,15 @@ export default function BidSuccess({navigation, route}) {
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 30}}>
+      
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+          >
         <View className="px-5 pt-2">
          
 

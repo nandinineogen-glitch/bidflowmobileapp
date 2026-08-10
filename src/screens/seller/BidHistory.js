@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, FlatList, Image} from 'react-native';
+import {View, Text, FlatList, Image, KeyboardAvoidingView, ScrollView} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import utils from '../../utils';
 
@@ -79,9 +79,21 @@ export default function BidHistory() {
 
   return (
     
-    <SafeAreaView
+     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
       <View className="flex-1 mx-8">
         <View className="pt-6 pb-6">
           <Text
@@ -106,6 +118,8 @@ export default function BidHistory() {
                   contentContainerStyle={{ paddingBottom: 20 }}
                 />
         </View>
+        </ScrollView>
+        </KeyboardAvoidingView>
         </SafeAreaView>
   );
 }

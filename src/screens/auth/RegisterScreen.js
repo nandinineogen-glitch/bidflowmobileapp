@@ -27,11 +27,20 @@ const RegisterScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView
+         <SafeAreaView
       className="flex-1"
-      style={{ backgroundColor: utils.colors.white }}
-    >
-      <ScrollView className="p-10">
+      style={{backgroundColor: utils.colors.white}}>
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+          >
         <View
           className="mt-2"
           style={{ backgroundColor: utils.colors.white }}
@@ -169,6 +178,7 @@ const RegisterScreen = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };

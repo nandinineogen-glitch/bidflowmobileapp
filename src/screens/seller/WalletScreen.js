@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity,ScrollView } from 'react-native';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import { View, Text, FlatList, TouchableOpacity,ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils'; 
 import {ChevronDown , Landmark} from 'lucide-react-native';
 
@@ -58,7 +58,19 @@ export default function WalletScreen() {
 
   return (
  
-    <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
+     <SafeAreaView
+      className="flex-1"
+      style={{backgroundColor: utils.colors.white}}>
+     
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
        
     <View style={{ backgroundColor: utils.colors.white }}>
       
@@ -137,6 +149,7 @@ export default function WalletScreen() {
               contentContainerStyle={{ paddingBottom: 30 }}
       
             />
+            </ScrollView>
     </SafeAreaView>
     
   );

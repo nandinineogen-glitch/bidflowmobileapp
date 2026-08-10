@@ -32,7 +32,7 @@ const MENU_DATA = [
   {
     title: 'My Bids',
     icon: Gavel,
-    screen: 'MyBidsScreen',
+    screen: 'Mybids',
   },
   {
     title: 'Watchlist',

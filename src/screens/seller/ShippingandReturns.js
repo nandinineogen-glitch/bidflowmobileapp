@@ -10,7 +10,19 @@ export default function ShippingandReturns({ navigation }) {
     navigation.navigate('ProductPreview');
   };
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: utils.colors.white }}>
+      <SafeAreaView
+         className="flex-1"
+         style={{backgroundColor: utils.colors.white}}>
+        
+           <ScrollView
+             className="flex-1"
+             contentContainerStyle={{
+               flexGrow: 1,
+               paddingHorizontal: 24,
+               paddingBottom: 30,
+             }}
+           
+             showsVerticalScrollIndicator={false}>
        
     <View style={{ backgroundColor: utils.colors.white }} className="mx-8">
       
@@ -103,7 +115,7 @@ export default function ShippingandReturns({ navigation }) {
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
          </View>    
-
+     </ScrollView>
     </SafeAreaView>
   );
 }

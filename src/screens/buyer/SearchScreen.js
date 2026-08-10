@@ -8,6 +8,8 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
+
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {
@@ -153,12 +155,20 @@ export default function SearchScreen({navigation}) {
   );
 
   return (
-    <SafeAreaView
+      <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+          >
         <View className="px-5 pt-4 flex-1">
           <View className="flex-row items-center">
             <View
@@ -301,6 +311,7 @@ export default function SearchScreen({navigation}) {
             </>
           )}
         </View>
+        </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

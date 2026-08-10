@@ -19,8 +19,18 @@ const RoleSelectionScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={{ backgroundColor: utils.colors.white }}>
-      <ScrollView className="p-10">
+    <SafeAreaView
+      className="flex-1"
+      style={{backgroundColor: utils.colors.white}}>
+     
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
+          >
         <View className="mt-6 justify-center mb-10">
           <View
             className="self-center"
