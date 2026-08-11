@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
+
+import React, {useState} from 'react';
 import {
   View,
   Text,
   FlatList,
   TouchableOpacity,
-  ScrollView
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-  Bell,
-  PackageCheck,
-  Gavel,
-} from 'lucide-react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {Bell} from 'lucide-react-native';
 import utils from '../../utils';
 
-const NOTIFICATIONS_DATA = [
+const NOTIFICATIONS = [
   {
     id: '1',
     name: 'New Bid Placed',
@@ -45,150 +41,118 @@ const NOTIFICATIONS_DATA = [
   },
 ];
 
-const TABS = ['Active','Won','Lost'];
+const TABS = ['Active', 'Won', 'Lost'];
 
-export default function MybidsScreen({ navigation }) {
-  const [selectedTab, setSelectedTab] = useState('All');
-  const handleSave = () => {
-    navigation.navigate('Order');
-  };
+export default function MybidsScreen({navigation}) {
+  const [selectedTab, setSelectedTab] = useState('Active');
 
-  const filteredData = NOTIFICATIONS_DATA.filter(item => {
-    if (selectedTab === 'All') {
-      return true;
-    }
-
+  const filteredNotifications = NOTIFICATIONS.filter(item => {
     return item.status === selectedTab;
   });
 
-  const getNotificationIcon = status => {
-    switch (status) {
-      case 'Orders':
-        return <PackageCheck size={24} color={utils.colors.theme_color} />;
-
-      case 'Auctions':
-        return <Gavel size={24} color={utils.colors.theme_color} />;
-
-      case 'Alerts':
-        return <Bell size={24} color={utils.colors.theme_color} />;
-
-      default:
-        return <Bell size={24} color={utils.colors.theme_color} />;
+  const getBackgroundColor = status => {
+    if (status === 'Active') {
+      return '#EFF6FF';
     }
+
+    if (status === 'Won') {
+      return '#F5F3FF';
+    }
+
+    if (status === 'Lost') {
+      return '#FFF7ED';
+    }
+
+    return '#F3F4F6';
   };
 
-  const getNotificationBackground = status => {
-    switch (status) {
-      case 'Active':
-        return '#EFF6FF';
-
-      case 'Won':
-        return '#F5F3FF';
-
-      case 'Lost':
-        return '#FFF7ED';
-
-      default:
-        return '#F3F4F6';
-    }
-  };
-
-  const renderNotificationItem = ({ item }) => {
-    const isLive = item.status === 'Won';
+  const renderNotification = ({item}) => {
+    const openOrder = () => {
+      if (item.status === 'Won') {
+        navigation.navigate('Order');
+      }
+    };
 
     return (
-       <TouchableOpacity
-      activeOpacity={0.8}
-      className="flex-row items-center px-5 py-4"
-      onPress={isLive ? handleSave : undefined}
-    >
-      <View
-        className="h-14 w-14 rounded-2xl items-center justify-center mr-4"
-        style={{
-          backgroundColor: getNotificationBackground(item.status),
-        }}
-      >
-        {getNotificationIcon(item.status)}
-      </View>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={openOrder}
+        className="flex-row items-center px-5 py-4">
 
-      <View className="flex-1 mr-3">
-        <Text
-          style={{ color: utils.colors.black }}
-          className="font-bold text-[15px]"
-        >
-          {item.name}
-        </Text>
+        <View
+          className="w-14 h-14 rounded-2xl items-center justify-center mr-4"
+          style={{
+            backgroundColor: getBackgroundColor(item.status),
+          }}>
+          <Bell
+            size={24}
+            color={utils.colors.theme_color}
+          />
+        </View>
+
+        <View className="flex-1">
+          <Text
+            className="text-[15px] font-bold"
+            style={{color: utils.colors.black}}>
+            {item.name}
+          </Text>
+
+          <Text
+            className="text-[13px] mt-1"
+            style={{color: utils.colors.grey}}>
+            {item.comment}
+          </Text>
+        </View>
 
         <Text
-          style={{ color: utils.colors.grey }}
-          className="mt-1 text-[13px]"
-        >
-          {item.comment}
-        </Text>
-      </View>
-
-      <View className="items-end justify-center">
-        <Text
-          className="text-[12px]"
-          style={{ color: utils.colors.grey }}
-        >
+          className="text-xs"
+          style={{color: utils.colors.grey}}>
           {item.time}
         </Text>
-      </View>
-    </TouchableOpacity>
-  );
-  }
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
-     
-        <ScrollView
-          className="flex-1"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingHorizontal: 24,
-            paddingBottom: 30,
-          }}
-          >
-      <View className="px-5 pt-4 pb-2">
+
+      <View className="px-5 pt-5">
         <Text
-          style={{ color: utils.colors.black }}
           className="text-2xl font-black"
-        >
+          style={{color: utils.colors.black}}>
           My Bids
         </Text>
-
-        
       </View>
 
-      <View className="px-6 py-3 border-b-3">
+      <View className="border-b mt-4">
         <FlatList
           horizontal
           data={TABS}
-          showsHorizontalScrollIndicator={false}
           keyExtractor={item => item}
-          contentContainerStyle={{ gap: 0 }}
-          renderItem={({ item }) => {
-            const isActive = selectedTab === item;
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}) => {
+            const isSelected = selectedTab === item;
 
             return (
               <TouchableOpacity
+                activeOpacity={0.8}
                 onPress={() => setSelectedTab(item)}
-                className="px-12 py-3 border-b-2"
+                className="px-10 py-3 border-b-2"
                 style={{
-                  backgroundColor: utils.colors.white,
-                  borderColor: isActive
+                  borderColor: isSelected
                     ? utils.colors.theme_color
                     : utils.colors.white,
-                }}
-              >
+                }}>
+
                 <Text
                   className="font-bold"
                   style={{
-                    color: utils.colors.grey
-                  }}
-                >
+                    color: isSelected
+                      ? utils.colors.theme_color
+                      : utils.colors.grey,
+                  }}>
                   {item}
                 </Text>
               </TouchableOpacity>
@@ -197,35 +161,29 @@ export default function MybidsScreen({ navigation }) {
         />
       </View>
 
-     
-
       <FlatList
-        data={filteredData}
-        renderItem={renderNotificationItem}
+        data={filteredNotifications}
+        renderItem={renderNotification}
         keyExtractor={item => item.id}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingBottom: 20,
         }}
-        showsVerticalScrollIndicator={false}
         ListEmptyComponent={
-          <View className="items-center justify-center py-20 px-5">
+          <View className="items-center justify-center py-20">
             <Bell
               size={42}
               color={utils.colors.lightGrey}
             />
 
             <Text
-              className="mt-4 text-base font-semibold"
-              style={{
-                color: utils.colors.grey,
-              }}
-            >
+              className="mt-4 font-semibold"
+              style={{color: utils.colors.grey}}>
               No notifications found
             </Text>
           </View>
         }
       />
-      </ScrollView>
     </SafeAreaView>
   );
 }

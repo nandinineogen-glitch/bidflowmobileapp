@@ -46,7 +46,14 @@ const DATA = [
 export default function DashboardScreen() {
   
   const renderActivityItem = ({ item }) => (
-    <ScrollView>
+     <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingBottom: 30,
+          }}
+        
+          showsVerticalScrollIndicator={false}>
     <View className="flex-row items-center justify-between px-5 py-3.5 border-b" style={{ borderColor: utils.colors.lightGrey }}>
       <View className="flex-row items-center flex-1">
        
@@ -86,7 +93,6 @@ export default function DashboardScreen() {
           className="flex-1"
           contentContainerStyle={{
             flexGrow: 1,
-            paddingHorizontal: 24,
             paddingBottom: 30,
           }}
         

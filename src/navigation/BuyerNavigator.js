@@ -37,7 +37,7 @@ export default function BuyerNavigator() {
       <Stack.Screen name="ProductDetails" component={ProductDetails} />
       <Stack.Screen name="LiveAuction" component={LiveAuctionScreen} />
       <Stack.Screen name="BidSuccess" component={BidSuccess} /> 
-      <Stack.Screen name="Notification" component={NotificationScreen}/>
+      <Stack.Screen name="Notifications" component={NotificationScreen}/>
       <Stack.Screen name="Settings" component={SettingScreen}/>
       <Stack.Screen name='Order' component={OrderDetails} />
       <Stack.Screen name='TrackOrder' component={TrackOrder} /> 

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, FlatList, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils'; 
 
@@ -18,7 +18,6 @@ export default function ShippingandReturns({ navigation }) {
              className="flex-1"
              contentContainerStyle={{
                flexGrow: 1,
-               paddingHorizontal: 24,
                paddingBottom: 30,
              }}
            

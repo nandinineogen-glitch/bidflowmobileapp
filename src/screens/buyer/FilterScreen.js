@@ -4,334 +4,412 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {
-  ChevronDown,
-  ChevronLeft,
-} from 'lucide-react-native';
+import {ChevronDown} from 'lucide-react-native';
 import utils from '../../utils';
+import RangeSlider from 'rn-range-slider';
 
-const SORT_OPTIONS = [
-  'Ending Soon',
-  'Lowest Price',
-  'Highest Price',
-  'Newest',
-  'Highest Bid',
-];
+const FilterScreen = ({navigation}) => {
+  const [sortBy, setSortBy] = useState('Ending Soon');
+  const [category, setCategory] = useState('Electronics');
+  const [condition, setCondition] = useState('All');
+  const [location, setLocation] = useState('All Locations');
 
-const CATEGORY_OPTIONS = [
-  'All Categories',
-  'Electronics',
-  'Watches',
-  'Fashion',
-  'Phones',
-  'Laptops',
-  'Cameras',
-  'Audio',
-  'Home',
-  'Gaming',
-  'Vehicles',
-  'Collectibles',
-];
+  const [sortOpen, setSortOpen] = useState(false);
+  const [categoryOpen, setCategoryOpen] = useState(false);
+  const [conditionOpen, setConditionOpen] = useState(false);
+  const [locationOpen, setLocationOpen] = useState(false);
 
-const CONDITION_OPTIONS = [
-  'All',
-  'New',
-  'Like New',
-  'Used',
-];
-
-const LOCATION_OPTIONS = [
-  'All Locations',
-  'Ahmedabad',
-  'Mumbai',
-  'Delhi',
-  'Bangalore',
-  'Pune',
-];
-
-export default function FilterScreen({navigation, route}) {
-  const [sortBy, setSortBy] = useState(
-    route?.params?.filters?.sortBy || 'Ending Soon',
-  );
-
-  const [category, setCategory] = useState(
-    route?.params?.filters?.category || 'All Categories',
-  );
-
-  const [condition, setCondition] = useState(
-    route?.params?.filters?.condition || 'All',
-  );
-
-  const [location, setLocation] = useState(
-    route?.params?.filters?.location || 'All Locations',
-  );
-
-  const [minPrice, setMinPrice] = useState(
-    route?.params?.filters?.minPrice || 0,
-  );
-
-  const [maxPrice, setMaxPrice] = useState(
-    route?.params?.filters?.maxPrice || 100000,
-  );
-
-  const [openDropdown, setOpenDropdown] = useState(null);
-
-  const toggleDropdown = value => {
-    setOpenDropdown(prev =>
-      prev === value ? null : value,
-    );
-  };
+  const [price, setPrice] = useState(100000);
 
   const clearAll = () => {
     setSortBy('Ending Soon');
-    setCategory('All Categories');
+    setCategory('Electronics');
     setCondition('All');
     setLocation('All Locations');
-    setMinPrice(0);
-    setMaxPrice(100000);
-    setOpenDropdown(null);
-  };
+    setPrice(100000);
 
-  const applyFilters = () => {
-    const filters = {
-      sortBy,
-      category,
-      condition,
-      location,
-      minPrice,
-      maxPrice,
-    };
-
-    if (route?.params?.onApply) {
-      route.params.onApply(filters);
-    }
-
-    navigation.navigate('ProductListing');
-  };
-
-  const renderDropdown = (
-    title,
-    value,
-    options,
-    keyName,
-    setValue,
-  ) => {
-    const isOpen = openDropdown === keyName;
-
-    return (
-      <View className="mt-6">
-        <Text
-          className="font-bold mb-3"
-          style={{color: utils.colors.black}}>
-          {title}
-        </Text>
-
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => toggleDropdown(keyName)}
-          className="h-14 px-4 rounded-xl border flex-row items-center justify-between"
-          style={{
-            borderColor: utils.colors.lightGrey,
-            backgroundColor: utils.colors.white,
-          }}>
-          <Text
-            className="text-sm"
-            style={{color: utils.colors.black}}>
-            {value}
-          </Text>
-
-          <ChevronDown
-            size={18}
-            color={utils.colors.grey}
-          />
-        </TouchableOpacity>
-
-        {isOpen && (
-          <View
-            className="rounded-xl mt-2 border overflow-hidden"
-            style={{
-              borderColor: utils.colors.lightGrey,
-              backgroundColor: utils.colors.white,
-            }}>
-            {options.map(option => (
-              <TouchableOpacity
-                key={option}
-                onPress={() => {
-                  setValue(option);
-                  setOpenDropdown(null);
-                }}
-                className="px-4 py-3 border-b"
-                style={{
-                  borderColor: utils.colors.lightGrey,
-                  backgroundColor:
-                    value === option
-                      ? '#F3F0FF'
-                      : utils.colors.white,
-                }}>
-                <Text
-                  className="text-sm"
-                  style={{
-                    color:
-                      value === option
-                        ? utils.colors.theme_color
-                        : utils.colors.black,
-                  }}>
-                  {option}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        )}
-      </View>
-    );
+    setSortOpen(false);
+    setCategoryOpen(false);
+    setConditionOpen(false);
+    setLocationOpen(false);
   };
 
   return (
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
-      <View className="px-5 pt-3 flex-row items-center justify-between">
-        <View className="flex-row items-center">
-     
+      <KeyboardAvoidingView
+        className="flex-1"
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <ScrollView
+          className="flex-1"
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingHorizontal:24,
+            paddingBottom: 30,
+          }}
+          >
 
-          <Text
-            className="text-2xl font-black ml-2"
-            style={{color: utils.colors.black}}>
-            Filters
-          </Text>
-        </View>
+          <View className="flex-row items-center justify-between pt-5 mb-8">
+            <Text
+              className="text-2xl font-bold"
+              style={{color: utils.colors.black}}>
+              Filters
+            </Text>
 
-        <TouchableOpacity onPress={clearAll}>
-          <Text
-            className="text-sm font-bold"
-            style={{color: utils.colors.theme_color}}>
-            Clear All
-          </Text>
-        </TouchableOpacity>
-      </View>
-
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingHorizontal: 24,
-          paddingBottom: 30,
-        }}>
-        {renderDropdown(
-          'Sort By',
-          sortBy,
-          SORT_OPTIONS,
-          'sort',
-          setSortBy,
-        )}
-
-        {renderDropdown(
-          'Category',
-          category,
-          CATEGORY_OPTIONS,
-          'category',
-          setCategory,
-        )}
-
-        <View className="mt-7">
-          <Text
-            className="text-sm font-bold mb-4"
-            style={{color: utils.colors.black}}>
-            Price Range
-          </Text>
-
-          <View className="flex-row justify-between">
-            <View
-              className="px-4 py-3 rounded-xl border w-[46%]"
-              style={{
-                borderColor: utils.colors.lightGrey,
-              }}>
+            <TouchableOpacity onPress={clearAll}>
               <Text
-                className="text-[10px]"
-                style={{color: utils.colors.grey}}>
-                Minimum
+                className="font-bold"
+                style={{color: utils.colors.theme_color}}>
+                Clear All
               </Text>
-
-              <Text
-                className="font-bold mt-1"
-                style={{color: utils.colors.black}}>
-                ₹{minPrice.toLocaleString('en-IN')}
-              </Text>
-            </View>
-
-            <View
-              className="px-4 py-3 rounded-xl border w-[46%]"
-              style={{
-                borderColor: utils.colors.lightGrey,
-              }}>
-              <Text
-                className="text-[10px]"
-                style={{color: utils.colors.grey}}>
-                Maximum
-              </Text>
-
-              <Text
-                className="font-bold mt-1"
-                style={{color: utils.colors.black}}>
-                ₹{maxPrice.toLocaleString('en-IN')}
-              </Text>
-            </View>
+            </TouchableOpacity>
           </View>
 
-          <View className="mt-6">
-            <View
-              className="h-1 rounded-full"
-              style={{
-                backgroundColor: utils.colors.theme_color,
-              }}>
-              <View
-                className="absolute w-5 h-5 rounded-full -top-2"
-                style={{
-                  backgroundColor: utils.colors.theme_color,
-                  left: '0%',
-                }}
-              />
-
-              <View
-                className="absolute w-5 h-5 rounded-full -top-2"
-                style={{
-                  backgroundColor: utils.colors.theme_color,
-                  right: '0%',
-                }}
-              />
-            </View>
-          </View>
-        </View>
-
-        {renderDropdown(
-          'Condition',
-          condition,
-          CONDITION_OPTIONS,
-          'condition',
-          setCondition,
-        )}
-
-        {renderDropdown(
-          'Location',
-          location,
-          LOCATION_OPTIONS,
-          'location',
-          setLocation,
-        )}
-
-        <TouchableOpacity
-          activeOpacity={0.85}
-          onPress={applyFilters}
-          className="h-14 rounded-xl items-center justify-center mt-8"
-          style={{
-            backgroundColor: utils.colors.theme_color,
-          }}>
-          <Text className="text-white text-base font-bold">
-            Apply Filters
+          <Text
+            className="text-base font-bold mb-2"
+            style={{color: utils.colors.black}}>
+            Sort By
           </Text>
-        </TouchableOpacity>
-      </ScrollView>
+
+          <TouchableOpacity
+            onPress={() => {
+              setSortOpen(!sortOpen);
+              setCategoryOpen(false);
+              setConditionOpen(false);
+              setLocationOpen(false);
+            }}
+            className="h-14 flex-row items-center justify-between px-4 rounded-xl border"
+            style={{borderColor: utils.colors.grey}}>
+            <Text
+              className="text-base"
+              style={{color: utils.colors.black}}>
+              {sortBy}
+            </Text>
+
+            <ChevronDown
+              size={20}
+              color={utils.colors.grey}
+            />
+          </TouchableOpacity>
+
+          {sortOpen && (
+            <View className="px-4 mb-5 rounded-xl border  mt-2">
+              <TouchableOpacity
+                onPress={() => {
+                  setSortBy('Ending Soon');
+                  setSortOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Ending Soon
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setSortBy('Newest');
+                  setSortOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Newest
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setSortBy('Price Low to High');
+                  setSortOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Price Low to High
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setSortBy('Price High to Low');
+                  setSortOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Price High to Low
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+
+          <Text
+            className="text-base font-bold mb-2 mt-5"
+            style={{color: utils.colors.black}}>
+            Category
+          </Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              setCategoryOpen(!categoryOpen);
+              setSortOpen(false);
+              setConditionOpen(false);
+              setLocationOpen(false);
+            }}
+            className="h-14 flex-row items-center justify-between px-4 rounded-xl border"
+            style={{borderColor: utils.colors.grey}}>
+            <Text
+              className="text-base"
+              style={{color: utils.colors.black}}>
+              {category}
+            </Text>
+
+            <ChevronDown
+              size={20}
+              color={utils.colors.grey}
+            />
+          </TouchableOpacity>
+
+          {categoryOpen && (
+            <View className="px-4 mb-5 rounded-xl border  mt-2">
+              <TouchableOpacity
+                onPress={() => {
+                  setCategory('Electronics');
+                  setCategoryOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Electronics
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setCategory('Watches');
+                  setCategoryOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Watches
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setCategory('Fashion');
+                  setCategoryOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Fashion
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setCategory('Home');
+                  setCategoryOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Home
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+
+          <View className="mb-6 mt-6">
+            <Text
+              className="text-base font-bold mb-3"
+              style={{color: utils.colors.black}}>
+              Price Range
+            </Text>
+
+            <View className="flex-row justify-between">
+              <Text style={{color: utils.colors.black}}>
+                ₹0
+              </Text>
+
+              <Text style={{color: utils.colors.black}}>
+                ₹{price}
+              </Text>
+            </View>
+
+       
+
+      <View style={{flex: 1, flexDirection: 'row'}}>
+<RangeSlider
+    style={{width: 160, height: 80}}
+    min={200}
+    max={1000}
+    step={20}
+    selectionColor="#3df"
+    blankColor="#f618"
+    renderThumb={()=><View className='h-20 w-20 to-blue-800'></View>}
+   />
+
+</View>
+
+
+          </View>
+
+          <Text
+            className="text-base font-bold mb-2"
+            style={{color: utils.colors.black}}>
+            Condition
+          </Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              setConditionOpen(!conditionOpen);
+              setSortOpen(false);
+              setCategoryOpen(false);
+              setLocationOpen(false);
+            }}
+            className="h-14 flex-row items-center justify-between px-4 rounded-xl border"
+            style={{borderColor: utils.colors.grey}}>
+            <Text
+              className="text-base"
+              style={{color: utils.colors.black}}>
+              {condition}
+            </Text>
+
+            <ChevronDown
+              size={20}
+              color={utils.colors.grey}
+            />
+          </TouchableOpacity>
+
+          {conditionOpen && (
+            <View className="px-4 mb-5 rounded-xl border  mt-2">
+              <TouchableOpacity
+                onPress={() => {
+                  setCondition('All');
+                  setConditionOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  All
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setCondition('New');
+                  setConditionOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  New
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setCondition('Used');
+                  setConditionOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Used
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+
+          <Text
+            className="text-base font-bold mb-2 mt-5"
+            style={{color: utils.colors.black}}>
+            Location
+          </Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              setLocationOpen(!locationOpen);
+              setSortOpen(false);
+              setCategoryOpen(false);
+              setConditionOpen(false);
+            }}
+            className="h-14 flex-row items-center justify-between px-4 rounded-xl border"
+            style={{borderColor: utils.colors.grey}}>
+            <Text
+              className="text-base"
+              style={{color: utils.colors.black}}>
+              {location}
+            </Text>
+
+            <ChevronDown
+              size={20}
+              color={utils.colors.grey}
+            />
+          </TouchableOpacity>
+
+          {locationOpen && (
+            <View className="px-4 mb-5 rounded-xl border  mt-2">
+              <TouchableOpacity
+                onPress={() => {
+                  setLocation('All Locations');
+                  setLocationOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  All Locations
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setLocation('Mumbai');
+                  setLocationOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Mumbai
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setLocation('Ahmedabad');
+                  setLocationOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Ahmedabad
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  setLocation('Delhi');
+                  setLocationOpen(false);
+                }}
+                className="py-3">
+                <Text style={{color: utils.colors.black}}>
+                  Delhi
+                </Text>
+              </TouchableOpacity>
+            </View>
+          )}
+
+          <TouchableOpacity
+            className="rounded-xl py-4 mt-6"
+            style={{backgroundColor: utils.colors.theme_color}}
+            onPress={() => navigation.goBack()}>
+            <Text
+              className="text-center text-lg font-bold"
+              style={{color: utils.colors.white}}>
+              Apply Filters
+            </Text>
+          </TouchableOpacity>
+
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
-}
+};
+
+export default FilterScreen;

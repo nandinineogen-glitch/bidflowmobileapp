@@ -1,16 +1,28 @@
-import React, { useContext, useState } from 'react';
-import { View, ScrollView, Image, Text, TouchableOpacity, Alert } from 'react-native';
+
+import React, {useContext, useState} from 'react';
+import {
+  View,
+  ScrollView,
+  Image,
+  Text,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {AuthContext} from '../../context/AuthContext';
 import utils from '../../utils';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { AuthContext } from '../../context/AuthContext';
 
-const RoleSelectionScreen = ({ navigation }) => {
+const RoleSelectionScreen = ({navigation}) => {
   const [selectedRole, setSelectedRole] = useState(null);
-  const { setRole } = useContext(AuthContext);
 
-  const handleContinue = () => {
+  const {setRole} = useContext(AuthContext);
+
+  const continueButton = () => {
     if (!selectedRole) {
-      Alert.alert('Select Role', 'Please select Buyer or Seller');
+      Alert.alert(
+        'Select Role',
+        'Please select Buyer or Seller',
+      );
       return;
     }
 
@@ -21,128 +33,147 @@ const RoleSelectionScreen = ({ navigation }) => {
   return (
     <SafeAreaView
       className="flex-1"
-      style={{backgroundColor: utils.colors.white}}>
-     
-        <ScrollView
-          className="flex-1"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingHorizontal: 24,
-            paddingBottom: 30,
-          }}
-          >
-        <View className="mt-6 justify-center mb-10">
-          <View
-            className="self-center"
-            style={{ backgroundColor: utils.colors.white }}
-          >
-            <Image
-              source={utils.assets.trade}
-              style={{ width: 200, height: 200 }}
-            />
-          </View>
+      style={{
+        backgroundColor: utils.colors.white,
+      }}>
 
-          <View className="self-center mt-8">
+      <ScrollView
+        className="flex-1"
+        contentContainerStyle={{
+          paddingHorizontal: 24,
+          paddingBottom: 30,
+        }}
+        showsVerticalScrollIndicator={false}>
+
+        <View className="mt-6">
+
+          <Image
+            source={utils.assets.trade}
+            className="w-52 h-52 self-center"
+            resizeMode="contain"
+          />
+
+          <View className="items-center mt-8">
             <utils.components.Header label="Select Your Role" />
           </View>
 
-          <View className="self-center mt-8">
-            <Text
-              className="mt-2 mb-10"
-              style={{ color: utils.colors.grey }}
-            >
-              Select{' '}
-              <Text
-                className="font-bold"
-                style={{ color: utils.colors.black }}
-              >
-                Buyer
-              </Text>{' '}
-              if you want to bid and purchase products or{' '}
-              <Text
-                className="font-bold"
-                style={{ color: utils.colors.black }}
-              >
-                Seller
-              </Text>{' '}
-              if you want to list products and create auctions.
-            </Text>
-          </View>
+          <Text
+            className="mt-8 mb-10"
+            style={{
+              color: utils.colors.grey,
+            }}>
+            Select{' '}
 
-          <View className="flex-row justify-between mt-2">
+            <Text
+              className="font-bold"
+              style={{
+                color: utils.colors.black,
+              }}>
+              Buyer
+            </Text>
+
+            {' '}if you want to bid and purchase products or{' '}
+
+            <Text
+              className="font-bold"
+              style={{
+                color: utils.colors.black,
+              }}>
+              Seller
+            </Text>
+
+            {' '}if you want to list products and create auctions.
+          </Text>
+
+          <View className="flex-row justify-between">
+
             <TouchableOpacity
-              activeOpacity={0.8}
               onPress={() => setSelectedRole('buyer')}
-              className="w-40 h-44 border rounded-xl self-center text-xl font-bold"
+              activeOpacity={0.8}
+              className="w-[47%] h-44 border rounded-xl items-center"
               style={{
                 borderColor:
                   selectedRole === 'buyer'
                     ? utils.colors.theme_color
                     : utils.colors.lightGrey,
-              }}
-            >
+              }}>
+
               <Image
                 source={utils.assets.buyer}
-                className="self-center mt-5 w-24 h-24"
+                className="w-24 h-24 mt-5"
+                resizeMode="contain"
               />
+
               <Text
-                className="self-center mt-5 text-lg font-bold"
+                className="text-lg font-bold mt-4"
                 style={{
                   color:
                     selectedRole === 'buyer'
                       ? utils.colors.theme_color
                       : utils.colors.black,
-                }}
-              >
+                }}>
                 Buyer
               </Text>
+
             </TouchableOpacity>
 
             <TouchableOpacity
-              activeOpacity={0.8}
               onPress={() => setSelectedRole('seller')}
-              className="w-40 h-44 border rounded-xl self-center text-xl font-bold"
+              activeOpacity={0.8}
+              className="w-[47%] h-44 border rounded-xl items-center"
               style={{
                 borderColor:
                   selectedRole === 'seller'
                     ? utils.colors.theme_color
                     : utils.colors.lightGrey,
-              }}
-            >
+              }}>
+
               <Image
                 source={utils.assets.seller}
-                className="self-center mt-5 w-24 h-24"
+                className="w-24 h-24 mt-5"
+                resizeMode="contain"
               />
+
               <Text
-                className="self-center mt-5 text-lg font-bold"
+                className="text-lg font-bold mt-4"
                 style={{
                   color:
                     selectedRole === 'seller'
                       ? utils.colors.theme_color
                       : utils.colors.black,
-                }}
-              >
+                }}>
                 Seller
               </Text>
+
             </TouchableOpacity>
+
           </View>
 
           <TouchableOpacity
-            className="rounded-xl py-3.5 mt-14"
-            style={{ backgroundColor: utils.colors.theme_color }}
-            onPress={handleContinue}
-          >
+            onPress={continueButton}
+            activeOpacity={0.8}
+            className="h-14 rounded-xl items-center justify-center mt-14"
+            style={{
+              backgroundColor: utils.colors.theme_color,
+            }}>
+
             <Text
-              className="text-center text-lg font-bold"
-              style={{ color: utils.colors.white }}
-            >
+              className="text-lg font-bold"
+              style={{
+                color: utils.colors.white,
+              }}>
               Get Started
             </Text>
+
           </TouchableOpacity>
+
         </View>
+
       </ScrollView>
+
     </SafeAreaView>
   );
 };
 
 export default RoleSelectionScreen;
+

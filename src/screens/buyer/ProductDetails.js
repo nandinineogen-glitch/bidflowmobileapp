@@ -38,7 +38,6 @@ export default function AuctionDetailsScreen({navigation, route}) {
         className="flex-1"
         contentContainerStyle={{
           flexGrow: 1,
-          paddingHorizontal: 20,
           paddingBottom: 30,
         }}
         showsVerticalScrollIndicator={false}>
@@ -143,7 +142,7 @@ export default function AuctionDetailsScreen({navigation, route}) {
                   style={{
                     color: utils.colors.grey,
                   }}>
-                  ₹{auction.marketPrice.toLocaleString('en-IN')}
+                  ₹{auction.marketPrice}
                 </Text>{' '}
                 <Text
                   style={{color: utils.colors.green}}

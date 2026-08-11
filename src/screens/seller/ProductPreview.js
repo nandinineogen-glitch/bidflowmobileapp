@@ -17,7 +17,6 @@ export default function ProductPreview({navigation}) {
              className="flex-1"
              contentContainerStyle={{
                flexGrow: 1,
-               paddingHorizontal: 24,
                paddingBottom: 30,
              }}
            

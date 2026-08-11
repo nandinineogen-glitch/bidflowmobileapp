@@ -182,7 +182,6 @@ export default function AddressScreen({navigation}) {
           className="flex-1"
           contentContainerStyle={{
             flexGrow: 1,
-            paddingHorizontal: 24,
             paddingBottom: 30,
           }}
         

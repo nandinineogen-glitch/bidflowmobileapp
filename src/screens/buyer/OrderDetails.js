@@ -21,7 +21,6 @@ const OrderDetailsScreen = ({navigation}) => {
         className="flex-1"
         contentContainerStyle={{
           flexGrow: 1,
-          paddingHorizontal: 20,
           paddingBottom: 30,
         }}
         showsVerticalScrollIndicator={false}>

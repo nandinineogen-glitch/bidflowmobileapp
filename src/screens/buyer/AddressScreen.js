@@ -7,232 +7,332 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
+  Platform,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import utils from '../../utils';
 import {CirclePlus, ChevronDown} from 'lucide-react-native';
+import utils from '../../utils';
+
+const addressOptions = [
+  'Home Address',
+  'Office Address',
+  'Other Address',
+];
 
 export default function AddressScreen({navigation}) {
   const [addressCount, setAddressCount] = useState(1);
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const [addressTypes, setAddressTypes] = useState({});
+  const [selectedType, setSelectedType] = useState({});
+  const [openAddress, setOpenAddress] = useState(null);
 
-  const addressOptions = [
-    'Home Address',
-    'Office Address',
-    'Other Address',
-  ];
-
-  const handleSave = () => {
-    navigation.navigate('BankPayout');
-  };
-
-  const handleAddAddress = () => {
+  const addAddress = () => {
     if (addressCount < 3) {
       setAddressCount(addressCount + 1);
     }
   };
 
-  const selectAddressType = (addressNumber, option) => {
-    setAddressTypes({
-      ...addressTypes,
-      [addressNumber]: option,
+  const selectType = (addressNumber, type) => {
+    setSelectedType({
+      ...selectedType,
+      [addressNumber]: type,
     });
-    setOpenDropdown(null);
+
+    setOpenAddress(null);
   };
 
-  const renderAddress = addressNumber => {
+  const saveAddress = () => {
+    navigation.navigate('BankPayout');
+  };
+
+  const showAddress = addressNumber => {
     return (
-      <View className="mt-6" key={addressNumber}>
+      <View
+        key={addressNumber}
+        className="mt-6">
+
         <Text
           className="text-xl font-bold mb-5"
-          style={{color: utils.colors.black}}>
+          style={{
+            color: utils.colors.black,
+          }}>
           Address {addressNumber}
         </Text>
 
         <Text
           className="text-lg font-bold mb-2"
-          style={{color: utils.colors.black}}>
+          style={{
+            color: utils.colors.black,
+          }}>
           Address Line 1
         </Text>
 
-        <View
-          className="border rounded-xl px-4"
-          style={{borderColor: utils.colors.lightGrey}}>
-          <TextInput className="h-14" placeholder="123 Main St" />
-        </View>
+        <TextInput
+          className="h-14 border rounded-xl px-4"
+          placeholder="123 Main St"
+          placeholderTextColor={utils.colors.grey}
+          style={{
+            borderColor: utils.colors.lightGrey,
+            color: utils.colors.black,
+          }}
+        />
 
         <Text
           className="text-lg font-bold mt-6 mb-2"
-          style={{color: utils.colors.black}}>
+          style={{
+            color: utils.colors.black,
+          }}>
           Address Line 2
         </Text>
 
-        <View
-          className="border rounded-xl px-4"
-          style={{borderColor: utils.colors.lightGrey}}>
-          <TextInput className="h-14" placeholder="Apartment/Suite" />
-        </View>
+        <TextInput
+          className="h-14 border rounded-xl px-4"
+          placeholder="Apartment/Suite"
+          placeholderTextColor={utils.colors.grey}
+          style={{
+            borderColor: utils.colors.lightGrey,
+            color: utils.colors.black,
+          }}
+        />
 
         <Text
           className="text-lg font-bold mt-6 mb-2"
-          style={{color: utils.colors.black}}>
+          style={{
+            color: utils.colors.black,
+          }}>
           City
         </Text>
 
-        <View
-          className="border rounded-xl px-4"
-          style={{borderColor: utils.colors.lightGrey}}>
-          <TextInput className="h-14" placeholder="City" />
-        </View>
+        <TextInput
+          className="h-14 border rounded-xl px-4"
+          placeholder="City"
+          placeholderTextColor={utils.colors.grey}
+          style={{
+            borderColor: utils.colors.lightGrey,
+            color: utils.colors.black,
+          }}
+        />
 
         <Text
           className="text-lg font-bold mt-6 mb-2"
-          style={{color: utils.colors.black}}>
+          style={{
+            color: utils.colors.black,
+          }}>
           State
         </Text>
 
-        <View
-          className="border rounded-xl px-4"
-          style={{borderColor: utils.colors.lightGrey}}>
-          <TextInput className="h-14" placeholder="State" />
-        </View>
+        <TextInput
+          className="h-14 border rounded-xl px-4"
+          placeholder="State"
+          placeholderTextColor={utils.colors.grey}
+          style={{
+            borderColor: utils.colors.lightGrey,
+            color: utils.colors.black,
+          }}
+        />
 
         <Text
           className="text-lg font-bold mt-6 mb-2"
-          style={{color: utils.colors.black}}>
+          style={{
+            color: utils.colors.black,
+          }}>
           Zip Code
         </Text>
 
-        <View
-          className="border rounded-xl px-4"
-          style={{borderColor: utils.colors.lightGrey}}>
-          <TextInput className="h-14" placeholder="Zip Code" />
-        </View>
+        <TextInput
+          className="h-14 border rounded-xl px-4"
+          placeholder="Zip Code"
+          placeholderTextColor={utils.colors.grey}
+          keyboardType="numeric"
+          style={{
+            borderColor: utils.colors.lightGrey,
+            color: utils.colors.black,
+          }}
+        />
 
         <Text
           className="text-lg font-bold mt-6 mb-2"
-          style={{color: utils.colors.black}}>
+          style={{
+            color: utils.colors.black,
+          }}>
           Country
         </Text>
 
-        <View
-          className="border rounded-xl px-4"
-          style={{borderColor: utils.colors.lightGrey}}>
-          <TextInput className="h-14" placeholder="Country" />
-        </View>
+        <TextInput
+          className="h-14 border rounded-xl px-4"
+          placeholder="Country"
+          placeholderTextColor={utils.colors.grey}
+          style={{
+            borderColor: utils.colors.lightGrey,
+            color: utils.colors.black,
+          }}
+        />
 
         <Text
           className="text-lg font-bold mt-6 mb-2"
-          style={{color: utils.colors.black}}>
+          style={{
+            color: utils.colors.black,
+          }}>
           Address Type
         </Text>
 
         <TouchableOpacity
-          className="h-14 border rounded-xl px-4 flex-row items-center justify-between"
-          style={{borderColor: utils.colors.lightGrey}}
           onPress={() =>
-            setOpenDropdown(
-              openDropdown === addressNumber ? null : addressNumber,
+            setOpenAddress(
+              openAddress === addressNumber
+                ? null
+                : addressNumber,
             )
-          }>
+          }
+          activeOpacity={0.8}
+          className="h-14 border rounded-xl px-4 flex-row items-center justify-between"
+          style={{
+            borderColor: utils.colors.lightGrey,
+          }}>
+
           <Text
-            className="text-base"
             style={{
-              color: addressTypes[addressNumber]
+              color: selectedType[addressNumber]
                 ? utils.colors.black
                 : utils.colors.grey,
             }}>
-            {addressTypes[addressNumber] || 'Select Address Type'}
+            {selectedType[addressNumber] ||
+              'Select Address Type'}
           </Text>
 
-          <ChevronDown size={20} color={utils.colors.grey} />
+          <ChevronDown
+            size={20}
+            color={utils.colors.grey}
+          />
+
         </TouchableOpacity>
 
-        {openDropdown === addressNumber && (
+        {openAddress === addressNumber && (
           <View
             className="border rounded-xl mt-2 overflow-hidden"
-            style={{borderColor: utils.colors.lightGrey}}>
-            {addressOptions.map(option => (
+            style={{
+              borderColor: utils.colors.lightGrey,
+            }}>
+
+            {addressOptions.map(type => (
               <TouchableOpacity
-                key={option}
-                className="px-4 py-4"
-                onPress={() => selectAddressType(addressNumber, option)}>
+                key={type}
+                onPress={() =>
+                  selectType(addressNumber, type)
+                }
+                className="px-4 py-4">
+
                 <Text
-                  className="text-base"
-                  style={{color: utils.colors.black}}>
-                  {option}
+                  style={{
+                    color: utils.colors.black,
+                  }}>
+                  {type}
                 </Text>
+
               </TouchableOpacity>
             ))}
+
           </View>
         )}
+
       </View>
     );
   };
 
   return (
-     <SafeAreaView
+    <SafeAreaView
       className="flex-1"
-      style={{backgroundColor: utils.colors.white}}>
+      style={{
+        backgroundColor: utils.colors.white,
+      }}>
+
       <KeyboardAvoidingView
         className="flex-1"
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        behavior={
+          Platform.OS === 'ios' ? 'padding' : undefined
+        }>
+
         <ScrollView
           className="flex-1"
           contentContainerStyle={{
-            flexGrow: 1,
-            paddingHorizontal: 24,
+            paddingHorizontal: 32,
             paddingBottom: 30,
           }}
-          >
-        <View className="px-8 pt-10">
-          <utils.components.Header label="Address Details" />
+          showsVerticalScrollIndicator={false}>
 
-          <Text
-            className="text-base mt-2 mb-2"
-            style={{color: utils.colors.grey}}>
-            Add your address details to receive payments.
-          </Text>
+          <View className="pt-10">
 
-          {Array.from({length: addressCount}, (_, index) =>
-            renderAddress(index + 1),
-          )}
+            <utils.components.Header
+              label="Address Details"
+            />
 
-          <TouchableOpacity
-            className="bg-blue-500 py-3 px-4 rounded-xl mt-6"
-            onPress={handleSave}>
             <Text
-              className="text-lg font-bold text-center"
-              style={{color: utils.colors.white}}>
-              Save Address
+              className="text-base mt-2"
+              style={{
+                color: utils.colors.grey,
+              }}>
+              Add your address details to receive payments.
             </Text>
-          </TouchableOpacity>
 
-          {addressCount < 3 && (
+            {Array.from(
+              {length: addressCount},
+              (_, index) => showAddress(index + 1),
+            )}
+
             <TouchableOpacity
-              className="items-center justify-center mt-5"
-              onPress={handleAddAddress}>
-              <CirclePlus size={45} color="#22C55E" />
+              onPress={saveAddress}
+              activeOpacity={0.8}
+              className="h-14 rounded-xl items-center justify-center mt-8"
+              style={{
+                backgroundColor: utils.colors.theme_color,
+              }}>
 
               <Text
-                className="text-base font-semibold mt-2"
-                style={{color: utils.colors.black}}>
-                Add Another Address
+                className="text-lg font-bold"
+                style={{
+                  color: utils.colors.white,
+                }}>
+                Save Address
               </Text>
-            </TouchableOpacity>
-          )}
 
-          {addressCount === 3 && (
-            <Text
-              className="text-center mt-4"
-              style={{color: utils.colors.grey}}>
-              Maximum 3 addresses allowed
-            </Text>
-          )}
-        </View>
-      </ScrollView>
-   </KeyboardAvoidingView>
+            </TouchableOpacity>
+
+            {addressCount < 3 && (
+              <TouchableOpacity
+                onPress={addAddress}
+                activeOpacity={0.8}
+                className="items-center mt-6">
+
+                <CirclePlus
+                  size={40}
+                  color={utils.colors.theme_color}
+                />
+
+                <Text
+                  className="font-bold mt-2"
+                  style={{
+                    color: utils.colors.black,
+                  }}>
+                  Add Another Address
+                </Text>
+
+              </TouchableOpacity>
+            )}
+
+            {addressCount === 3 && (
+              <Text
+                className="text-center mt-5"
+                style={{
+                  color: utils.colors.grey,
+                }}>
+                Maximum 3 addresses allowed
+              </Text>
+            )}
+
+          </View>
+
+        </ScrollView>
+
+      </KeyboardAvoidingView>
+
     </SafeAreaView>
   );
 }

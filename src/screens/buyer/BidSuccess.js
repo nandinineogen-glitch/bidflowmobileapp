@@ -28,7 +28,6 @@ export default function BidSuccess({navigation, route}) {
           className="flex-1"
           contentContainerStyle={{
             flexGrow: 1,
-            paddingHorizontal: 24,
             paddingBottom: 30,
           }}
           >
@@ -87,7 +86,6 @@ export default function BidSuccess({navigation, route}) {
            
             <View className="flex-row items-center mt-8">
               <TouchableOpacity
-                activeOpacity={0.85}
                 className="flex-[1.6] h-14 w-40 mt-28 rounded-2xl items-center justify-center"
                 style={{backgroundColor: utils.colors.theme_color}}
                 onPress={() => navigation.navigate('Mybids')}>

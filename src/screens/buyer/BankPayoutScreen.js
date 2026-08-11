@@ -46,7 +46,6 @@ export default function BankPayoutScreen({ navigation }) {
           className="flex-1"
           contentContainerStyle={{
             flexGrow: 1,
-            paddingHorizontal: 24,
             paddingBottom: 30,
           }}
           >
@@ -82,7 +81,7 @@ export default function BankPayoutScreen({ navigation }) {
           </Text>
 
           <Text>
-            {bankOpen ? '▲' : '▼'}
+            { '▼'}
           </Text>
         </TouchableOpacity>
 

@@ -65,7 +65,7 @@ export default function ProductListingScreen({navigation}) {
           <Image
             source={item.image}
             style={{ width: 65, height: 60 }}
-            resizeMode="contain"
+     
           />
         </View>
 
@@ -112,7 +112,6 @@ export default function ProductListingScreen({navigation}) {
         className="flex-1"
         contentContainerStyle={{
           flexGrow: 1,
-          paddingHorizontal: 20,
           paddingBottom: 30,
         }}
         showsVerticalScrollIndicator={false}>

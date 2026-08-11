@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   View,
@@ -8,42 +9,39 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import utils from '../../utils';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ArrowLeft} from 'lucide-react-native';
+import utils from '../../utils';
 
 const ForgotPasswordScreen = ({navigation}) => {
   return (
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
+      
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+
         <ScrollView
           className="flex-1"
           contentContainerStyle={{
-            flexGrow: 1,
             paddingHorizontal: 24,
             paddingBottom: 30,
           }}
           showsVerticalScrollIndicator={false}>
-          
-          <View className="pt-5">
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-              activeOpacity={0.7}
-              className="w-10 h-10 rounded-full items-center justify-center">
-              <ArrowLeft
-                size={25}
-                color={utils.colors.black}
-              />
-            </TouchableOpacity>
-          </View>
 
-          <View
-            className="mt-16"
-            style={{backgroundColor: utils.colors.white}}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            className="w-10 h-10 rounded-full items-center justify-center mt-5">
+            <ArrowLeft
+              size={25}
+              color={utils.colors.black}
+            />
+          </TouchableOpacity>
+
+          <View className="mt-16">
+
             <utils.components.Header label="Forgot Password?" />
 
             <Text
@@ -58,32 +56,35 @@ const ForgotPasswordScreen = ({navigation}) => {
               Phone Number
             </Text>
 
-            <View
-              className="border rounded-xl px-4"
-              style={{borderColor: utils.colors.lightGrey}}>
-              <TextInput
-                placeholder="Enter Your Phone Number"
-                placeholderTextColor={utils.colors.grey}
-                className="h-14"
-                keyboardType="phone-pad"
-                maxLength={10}
-                style={{
-                  color: utils.colors.black,
-                  fontSize: 16,
-                }}
-              />
-            </View>
+            <TextInput
+              placeholder="Enter Your Phone Number"
+              placeholderTextColor={utils.colors.grey}
+              keyboardType="phone-pad"
+              maxLength={10}
+              className="h-14 border rounded-xl px-4"
+              style={{
+                borderColor: utils.colors.lightGrey,
+                color: utils.colors.black,
+                fontSize: 16,
+              }}
+            />
 
             <TouchableOpacity
-              className="rounded-xl py-4 mt-10"
+              onPress={() => navigation.navigate('OTPScreen')}
               activeOpacity={0.8}
-              style={{backgroundColor: utils.colors.theme_color}}>
+              className="rounded-xl h-14 items-center justify-center mt-10"
+              style={{
+                backgroundColor: utils.colors.theme_color,
+              }}>
+
               <Text
-                className="text-center text-lg font-bold"
+                className="text-lg font-bold"
                 style={{color: utils.colors.white}}>
                 Send OTP
               </Text>
+
             </TouchableOpacity>
+
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -92,3 +93,4 @@ const ForgotPasswordScreen = ({navigation}) => {
 };
 
 export default ForgotPasswordScreen;
+

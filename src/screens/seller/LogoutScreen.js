@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Imag, ScrollViewe , KeyboardAvoidingView} from 'react-native';
+import {View, Text, TouchableOpacity, Image, ScrollView , KeyboardAvoidingView} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import utils from '../../utils';
 import { Check} from 'lucide-react-native';
@@ -16,7 +16,6 @@ export default function LogoutScreen({navigation}) {
           className="flex-1"
           contentContainerStyle={{
             flexGrow: 1,
-            paddingHorizontal: 24,
             paddingBottom: 30,
           }}
         

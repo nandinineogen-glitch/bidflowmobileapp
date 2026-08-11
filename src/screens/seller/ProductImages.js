@@ -20,7 +20,6 @@ export default function ProductImages({ navigation }) {
              className="flex-1"
              contentContainerStyle={{
                flexGrow: 1,
-               paddingHorizontal: 24,
                paddingBottom: 30,
              }}
            
@@ -72,8 +71,8 @@ export default function ProductImages({ navigation }) {
                       }}/>
         
         
-         <View className="border-4 border-dotted rounded-xl items-center flex-1 py-20 mx-3" style={{ borderColor: utils.colors.lightGrey }}>
-            <Text className="text-6xl ml-2 mt-4" style={{ color: utils.colors.blue }}>+</Text>
+         <View className="border-4 border-dotted rounded-xl items-center flex-1 py-15 mx-4" style={{ borderColor: utils.colors.lightGrey }}>
+            <Text className="text-6xl ml-1 mt-14" style={{ color: utils.colors.blue }}>+</Text>
             
         </View>
         </View>

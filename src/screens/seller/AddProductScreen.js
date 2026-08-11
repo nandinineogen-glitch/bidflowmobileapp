@@ -25,17 +25,16 @@ export default function AddProductScreen({ navigation }) {
 };
   return (
       <SafeAreaView
-      className="flex-1"
+      
       style={{backgroundColor: utils.colors.white}}>
       <KeyboardAvoidingView
-        className="flex-1"
+       
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView
-          className="flex-1"
+         
           contentContainerStyle={{
             flexGrow: 1,
-            paddingHorizontal: 24,
-            paddingBottom: 30,
+            paddingBottom: 10,
           }}
         
           showsVerticalScrollIndicator={false}>
@@ -88,7 +87,7 @@ export default function AddProductScreen({ navigation }) {
           {selectedValue ? selectedValue.label : 'Select an option...'}
         </Text>
      
-        <Text className="text-sm">{isOpen ? '▲' : '▼'}</Text>
+        <Text className="text-sm">{'▼'}</Text>
       </TouchableOpacity>
        
      

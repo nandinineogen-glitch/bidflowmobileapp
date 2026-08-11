@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils'; 
 
@@ -114,7 +114,6 @@ export default function OrderScreen() {
              className="flex-1"
              contentContainerStyle={{
                flexGrow: 1,
-               paddingHorizontal: 24,
                paddingBottom: 30,
              }}
            

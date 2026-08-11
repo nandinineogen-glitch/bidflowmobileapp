@@ -1,3 +1,4 @@
+
 import React, {useContext, useState} from 'react';
 import {
   View,
@@ -8,9 +9,9 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import utils from '../../utils';
-import {Eye, EyeOff, ArrowLeft} from 'lucide-react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {Eye, EyeOff, ArrowLeft} from 'lucide-react-native';
+import utils from '../../utils';
 import {AuthContext} from '../../context/AuthContext';
 
 const LoginScreen = ({navigation}) => {
@@ -18,48 +19,40 @@ const LoginScreen = ({navigation}) => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = () => {
+  const login = () => {
     setIsLoggedIn(true);
-
-    if (role === 'seller') {
-      navigation.navigate('CompleteProfile');
-    } else {
-      navigation.navigate('AddressScreen');
-    }
   };
 
   return (
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
+
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+
         <ScrollView
           className="flex-1"
           contentContainerStyle={{
-            flexGrow: 1,
             paddingHorizontal: 24,
             paddingBottom: 30,
           }}
-        
           showsVerticalScrollIndicator={false}>
 
-          <View className="pt-5">
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={() => navigation.goBack()}
-              className="w-10 h-10 rounded-full items-center justify-center">
-              <ArrowLeft
-                size={25}
-                color={utils.colors.black}
-              />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            activeOpacity={0.7}
+            className="w-10 h-10 rounded-full items-center justify-center mt-5">
 
-          <View
-            className="mt-12"
-            style={{backgroundColor: utils.colors.white}}>
+            <ArrowLeft
+              size={25}
+              color={utils.colors.black}
+            />
+
+          </TouchableOpacity>
+
+          <View className="mt-12">
 
             <utils.components.Header label="Welcome Back!" />
 
@@ -75,22 +68,19 @@ const LoginScreen = ({navigation}) => {
               Email
             </Text>
 
-            <View
-              className="border rounded-xl px-4"
-              style={{borderColor: utils.colors.lightGrey}}>
-              <TextInput
-                placeholder="Enter your email"
-                placeholderTextColor={utils.colors.grey}
-                className="h-14"
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
-                style={{
-                  color: utils.colors.black,
-                  fontSize: 16,
-                }}
-              />
-            </View>
+            <TextInput
+              placeholder="Enter your email"
+              placeholderTextColor={utils.colors.grey}
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+              className="h-14 border rounded-xl px-4"
+              style={{
+                borderColor: utils.colors.lightGrey,
+                color: utils.colors.black,
+                fontSize: 16,
+              }}
+            />
 
             <Text
               className="text-lg mt-8 mb-2"
@@ -99,16 +89,18 @@ const LoginScreen = ({navigation}) => {
             </Text>
 
             <View
-              className="border rounded-xl px-4 flex-row items-center"
-              style={{borderColor: utils.colors.lightGrey}}>
+              className="h-14 border rounded-xl px-4 flex-row items-center"
+              style={{
+                borderColor: utils.colors.lightGrey,
+              }}>
 
               <TextInput
                 placeholder="Enter your password"
                 placeholderTextColor={utils.colors.grey}
-                className="h-14 flex-1"
                 secureTextEntry={!showPassword}
                 autoCapitalize="none"
                 autoCorrect={false}
+                className="flex-1"
                 style={{
                   color: utils.colors.black,
                   fontSize: 16,
@@ -116,8 +108,8 @@ const LoginScreen = ({navigation}) => {
               />
 
               <TouchableOpacity
-                activeOpacity={0.7}
                 onPress={() => setShowPassword(!showPassword)}
+                activeOpacity={0.7}
                 className="w-10 h-10 items-center justify-center">
 
                 {showPassword ? (
@@ -131,52 +123,68 @@ const LoginScreen = ({navigation}) => {
                     color={utils.colors.grey}
                   />
                 )}
+
               </TouchableOpacity>
+
             </View>
 
             <TouchableOpacity
+              onPress={() => navigation.navigate('Forgot')}
               activeOpacity={0.7}
-              className="items-end mt-6 mb-10"
-              onPress={() => navigation.navigate('Forgot')}>
+              className="items-end mt-6 mb-10">
+
               <Text
                 className="font-bold"
                 style={{color: utils.colors.theme_color}}>
                 Forgot Password?
               </Text>
+
             </TouchableOpacity>
 
             <TouchableOpacity
+              onPress={login}
               activeOpacity={0.8}
-              className="rounded-xl py-4"
-              style={{backgroundColor: utils.colors.theme_color}}
-              onPress={handleLogin}>
+              className="h-14 rounded-xl items-center justify-center"
+              style={{
+                backgroundColor: utils.colors.theme_color,
+              }}>
+
               <Text
-                className="text-center text-lg font-bold"
+                className="text-lg font-bold"
                 style={{color: utils.colors.white}}>
                 Login
               </Text>
+
             </TouchableOpacity>
 
             <View className="flex-row justify-center mt-7">
+
               <Text style={{color: utils.colors.black}}>
                 Don't have an account?
               </Text>
 
               <TouchableOpacity
-                activeOpacity={0.7}
-                onPress={() => navigation.navigate('Register')}>
+                onPress={() => navigation.navigate('Register')}
+                activeOpacity={0.7}>
+
                 <Text
                   className="font-bold"
                   style={{color: utils.colors.theme_color}}>
                   {' '}Sign Up
                 </Text>
+
               </TouchableOpacity>
+
             </View>
+
           </View>
+
         </ScrollView>
+
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
 
 export default LoginScreen;
+
