@@ -130,13 +130,15 @@ export default function EarningScreen() {
               className='w-400'
             />
             <View className='flex-row items-center justify-between mr-8'>
-              <View>
+              <TouchableOpacity  onPress={() =>
+                  navigation.navigate('Transaction')
+                }>
             <Text
               className="text-lg font-bold mt-10 ml-7"
               style={{color: utils.colors.theme_color}}>
               View Payout History
             </Text>
-            </View>
+            </TouchableOpacity>
             <View  className='mt-10' >
             <ChevronRight size={22} color={utils.colors.theme_color}/>
             </View>

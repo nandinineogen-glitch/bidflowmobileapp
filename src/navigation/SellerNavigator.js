@@ -26,7 +26,7 @@ import SettingScreen from '../screens/seller/SettingScreen';
 import EarningScreen from '../screens/seller/EarningScreen';
 import WalletScreen from '../screens/seller/WalletScreen';
 import NotificationScreen from '../screens/seller/NotificationScreen';
-
+import TransactionScreen from '../screens/seller/TransactionScreen';
 import LogoutScreen from '../screens/seller/LogoutScreen';
 import AnalyticsScreen from '../screens/seller/AnalyticsScreen';
 const Stack = createNativeStackNavigator();
@@ -147,6 +147,11 @@ export default function SellerNavigator() {
       <Stack.Screen
         name="NotificationScreen"
         component={NotificationScreen}
+      />
+
+       <Stack.Screen
+        name="Transaction"
+        component={TransactionScreen}
       />
 
     </Stack.Navigator>

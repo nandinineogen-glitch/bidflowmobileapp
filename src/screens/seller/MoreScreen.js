@@ -1,125 +1,169 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   View,
   Text,
-  FlatList,
   TouchableOpacity,
-  KeyboardAvoidingView,
   ScrollView,
+  Image
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {
+  CreditCard,
+  Bell,
+  CircleHelp,
+  Settings,
+  ChevronRight,
+  User,
+} from 'lucide-react-native';
 import utils from '../../utils';
-import { AuthContext } from '../../context/AuthContext';
 
-const MENU = [
-  { id: '1', title: 'Profile', link: 'ProfileScreen' },
-  { id: '2', title: 'Settings', link: 'SettingScreen' },
-  { id: '3', title: 'Earnings', link: 'EarningScreen' },
-  { id: '4', title: 'Wallet', link: 'WalletScreen' },
-  { id: '5', title: 'Analytics', link: 'AnalyticsScreen' },
-  { id: '6', title: 'Notifications', link: 'NotificationScreen' },
-  { id: '7', title: 'Logout', link:'LogoutScreen'}
+
+const MENU_DATA = [
+  {
+    title: 'Profile',
+    icon: User,
+    screen: 'ProfileScreen',
+  },
+  {
+    title: 'Earnings',
+    icon: CreditCard,
+    screen: 'EarningScreen',
+  },
+  {
+    title: 'Analytics',
+    icon: CreditCard,
+    screen: 'AnalyticsScreen',
+  },
+  {
+    title: 'Wallet',
+    icon: CreditCard,
+    screen: 'WalletScreen',
+  },
+  {
+    title: 'Notification',
+    icon: Bell,
+    screen: 'NotificationScreen',
+  },
+  {
+    title: 'Help & Support',
+    icon: CircleHelp,
+    screen: 'HelpSupport',
+  },
+  {
+    title: 'Settings',
+    icon: Settings,
+    screen: 'SettingScreen',
+  },
 ];
 
-export default function MoreScreen({ navigation }) {
-  const { setIsLoggedIn, setRole, setProfileCompleted } =
-    useContext(AuthContext);
-
-  const handlePress = item => {
-    if (item.link === 'Logout') {
-      setIsLoggedIn(false);
-      setRole(null);
-      setProfileCompleted(false);
-      return;
-    }
-
-    navigation.navigate(item.link);
-  };
-
-  const renderItem = ({ item }) => (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      onPress={() => handlePress(item)}
-      className="mx-5 mb-4 rounded-3xl px-5 py-5"
-      style={{
-        backgroundColor: utils.colors.white,
-        borderLeftWidth: 5,
-        borderLeftColor: utils.colors.theme_color,
-        elevation: 5,
-        shadowColor: utils.colors.black,
-        shadowOpacity: 0.08,
-        shadowRadius: 8,
-        shadowOffset: { width: 0, height: 3 },
-      }}
-    >
-      <View className="flex-row items-center justify-between">
-        <Text
-          className="text-lg font-bold"
-          style={{ color: utils.colors.black }}
-        >
-          {item.title}
-        </Text>
-
-        <Text
-          style={{
-            fontSize: 24,
-            color: utils.colors.grey,
-            fontWeight: '600',
-          }}
-        >
-          ›
-        </Text>
-      </View>
-    </TouchableOpacity>
-  );
-
+const MoreScreen = ({navigation}) => {
   return (
-     <SafeAreaView
+    <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
-      <KeyboardAvoidingView
+      <ScrollView
         className="flex-1"
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView
-          className="flex-1"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingBottom: 30,
-          }}
-        
-          showsVerticalScrollIndicator={false}>
-      <View className="px-5 pt-5 pb-2">
-        <Text
-          className="text-3xl font-bold"
-          style={{ color: utils.colors.black }}
-        >
-          More
-        </Text>
-
-        <Text
-          className="mt-1"
-          style={{
-            color: utils.colors.grey,
-            fontSize: 15,
-          }}
-        >
-          Manage your account and preferences
-        </Text>
-      </View>
-
-      <FlatList
-        data={MENU}
-        keyExtractor={item => item.id}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingTop: 20,
+          flexGrow: 1,
           paddingBottom: 30,
         }}
-      />
-       </ScrollView>
-      </KeyboardAvoidingView>
+        showsVerticalScrollIndicator={false}>
+      
+                    
+         
+        <View className="mt-5">
+         
 
+          <View
+            className=" mt-6 p-5"
+           >
+            <View className="flex-row items-center">
+              <View
+                className="h-16 w-16 rounded-full items-center justify-center"
+                style={{
+                  backgroundColor: utils.colors.lightGrey,
+                }}>
+                <Image
+                 style={{
+          width: 80,
+          height: 80,
+          borderRadius: 54,
+         
+        }}
+                  source={utils.assets.profile}
+
+                />
+              </View>
+
+              <View className="ml-4 flex-1">
+                <Text
+                  className="text-xl font-bold"
+                  style={{color: utils.colors.black}}>
+                  John Doe
+                </Text>
+
+                <Text
+                  className="mt-1"
+                  style={{color: utils.colors.grey}}>
+                  john.doe@email.com
+                </Text>
+              </View>
+               <View className="items-center justify-start ml-2">
+  <TouchableOpacity
+    className="h-10 w-10 items-center justify-center"
+    onPress={() => navigation.navigate('NotificationScreen')}
+  >
+    <Bell
+      size={24}
+      color={utils.colors.theme_color}
+    />
+  </TouchableOpacity>
+</View>
+    
+            </View>
+          </View>
+
+          <View
+            className="border rounded-2xl mt-5 overflow-hidden"
+            style={{borderColor: utils.colors.lightGrey}}>
+            {MENU_DATA.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <TouchableOpacity
+                  key={item.title}
+                  onPress={() => navigation.navigate(item.screen)}
+                  className="flex-row items-center px-4 py-4"
+                  style={{
+                    borderBottomWidth:
+                      index === MENU_DATA.length - 1 ? 0 : 1,
+                    borderBottomColor: utils.colors.lightGrey,
+                  }}>
+                  <View className="w-10 items-center">
+                    <Icon
+                      size={21}
+                      color={utils.colors.grey}
+                    />
+                  </View>
+
+                  <Text
+                    className="flex-1 text-base font-medium ml-2"
+                    style={{color: utils.colors.black}}>
+                    {item.title}
+                  </Text>
+
+                  <ChevronRight
+                    size={20}
+                    color={utils.colors.grey}
+                  />
+                </TouchableOpacity>
+              );
+            })}
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
-}
+};
+
+export default MoreScreen;

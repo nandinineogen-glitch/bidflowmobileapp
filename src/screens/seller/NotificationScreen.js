@@ -139,14 +139,7 @@ export default function NotificationScreen({ navigation }) {
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView
-          className="flex-1"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingBottom: 30,
-          }}
         
-          showsVerticalScrollIndicator={false}>
       <View className="px-5 pt-4 pb-2">
         <Text
           style={{ color: utils.colors.black }}
@@ -226,7 +219,7 @@ export default function NotificationScreen({ navigation }) {
           </View>
         }
       />
-      </ScrollView>
+     
       </KeyboardAvoidingView>
     </SafeAreaView>
   );

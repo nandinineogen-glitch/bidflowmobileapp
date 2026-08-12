@@ -108,13 +108,7 @@ export default function ProductListingScreen({navigation}) {
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
-      <ScrollView
-        className="flex-1"
-        contentContainerStyle={{
-          flexGrow: 1,
-          paddingBottom: 30,
-        }}
-        showsVerticalScrollIndicator={false}>
+      
     <View className="flex-row items-center justify-between px-5 pt-4 pb-2">
       <View className="px-5 pt-4 pb-2">
         <Text style={{ color: utils.colors.black }} className="text-2xl font-black">
@@ -145,7 +139,7 @@ export default function ProductListingScreen({navigation}) {
           </View>
         }
       />
-      </ScrollView>
+    
     </SafeAreaView>
   );
 }

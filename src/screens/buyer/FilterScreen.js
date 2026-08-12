@@ -11,7 +11,7 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ChevronDown} from 'lucide-react-native';
 import utils from '../../utils';
-import RangeSlider from 'rn-range-slider';
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 const FilterScreen = ({navigation}) => {
   const [sortBy, setSortBy] = useState('Ending Soon');
@@ -23,6 +23,9 @@ const FilterScreen = ({navigation}) => {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [conditionOpen, setConditionOpen] = useState(false);
   const [locationOpen, setLocationOpen] = useState(false);
+   const [multiSliderValue, setMultiSliderValue] = useState([20, 80]);
+
+  const multiSliderValuesChange = (values) => setMultiSliderValue(values);
 
   const [price, setPrice] = useState(100000);
 
@@ -238,20 +241,20 @@ const FilterScreen = ({navigation}) => {
               </Text>
             </View>
 
-       
-
-      <View style={{flex: 1, flexDirection: 'row'}}>
-<RangeSlider
-    style={{width: 160, height: 80}}
-    min={200}
-    max={1000}
-    step={20}
-    selectionColor="#3df"
-    blankColor="#f618"
-    renderThumb={()=><View className='h-20 w-20 to-blue-800'></View>}
-   />
-
-</View>
+      <View>
+      <Text>Min: {multiSliderValue[0]} - Max: {multiSliderValue[1]}</Text>
+      <MultiSlider
+        values={multiSliderValue}
+        sliderLength={280}
+        onValuesChange={multiSliderValuesChange}
+        min={0}
+        max={100}
+        allowOverlap={false}
+        snapped={true}
+        trackColor={utils.colors.theme_color}
+        thumbColor={utils.colors.theme_color}
+      />
+    </View>
 
 
           </View>
@@ -398,7 +401,7 @@ const FilterScreen = ({navigation}) => {
           <TouchableOpacity
             className="rounded-xl py-4 mt-6"
             style={{backgroundColor: utils.colors.theme_color}}
-            onPress={() => navigation.goBack()}>
+            onPress={() => navigation.navigate('ProductListing')}>
             <Text
               className="text-center text-lg font-bold"
               style={{color: utils.colors.white}}>

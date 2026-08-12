@@ -43,14 +43,14 @@ const DATA = [
   },
 ];
 
-export default function DashboardScreen() {
+export default function DashboardScreen({navigation}) {
   
   const renderActivityItem = ({ item }) => (
      <ScrollView
           className="flex-1"
           contentContainerStyle={{
             flexGrow: 1,
-            paddingBottom: 30,
+            paddingBottom: 0,
           }}
         
           showsVerticalScrollIndicator={false}>
@@ -89,14 +89,7 @@ export default function DashboardScreen() {
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
      
-        <ScrollView
-          className="flex-1"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingBottom: 30,
-          }}
         
-          showsVerticalScrollIndicator={false}>
        
     <View style={{ backgroundColor: utils.colors.white }}>
       
@@ -110,10 +103,22 @@ export default function DashboardScreen() {
             John Doe 
           </Text>
         </View>
-        <Image
-          source={utils.assets.profile}
-          style={{ width: 70, height: 70 }}
-        />
+
+         <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() =>
+                  navigation.navigate('ProfileScreen')
+                }
+                className="w-12 h-12 rounded-full overflow-hidden">
+
+                <Image
+                  source={utils.assets.profile}
+                  className="w-full h-full"
+                  resizeMode="cover"
+                />
+
+              </TouchableOpacity>
+      
       </View>
 
       
@@ -179,7 +184,7 @@ export default function DashboardScreen() {
         contentContainerStyle={{ paddingBottom: 30 }}
 
       />
-     </ScrollView>
+     
     </SafeAreaView>
    
   );

@@ -42,17 +42,17 @@ const MENU_DATA = [
   {
     title: 'Address Book',
     icon: MapPin,
-    screen: 'AddressBook',
+    screen: 'AddressScreen',
   },
   {
     title: 'Payment Methods',
     icon: CreditCard,
-    screen: 'PaymentMethods',
+    screen: 'BankPayout',
   },
   {
-    title: 'Notifications',
+    title: 'Notification',
     icon: Bell,
-    screen: 'Notifications',
+    screen: 'Notification',
   },
   {
     title: 'Help & Support',

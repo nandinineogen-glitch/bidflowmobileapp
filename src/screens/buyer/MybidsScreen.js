@@ -139,7 +139,7 @@ export default function MybidsScreen({navigation}) {
               <TouchableOpacity
                 activeOpacity={0.8}
                 onPress={() => setSelectedTab(item)}
-                className="px-10 py-3 border-b-2"
+                className="px-14 py-3 border-b-2"
                 style={{
                   borderColor: isSelected
                     ? utils.colors.theme_color

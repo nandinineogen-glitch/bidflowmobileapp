@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, FlatList, Switch, KeyboardAvoidingView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, FlatList, Switch, KeyboardAvoidingView, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import utils from '../../utils';
 

@@ -42,7 +42,8 @@ const DATA = [
   },
 ];
 
-export default function CategoriesScreen() {
+export default function CategoriesScreen({navigation}) {
+
     return (
          <SafeAreaView
       className="flex-1"
@@ -50,13 +51,7 @@ export default function CategoriesScreen() {
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView
-          className="flex-1"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingBottom: 30,
-          }}
-          >
+        
             <View>
             <View className="flex-row justify-between px-4">
                 <View>
@@ -64,13 +59,13 @@ export default function CategoriesScreen() {
                 Categories
                 </Text>
                 </View>
-                <TouchableOpacity className='mt-6 mb-2'>
+                <TouchableOpacity className='mt-6 mb-2' onPress={() =>  navigation.navigate('BuyerBottomTab', { screen: 'Search' })}>
 
-                
+               
                <Search
                 size={20}
                 color={utils.colors.black}
-                
+              
               />
 </TouchableOpacity>
                 </View>
@@ -83,7 +78,7 @@ export default function CategoriesScreen() {
                     numColumns={3}
                     renderItem={({ item }) => (
                         <View className='flex-row justify-between px-4 '>
-                        <TouchableOpacity className="py-3 w-28 items-center border border-gray-300 rounded-xl mt-7">
+                        <TouchableOpacity className="py-3 w-28 items-center border border-gray-300 rounded-xl mt-7" onPress={() => navigation.navigate('ProductListing')}>
                            
                               <Image
                                         source={item.image}
@@ -100,7 +95,7 @@ export default function CategoriesScreen() {
                 </View>
                 </View>
                 </View>
-                </ScrollView>
+               
                 </KeyboardAvoidingView>
                 </SafeAreaView>  
     );

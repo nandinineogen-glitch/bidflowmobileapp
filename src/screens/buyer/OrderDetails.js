@@ -19,9 +19,10 @@ const OrderDetailsScreen = ({navigation}) => {
       style={{backgroundColor: utils.colors.white}}>
       <ScrollView
         className="flex-1"
-        contentContainerStyle={{
-          flexGrow: 1,
-          paddingBottom: 30,
+       contentContainerStyle={{
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+        
         }}
         showsVerticalScrollIndicator={false}>
         <View className="pt-4">

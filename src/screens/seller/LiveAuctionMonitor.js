@@ -93,14 +93,7 @@ export default function LiveAuctionMonitorScreen({ navigation }) {
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
      
-        <ScrollView
-          className="flex-1"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingBottom: 30,
-          }}
         
-          showsVerticalScrollIndicator={false}>
 
       <View className="px-6 pt-3">
 
@@ -267,7 +260,7 @@ export default function LiveAuctionMonitorScreen({ navigation }) {
         </TouchableOpacity>
 
       </View>
-    </ScrollView>
+  
     </SafeAreaView>
   );
 }

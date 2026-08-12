@@ -7,8 +7,9 @@ import {
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 import utils from '../../utils';
-export default function BidSuccess({navigation, route}) {
+export default function BidSuccess({route}) {
   const auction = route?.params?.auction || {
     title: 'Congratulations!',
     subtitle: 'You are now the highest bidder.',
@@ -19,6 +20,7 @@ export default function BidSuccess({navigation, route}) {
     image: utils.assets.gavel,
   };
 
+  const navigation = useNavigation();
   return (
     <SafeAreaView
       className="flex-1"
@@ -88,7 +90,7 @@ export default function BidSuccess({navigation, route}) {
               <TouchableOpacity
                 className="flex-[1.6] h-14 w-40 mt-28 rounded-2xl items-center justify-center"
                 style={{backgroundColor: utils.colors.theme_color}}
-                onPress={() => navigation.navigate('Mybids')}>
+                onPress={() => navigation.navigate('BuyerBottomTab', { screen: 'Mybids' })}>
                 <Text
                   className="font-bold "
                   style={{color: utils.colors.white}}>

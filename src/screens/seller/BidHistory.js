@@ -85,14 +85,7 @@ export default function BidHistory() {
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView
-          className="flex-1"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingBottom: 30,
-          }}
-        
-          showsVerticalScrollIndicator={false}>
+       
       <View className="flex-1 mx-8">
         <View className="pt-6 pb-6">
           <Text
@@ -117,7 +110,7 @@ export default function BidHistory() {
                   contentContainerStyle={{ paddingBottom: 20 }}
                 />
         </View>
-        </ScrollView>
+       
         </KeyboardAvoidingView>
         </SafeAreaView>
   );

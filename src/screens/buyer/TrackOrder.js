@@ -54,9 +54,9 @@ const TrackOrderScreen = ({navigation}) => {
       <ScrollView
         className="flex-1"
         contentContainerStyle={{
-          flexGrow: 1,
-          paddingBottom: 30,
-        }}
+            paddingHorizontal: 24,
+            paddingBottom: 30,
+          }}
         showsVerticalScrollIndicator={false}>
         <View className="pt-4">
           <TouchableOpacity

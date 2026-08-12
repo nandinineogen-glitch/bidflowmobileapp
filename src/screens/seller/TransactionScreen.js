@@ -23,7 +23,7 @@ const DATA = [
   
 ];
 
-export default function WalletScreen() {
+export default function TransactionScreen() {
   
     const renderActivityItem = ({ item }) => (
     <ScrollView>
@@ -67,67 +67,7 @@ export default function WalletScreen() {
     <View style={{ backgroundColor: utils.colors.white }}>
       
      
-      <View className="flex-row items-center justify-between px-5 pt-6 pb-4">
-        <View>
-          <Text className="text-3xl font-bold mt-0.5" style={{ color: utils.colors.black }}>
-            Wallet
-          </Text>
-          <Text className="text-xl mt-2" style={{ color: utils.colors.grey }}>
-          Manage ypour balance and payouts.
-          </Text>
-        </View>
-        
-      </View>
-
       
-      <View className="mx-5 my-3 py-10 pt-7 rounded-2xl p-5" style={{ backgroundColor: utils.colors.theme_color }}>
-        
-        <View className="flex-row justify-between items-start">
-          <View>
-            <Text className="text-xl font-bold" style={{ color: utils.colors.white }}>Avalilable balance</Text>
-            <Text className="text-3xl font-bold mt-1.5" style={{ color: utils.colors.white }}>₹1,24,560</Text>
-          </View>
-         <ChevronDown style={{ color : utils.colors.white}}/>
-        </View>
-      </View>
-
-      
-    
-
-     
-      <View className="flex-row items-center justify-between mt-2 ml-2 mr-7 mb-4">
-      
-      <Text style={{ color: utils.colors.grey }} className="text-lg px-5 pt-5 pb-2">
-        On hold
-      </Text>
-      
-      <Text style={{ color: utils.colors.grey }} className="text-lg">
-        ₹85,420
-      </Text>
-      </View>
-
-     
-
-     <View className="flex-row items-center justify-between mt-2 ml-2 mr-7">
-      
-      <Text style={{ color: utils.colors.grey }} className="text-lg px-5 pt-5 pb-2">
-        Total Balance
-      </Text>
-      
-      <Text style={{ color: utils.colors.grey }} className="text-lg">
-        ₹66,240
-      </Text>
-      </View>
-    
-
-       <TouchableOpacity className="rounded-xl py-4 mx-4 mt-8" style={{ backgroundColor: utils.colors.theme_color }}>
-                  <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Withdraw Funds</Text>
-                </TouchableOpacity>
-
-    
-                    
-            
-    </View>
       
     <Text style={{ color: utils.colors.black }} className="text-xl font-bold px-5 pt-5 pb-2 mt-5">
         Transaction History
@@ -141,6 +81,7 @@ export default function WalletScreen() {
               contentContainerStyle={{ paddingBottom: 30 }}
       
             />
+            </View>
             
     </SafeAreaView>
     

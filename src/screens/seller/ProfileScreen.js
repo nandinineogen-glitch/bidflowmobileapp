@@ -97,14 +97,7 @@ export default function ProfileScreen({navigation}) {
          className="flex-1"
          style={{backgroundColor: utils.colors.white}}>
         
-           <ScrollView
-             className="flex-1"
-             contentContainerStyle={{
-               flexGrow: 1,
-               paddingBottom: 30,
-             }}
-           
-             showsVerticalScrollIndicator={false}>
+         
       
       <View
         style={{
@@ -186,7 +179,7 @@ export default function ProfileScreen({navigation}) {
           shadowRadius: 12,
         }}
       />
-      </ScrollView>
+      
     </SafeAreaView>
   );
 }

@@ -12,7 +12,7 @@ import {
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Search, Clock3} from 'lucide-react-native';
+import {Search, Clock3, ChevronRight} from 'lucide-react-native';
 import utils from '../../utils';
 
 const CATEGORIES = [
@@ -41,41 +41,7 @@ const CATEGORIES = [
     name: 'Laptops',
     image: utils.assets.onboarding_bid,
   },
-  {
-    id: '6',
-    name: 'Cameras',
-    image: utils.assets.onboarding_bid,
-  },
-  {
-    id: '7',
-    name: 'Audio',
-    image: utils.assets.onboarding_bid,
-  },
-  {
-    id: '8',
-    name: 'Home',
-    image: utils.assets.onboarding_bid,
-  },
-  {
-    id: '9',
-    name: 'Gaming',
-    image: utils.assets.onboarding_bid,
-  },
-  {
-    id: '10',
-    name: 'Vehicles',
-    image: utils.assets.onboarding_bid,
-  },
-  {
-    id: '11',
-    name: 'Collectibles',
-    image: utils.assets.onboarding_bid,
-  },
-  {
-    id: '12',
-    name: 'More',
-    image: utils.assets.onboarding_bid,
-  },
+ 
 ];
 
 const AUCTIONS = [
@@ -156,7 +122,7 @@ const BuyerHomeScreen = ({navigation}) => {
         className="items-center mr-5">
 
         <View
-          className="w-14 h-14 rounded-2xl items-center justify-center"
+          className="w-16 h-14 rounded-2xl items-center justify-center"
           style={{
             backgroundColor: isSelected
               ? utils.colors.theme_color
@@ -190,7 +156,7 @@ const BuyerHomeScreen = ({navigation}) => {
       <TouchableOpacity
         activeOpacity={0.8}
         onPress={() =>
-          navigation.navigate('AuctionDetails', {
+          navigation.navigate('LiveAuction', {
             auction: item,
           })
         }
@@ -287,6 +253,7 @@ const BuyerHomeScreen = ({navigation}) => {
         <ScrollView
           className="flex-1"
           showsVerticalScrollIndicator={false}
+          
           contentContainerStyle={{
             paddingBottom: 30,
           }}>
@@ -402,7 +369,7 @@ const BuyerHomeScreen = ({navigation}) => {
             keyExtractor={item => item.id}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{
-              paddingHorizontal: 20,
+              paddingHorizontal: 30,
             }}
           />
 
@@ -422,7 +389,7 @@ const BuyerHomeScreen = ({navigation}) => {
                 data={getAuctions()}
                 renderItem={renderAuction}
                 keyExtractor={item => item.id}
-                scrollEnabled={false}
+                scrollEnabled={true}
               />
 
             ) : (

@@ -161,14 +161,7 @@ export default function AuctionScreen({ navigation }) {
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView
-          className="flex-1"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingBottom: 30,
-          }}
-        
-          showsVerticalScrollIndicator={false}>
+       
       <View className="px-5 pt-4 pb-2">
         <Text
           style={{ color: utils.colors.black }}
@@ -184,7 +177,7 @@ export default function AuctionScreen({ navigation }) {
           data={TABS}
           showsHorizontalScrollIndicator={false}
           keyExtractor={item => item}
-          contentContainerStyle={{ gap: 8 }}
+          contentContainerStyle={{ gap: 14 }}
           renderItem={({ item }) => {
             const isActive = selectedTab === item;
 
@@ -237,7 +230,7 @@ export default function AuctionScreen({ navigation }) {
           </View>
         }
       />
-      </ScrollView>
+      
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
