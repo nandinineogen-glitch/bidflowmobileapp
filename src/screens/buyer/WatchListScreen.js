@@ -1,29 +1,28 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import utils from '../../utils'; 
+import React from 'react';
 import {
-  Heart,
-  Filter,
-  Clock3,
-  
-} from 'lucide-react-native';
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {Heart, Clock3} from 'lucide-react-native';
+import utils from '../../utils';
 
 const AUCTIONS_DATA = [
   {
     id: '1',
     name: 'iPhone 14 Pro Max',
     Price: '₹45,000',
-    bidsCount: '18 Bids',
     extra: 'Apple iphone',
     timeRemaining: '2h 30m 30s',
-    image: utils.assets.onboarding_bid, 
+    image: utils.assets.onboarding_bid,
   },
   {
     id: '2',
     name: 'MacBook Air M2',
     Price: '₹78,500',
-    bidsCount: '12 Bids',
     extra: 'Apple laptop',
     timeRemaining: '1h 15m 45s',
     image: utils.assets.onboarding_bid,
@@ -32,7 +31,6 @@ const AUCTIONS_DATA = [
     id: '3',
     name: 'Sony WH-1000XM5',
     Price: '₹18,000',
-    bidsCount: '5 Bids',
     extra: 'Sony headphones',
     timeRemaining: '3h 20m',
     image: utils.assets.onboarding_bid,
@@ -41,104 +39,99 @@ const AUCTIONS_DATA = [
     id: '4',
     name: 'Rolex Submariner',
     Price: '₹4,85,000',
-    bidsCount: '8 Bids',
     extra: 'Rolex watch',
     timeRemaining: '2h 30m 30s',
     image: utils.assets.onboarding_bid,
   },
 ];
 
-
 export default function WatchList({navigation}) {
-  const handleSave = () =>
-  {
-    navigation.navigate('ProductDetails')
-  }
+  const renderAuctionItem = ({item}) => (
+    <TouchableOpacity
+      onPress={() => navigation.navigate('ProductDetails')}
+      className="flex-row items-center px-5 py-4 border-b"
+      style={{borderColor: utils.colors.lightGrey}}>
 
+      <View
+        className="h-16 w-16 rounded-2xl items-center justify-center mr-4 border"
+        style={{borderColor: utils.colors.lightGrey}}>
+        <Image
+          source={item.image}
+          style={{width: 65, height: 60}}
+          resizeMode="contain"
+        />
+      </View>
 
+      <View className="flex-1">
+        <View className="flex-row items-center justify-between">
+          <Text
+            className="font-bold text-[15px] flex-1"
+            style={{color: utils.colors.black}}>
+            {item.name}
+          </Text>
 
-  const renderAuctionItem = ({ item }) => (
-    <View className="flex-row justify-between px-5 py-4 ">
-      <TouchableOpacity className="flex-row items-center flex-1 mr-3" onPress={handleSave}>
-       
-        <View className="h-16 w-16 rounded-2xl items-center justify-center mr-4 border" style={{ borderColor: utils.colors.lightGrey }}>
-          <Image
-            source={item.image}
-            style={{ width: 65, height: 60 }}
-            resizeMode="contain"
+          <Heart
+            size={20}
+            color={utils.colors.red}
+            fill={utils.colors.red}
           />
         </View>
 
-    
-        <View className="flex-1">
-             <View className="flex-row justify-between" style={{ borderColor: utils.colors.lightGrey }}>
-                <View>
-          <Text style={{ color: utils.colors.black }} className="font-bold text-[15px]">
-            {item.name}
-          </Text>
-          </View>
-          <Heart
-          size={20}
-          color={utils.colors.red}
-          fill={utils.colors.red}
-          />
-</View>
-          <Text style={{ color: utils.colors.black }} className="font-bold text-[15px]">
-            {item.extra}
-          </Text>
-         
-            <Text style={{ color: utils.colors.black }} className="font-bold text-[15px]">
-              {item.Price}
-            </Text>
-           
-                <View className="flex-row items-center">
-                    <Clock3
+        <Text
+          className="font-bold text-[15px] mt-1"
+          style={{color: utils.colors.black}}>
+          {item.extra}
+        </Text>
+
+        <Text
+          className="font-bold text-[15px] mt-1"
+          style={{color: utils.colors.black}}>
+          {item.Price}
+        </Text>
+
+        <View className="flex-row items-center mt-1">
+          <Clock3
             size={13}
             color={utils.colors.red}
           />
-             <Text className="mt-0.5 ml-2" style={{ color: utils.colors.red }}>
+
+          <Text
+            className="ml-2 text-sm"
+            style={{color: utils.colors.red}}>
             {item.timeRemaining}
           </Text>
-          </View>
-          
-          
-        
         </View>
-      </TouchableOpacity>
-
-   
-      
-    </View>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
-   <SafeAreaView
+    <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
-      
-       
-    <View className="flex-row items-center justify-between px-5 pt-4 pb-2">
-      <View className="px-5 pt-4 pb-2">
-        <Text style={{ color: utils.colors.black }} className="text-2xl font-black">
-           My WatchList (4)
+
+      <View className="px-5 pt-5 pb-3">
+        <Text
+          className="text-2xl font-black"
+          style={{color: utils.colors.black}}>
+          My WatchList ({AUCTIONS_DATA.length})
         </Text>
       </View>
-        
-  </View>
 
       <FlatList
         data={AUCTIONS_DATA}
         renderItem={renderAuctionItem}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        keyExtractor={item => item.id}
+        contentContainerStyle={{paddingBottom: 20}}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={
           <View className="items-center justify-center py-20">
-            <Text style={{ color: utils.colors.grey }}>No auctions found in this category.</Text>
+            <Text style={{color: utils.colors.grey}}>
+              No auctions found.
+            </Text>
           </View>
         }
       />
-    
     </SafeAreaView>
   );
 }

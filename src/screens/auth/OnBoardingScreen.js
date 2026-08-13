@@ -1,4 +1,3 @@
-
 import React, {useRef, useState} from 'react';
 import {
   View,
@@ -8,6 +7,7 @@ import {
   Image,
   FlatList,
 } from 'react-native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
 import utils from '../../utils';
 
@@ -39,7 +39,6 @@ const DATA = [
 
 const OnBoardingScreen = ({navigation}) => {
   const [current, setCurrent] = useState(0);
-
   const flatListRef = useRef(null);
 
   const nextPage = () => {
@@ -149,7 +148,6 @@ const OnBoardingScreen = ({navigation}) => {
 
       <TouchableOpacity
         onPress={nextPage}
-        activeOpacity={0.8}
         className="rounded-xl h-14 mx-12 mb-10 items-center justify-center"
         style={{
           backgroundColor: utils.colors.theme_color,
@@ -170,4 +168,3 @@ const OnBoardingScreen = ({navigation}) => {
 };
 
 export default OnBoardingScreen;
-

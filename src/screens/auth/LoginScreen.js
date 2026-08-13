@@ -1,4 +1,3 @@
-
 import React, {useContext, useState} from 'react';
 import {
   View,
@@ -9,13 +8,14 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Eye, EyeOff, ArrowLeft} from 'lucide-react-native';
 import utils from '../../utils';
 import {AuthContext} from '../../context/AuthContext';
 
 const LoginScreen = ({navigation}) => {
-  const {role, setIsLoggedIn} = useContext(AuthContext);
+  const {setIsLoggedIn} = useContext(AuthContext);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -42,7 +42,6 @@ const LoginScreen = ({navigation}) => {
 
           <TouchableOpacity
             onPress={() => navigation.goBack()}
-            activeOpacity={0.7}
             className="w-10 h-10 rounded-full items-center justify-center mt-5">
 
             <ArrowLeft
@@ -109,7 +108,6 @@ const LoginScreen = ({navigation}) => {
 
               <TouchableOpacity
                 onPress={() => setShowPassword(!showPassword)}
-                activeOpacity={0.7}
                 className="w-10 h-10 items-center justify-center">
 
                 {showPassword ? (
@@ -130,7 +128,6 @@ const LoginScreen = ({navigation}) => {
 
             <TouchableOpacity
               onPress={() => navigation.navigate('Forgot')}
-              activeOpacity={0.7}
               className="items-end mt-6 mb-10">
 
               <Text
@@ -143,7 +140,6 @@ const LoginScreen = ({navigation}) => {
 
             <TouchableOpacity
               onPress={login}
-              activeOpacity={0.8}
               className="h-14 rounded-xl items-center justify-center"
               style={{
                 backgroundColor: utils.colors.theme_color,
@@ -164,8 +160,7 @@ const LoginScreen = ({navigation}) => {
               </Text>
 
               <TouchableOpacity
-                onPress={() => navigation.navigate('Register')}
-                activeOpacity={0.7}>
+                onPress={() => navigation.navigate('Register')}>
 
                 <Text
                   className="font-bold"
@@ -187,4 +182,3 @@ const LoginScreen = ({navigation}) => {
 };
 
 export default LoginScreen;
-

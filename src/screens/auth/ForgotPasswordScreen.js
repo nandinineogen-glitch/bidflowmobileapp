@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   View,
@@ -9,6 +8,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ArrowLeft} from 'lucide-react-native';
 import utils from '../../utils';
@@ -18,7 +18,7 @@ const ForgotPasswordScreen = ({navigation}) => {
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
-      
+
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
@@ -34,10 +34,12 @@ const ForgotPasswordScreen = ({navigation}) => {
           <TouchableOpacity
             onPress={() => navigation.goBack()}
             className="w-10 h-10 rounded-full items-center justify-center mt-5">
+
             <ArrowLeft
               size={25}
               color={utils.colors.black}
             />
+
           </TouchableOpacity>
 
           <View className="mt-16">
@@ -71,7 +73,6 @@ const ForgotPasswordScreen = ({navigation}) => {
 
             <TouchableOpacity
               onPress={() => navigation.navigate('OTPScreen')}
-              activeOpacity={0.8}
               className="rounded-xl h-14 items-center justify-center mt-10"
               style={{
                 backgroundColor: utils.colors.theme_color,
@@ -87,10 +88,10 @@ const ForgotPasswordScreen = ({navigation}) => {
 
           </View>
         </ScrollView>
+
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
 
 export default ForgotPasswordScreen;
-

@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -7,9 +6,14 @@ import {
   TouchableOpacity,
   ScrollView,
   FlatList,
+  Modal,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Clock3, Users} from 'lucide-react-native';
+import {Clock3, Users, X} from 'lucide-react-native';
 import utils from '../../utils';
 
 const BIDS = [
@@ -36,15 +40,22 @@ const BIDS = [
   },
 ];
 
-export default function LiveAuctionScreen({navigation, route}) {
-  const auction = route?.params?.auction || {
-    title: 'iPhone 14 Pro Max 256GB',
-    subtitle: 'Deep Purple',
-    price: 45000,
-    highestBidLabel: 'Highest Bid',
-    bids: 32,
-    time: '02h 15m 30s',
-    image: utils.assets.onboarding_bid,
+export default function LiveAuctionScreen({navigation}) {
+  const [showBidModal, setShowBidModal] = useState(false);
+  const [bidAmount, setBidAmount] = useState('62500');
+
+  const handlePlaceBid = () => {
+    setShowBidModal(true);
+  };
+
+  const addBidAmount = amount => {
+    const currentAmount = Number(bidAmount) || 0;
+    setBidAmount(String(currentAmount + amount));
+  };
+
+  const handleSubmitBid = () => {
+    setShowBidModal(false);
+    navigation.navigate('BidSuccess');
   };
 
   const renderBid = ({item}) => {
@@ -58,7 +69,9 @@ export default function LiveAuctionScreen({navigation, route}) {
 
           <Text
             className="ml-3 text-base font-semibold"
-            style={{color: utils.colors.black}}>
+            style={{
+              color: utils.colors.black,
+            }}>
             {item.name}
           </Text>
         </View>
@@ -66,13 +79,17 @@ export default function LiveAuctionScreen({navigation, route}) {
         <View className="items-end">
           <Text
             className="text-base font-bold"
-            style={{color: utils.colors.black}}>
+            style={{
+              color: utils.colors.black,
+            }}>
             {item.amount}
           </Text>
 
           <Text
             className="text-xs"
-            style={{color: utils.colors.grey}}>
+            style={{
+              color: utils.colors.grey,
+            }}>
             {item.time}
           </Text>
         </View>
@@ -83,26 +100,41 @@ export default function LiveAuctionScreen({navigation, route}) {
   return (
     <SafeAreaView
       className="flex-1"
-      style={{backgroundColor: utils.colors.white}}>
+      style={{
+        backgroundColor: utils.colors.white,
+      }}>
+
       <ScrollView
         className="flex-1"
-        contentContainerStyle={{paddingBottom: 30}}>
+        contentContainerStyle={{
+          paddingBottom: 30,
+        }}
+        showsVerticalScrollIndicator={false}>
+
         <View className="px-5 pt-3">
 
           <View className="flex-row items-center justify-between mb-4">
+
             <View
               className="px-5 py-2 rounded-lg"
-              style={{backgroundColor: utils.colors.red}}>
+              style={{
+                backgroundColor: utils.colors.red,
+              }}>
               <Text
                 className="font-bold"
-                style={{color: utils.colors.white}}>
+                style={{
+                  color: utils.colors.white,
+                }}>
                 Live
               </Text>
             </View>
 
             <TouchableOpacity
               className="flex-row items-center justify-center border rounded-lg px-3 py-2"
-              style={{borderColor: utils.colors.lightGrey}}>
+              style={{
+                borderColor: utils.colors.lightGrey,
+              }}>
+
               <Users
                 size={18}
                 color={utils.colors.grey}
@@ -110,10 +142,14 @@ export default function LiveAuctionScreen({navigation, route}) {
 
               <Text
                 className="ml-2"
-                style={{color: utils.colors.black}}>
+                style={{
+                  color: utils.colors.black,
+                }}>
                 142
               </Text>
+
             </TouchableOpacity>
+
           </View>
 
           <View
@@ -122,48 +158,65 @@ export default function LiveAuctionScreen({navigation, route}) {
               height: 200,
               backgroundColor: utils.colors.white,
             }}>
+
             <Image
-              source={auction.image}
+              source={utils.assets.onboarding_bid}
               resizeMode="contain"
               className="w-[70%] h-[90%]"
             />
+
           </View>
 
           <Text
             className="text-2xl font-black mt-5"
-            style={{color: utils.colors.black}}>
-            {auction.title}
+            style={{
+              color: utils.colors.black,
+            }}>
+            iPhone 14 Pro Max 256GB
           </Text>
 
           <Text
             className="text-lg font-semibold mt-1"
-            style={{color: utils.colors.black}}>
-            {auction.subtitle}
+            style={{
+              color: utils.colors.black,
+            }}>
+            Deep Purple
           </Text>
 
           <View className="flex-row items-end justify-between mt-4">
+
             <View>
+
               <Text
                 className="text-2xl font-black"
-                style={{color: utils.colors.black}}>
-                ₹{auction.price.toLocaleString('en-IN')}
+                style={{
+                  color: utils.colors.black,
+                }}>
+                ₹45,000
               </Text>
 
               <Text
                 className="text-sm"
-                style={{color: utils.colors.grey}}>
-                {auction.highestBidLabel}
+                style={{
+                  color: utils.colors.grey,
+                }}>
+                Highest Bid
               </Text>
+
             </View>
 
             <Text
               className="text-sm"
-              style={{color: utils.colors.grey}}>
-              {auction.bids} Bids
+              style={{
+                color: utils.colors.grey,
+              }}>
+              32 Bids
             </Text>
+
           </View>
 
           <View className="flex-row items-center mt-4">
+
             <Clock3
               size={18}
               color={utils.colors.red}
@@ -171,14 +224,19 @@ export default function LiveAuctionScreen({navigation, route}) {
 
             <Text
               className="text-lg font-bold ml-2"
-              style={{color: utils.colors.red}}>
-              {auction.time}
+              style={{
+                color: utils.colors.red,
+              }}>
+              02h 15m 30s
             </Text>
+
           </View>
 
           <Text
             className="text-xl font-bold mt-10 mb-3"
-            style={{color: utils.colors.black}}>
+            style={{
+              color: utils.colors.black,
+            }}>
             Bids History
           </Text>
 
@@ -190,19 +248,220 @@ export default function LiveAuctionScreen({navigation, route}) {
           />
 
           <TouchableOpacity
-            activeOpacity={0.8}
             className="h-14 rounded-2xl items-center justify-center mt-6"
-            style={{backgroundColor: utils.colors.theme_color}}
-            onPress={() => navigation.navigate('BidSuccess')}>
+            style={{
+              backgroundColor: utils.colors.theme_color,
+            }}
+            onPress={handlePlaceBid}>
+
             <Text
               className="text-base font-bold"
-              style={{color: utils.colors.white}}>
+              style={{
+                color: utils.colors.white,
+              }}>
               Place Bid
             </Text>
+
           </TouchableOpacity>
 
         </View>
       </ScrollView>
+
+      <Modal
+        visible={showBidModal}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setShowBidModal(false)}>
+
+        <KeyboardAvoidingView
+          className="flex-1"
+          behavior={
+            Platform.OS === 'ios'
+              ? 'padding'
+              : undefined
+          }>
+
+          <View className="flex-1 bg-black/50 justify-end">
+
+            <View
+              className="rounded-t-3xl px-5 pt-6 pb-8"
+              style={{
+                backgroundColor: utils.colors.white,
+              }}>
+
+              <View className="flex-row items-center justify-between">
+
+                <Text
+                  className="text-xl font-bold"
+                  style={{
+                    color: utils.colors.black,
+                  }}>
+                  Place Your Bid
+                </Text>
+
+                <TouchableOpacity
+                  className="w-9 h-9 items-center justify-center"
+                  onPress={() => setShowBidModal(false)}>
+
+                  <X
+                    size={23}
+                    color={utils.colors.black}
+                  />
+
+                </TouchableOpacity>
+
+              </View>
+
+              <View className="flex-row justify-between mt-7">
+
+                <View>
+
+                  <Text
+                    className="text-sm"
+                    style={{
+                      color: utils.colors.grey,
+                    }}>
+                    Current Bid
+                  </Text>
+
+                  <Text
+                    className="text-lg font-bold mt-1"
+                    style={{
+                      color: utils.colors.black,
+                    }}>
+                    ₹45,000
+                  </Text>
+
+                </View>
+
+                <View>
+
+                  <Text
+                    className="text-sm"
+                    style={{
+                      color: utils.colors.grey,
+                    }}>
+                    Next Minimum Bid
+                  </Text>
+
+                  <Text
+                    className="text-lg font-bold mt-1"
+                    style={{
+                      color: utils.colors.black,
+                    }}>
+                    ₹45,500
+                  </Text>
+
+                </View>
+
+              </View>
+
+              <Text
+                className="text-base font-bold mt-7"
+                style={{
+                  color: utils.colors.black,
+                }}>
+                Enter Bid Amount
+              </Text>
+
+              <View className="flex-row mt-4">
+
+                <TouchableOpacity
+                  className="flex-1 h-14 rounded-xl border items-center justify-center mr-2"
+                  style={{
+                    borderColor: utils.colors.lightGrey,
+                  }}
+                  onPress={() => addBidAmount(500)}>
+
+                  <Text
+                    className="font-semibold"
+                    style={{
+                      color: utils.colors.black,
+                    }}>
+                    +₹500
+                  </Text>
+
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  className="flex-1 h-14 rounded-xl border items-center justify-center mx-1"
+                  style={{
+                    borderColor: utils.colors.lightGrey,
+                  }}
+                  onPress={() => addBidAmount(1000)}>
+
+                  <Text
+                    className="font-semibold"
+                    style={{
+                      color: utils.colors.black,
+                    }}>
+                    +₹1,000
+                  </Text>
+
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  className="flex-1 h-14 rounded-xl border items-center justify-center ml-2"
+                  style={{
+                    borderColor: utils.colors.lightGrey,
+                  }}
+                  onPress={() => addBidAmount(2000)}>
+
+                  <Text
+                    className="font-semibold"
+                    style={{
+                      color: utils.colors.black,
+                    }}>
+                    +₹2,000
+                  </Text>
+
+                </TouchableOpacity>
+
+              </View>
+
+              <TextInput
+                value={bidAmount}
+                onChangeText={text => {
+                  const amount = text.replace(
+                    /[^0-9]/g,
+                    '',
+                  );
+
+                  setBidAmount(amount);
+                }}
+                keyboardType="numeric"
+                className="h-14 border rounded-xl px-4 mt-5 text-base font-semibold"
+                style={{
+                  borderColor: utils.colors.lightGrey,
+                  color: utils.colors.black,
+                }}
+              />
+
+              <TouchableOpacity
+                className="h-14 rounded-2xl items-center justify-center mt-5"
+                style={{
+                  backgroundColor:
+                    utils.colors.theme_color,
+                }}
+                onPress={handleSubmitBid}>
+
+                <Text
+                  className="text-base font-bold"
+                  style={{
+                    color: utils.colors.white,
+                  }}>
+                  Submit Bid
+                </Text>
+
+              </TouchableOpacity>
+
+            </View>
+
+          </View>
+
+        </KeyboardAvoidingView>
+      </Modal>
+
     </SafeAreaView>
   );
 }

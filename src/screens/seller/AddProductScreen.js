@@ -112,7 +112,7 @@ export default function AddProductScreen({ navigation }) {
         </View>
       )}
     </View>
-                <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-48" style={{ backgroundColor: utils.colors.theme_color }}>
+                <TouchableOpacity onPress={handleSave} className="rounded-xl py-4 mb-4 mt-32" style={{ backgroundColor: utils.colors.theme_color }}>
             <Text className="text-center text-lg font-bold" style={{ color: utils.colors.white }}>Continue</Text>
           </TouchableOpacity>
     </View>    

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   View,
@@ -9,6 +8,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
 import utils from '../../utils';
 
@@ -22,9 +22,7 @@ const OTPScreen = ({navigation}) => {
 
       <KeyboardAvoidingView
         className="flex-1"
-        behavior={
-          Platform.OS === 'ios' ? 'padding' : undefined
-        }>
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
 
         <ScrollView
           className="flex-1"
@@ -129,10 +127,7 @@ const OTPScreen = ({navigation}) => {
             </Text>
 
             <TouchableOpacity
-              onPress={() =>
-                navigation.navigate('ResetPassword')
-              }
-              activeOpacity={0.8}
+              onPress={() => navigation.navigate('ResetPassword')}
               className="h-14 rounded-xl items-center justify-center mt-28"
               style={{
                 backgroundColor: utils.colors.theme_color,
@@ -159,4 +154,3 @@ const OTPScreen = ({navigation}) => {
 };
 
 export default OTPScreen;
-

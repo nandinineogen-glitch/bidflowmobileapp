@@ -1,4 +1,3 @@
-
 import React, {useContext, useState} from 'react';
 import {
   View,
@@ -9,6 +8,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Eye, EyeOff} from 'lucide-react-native';
 import utils from '../../utils';
@@ -38,9 +38,7 @@ const RegisterScreen = ({navigation}) => {
 
       <KeyboardAvoidingView
         className="flex-1"
-        behavior={
-          Platform.OS === 'ios' ? 'padding' : undefined
-        }>
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
 
         <ScrollView
           className="flex-1"
@@ -146,10 +144,7 @@ const RegisterScreen = ({navigation}) => {
               />
 
               <TouchableOpacity
-                onPress={() =>
-                  setShowPassword(!showPassword)
-                }
-                activeOpacity={0.7}
+                onPress={() => setShowPassword(!showPassword)}
                 className="w-10 h-10 items-center justify-center">
 
                 {showPassword ? (
@@ -170,7 +165,6 @@ const RegisterScreen = ({navigation}) => {
 
             <TouchableOpacity
               onPress={signUp}
-              activeOpacity={0.8}
               className="h-14 rounded-xl items-center justify-center mt-8"
               style={{
                 backgroundColor: utils.colors.theme_color,
@@ -196,8 +190,7 @@ const RegisterScreen = ({navigation}) => {
               </Text>
 
               <TouchableOpacity
-                onPress={() => navigation.navigate('Login')}
-                activeOpacity={0.7}>
+                onPress={() => navigation.navigate('Login')}>
 
                 <Text
                   className="font-bold"
@@ -222,4 +215,3 @@ const RegisterScreen = ({navigation}) => {
 };
 
 export default RegisterScreen;
-

@@ -1,4 +1,3 @@
-
 import React, {useContext, useState} from 'react';
 import {
   View,
@@ -8,6 +7,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {AuthContext} from '../../context/AuthContext';
 import utils from '../../utils';
@@ -89,7 +89,6 @@ const RoleSelectionScreen = ({navigation}) => {
 
             <TouchableOpacity
               onPress={() => setSelectedRole('buyer')}
-              activeOpacity={0.8}
               className="w-[47%] h-44 border rounded-xl items-center"
               style={{
                 borderColor:
@@ -119,7 +118,6 @@ const RoleSelectionScreen = ({navigation}) => {
 
             <TouchableOpacity
               onPress={() => setSelectedRole('seller')}
-              activeOpacity={0.8}
               className="w-[47%] h-44 border rounded-xl items-center"
               style={{
                 borderColor:
@@ -151,7 +149,6 @@ const RoleSelectionScreen = ({navigation}) => {
 
           <TouchableOpacity
             onPress={continueButton}
-            activeOpacity={0.8}
             className="h-14 rounded-xl items-center justify-center mt-14"
             style={{
               backgroundColor: utils.colors.theme_color,
@@ -176,4 +173,3 @@ const RoleSelectionScreen = ({navigation}) => {
 };
 
 export default RoleSelectionScreen;
-

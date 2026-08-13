@@ -7,39 +7,44 @@ import {
   ScrollView,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {ChevronRight, ChevronDown} from 'lucide-react-native';
+import {ChevronRight} from 'lucide-react-native';
 import utils from '../../utils';
-import LogoutScreen from './LogoutScreen';
+
 export default function SettingScreen({navigation}) {
   const [auctionAlerts, setAuctionAlerts] = useState(true);
   const [bidUpdates, setBidUpdates] = useState(false);
   const [marketingEmails, setMarketingEmails] = useState(true);
+
   const handleLogout = () => {
-      navigation.navigate(LogoutScreen);
-    };
+    navigation.navigate('LogoutScreen');
+  };
+
   const Row = ({title, value}) => (
     <TouchableOpacity
-      activeOpacity={0.8}
       className="flex-row items-center justify-between py-5">
-      <View>
-        <Text
-          className="text-base font-semibold"
-          style={{color: utils.colors.black}}>
-          {title}
-        </Text>
 
-        
-      </View>
-{value ? (
+      <Text
+        className="text-base font-semibold"
+        style={{color: utils.colors.black}}>
+        {title}
+      </Text>
+
+      <View className="flex-row items-center">
+
+        {value ? (
           <Text
-            className="text-sm mt-1 -mr-52 items-end text-end"
+            className="text-sm mr-3"
             style={{color: utils.colors.grey}}>
             {value}
           </Text>
         ) : null}
-        
-      
-      <ChevronRight size={22} color={utils.colors.grey} />
+
+        <ChevronRight
+          size={22}
+          color={utils.colors.grey}
+        />
+
+      </View>
     </TouchableOpacity>
   );
 
@@ -48,13 +53,13 @@ export default function SettingScreen({navigation}) {
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
 
-        <ScrollView
-          className="flex-1"
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingBottom: 30,
-          }}
-          >
+      <ScrollView
+        className="flex-1"
+        contentContainerStyle={{
+          flexGrow: 1,
+          paddingBottom: 30,
+        }}
+        showsVerticalScrollIndicator={false}>
 
         <View className="mx-7 pt-6">
 
@@ -71,15 +76,12 @@ export default function SettingScreen({navigation}) {
             }}>
 
             <View className="flex-row items-center justify-between py-5">
-              <View>
-                <Text
-                  className="text-base font-semibold"
-                  style={{color: utils.colors.black}}>
-                  Push Notifications 
-                </Text>
 
-
-              </View>
+              <Text
+                className="text-base font-semibold"
+                style={{color: utils.colors.black}}>
+                Push Notifications
+              </Text>
 
               <Switch
                 value={auctionAlerts}
@@ -90,20 +92,16 @@ export default function SettingScreen({navigation}) {
                 }}
                 thumbColor={utils.colors.white}
               />
+
             </View>
 
-           
-
             <View className="flex-row items-center justify-between py-5">
-              <View>
-                <Text
-                  className="text-base font-semibold"
-                  style={{color: utils.colors.black}}>
-                  Emial Notifications
-                </Text>
 
-               
-              </View>
+              <Text
+                className="text-base font-semibold"
+                style={{color: utils.colors.black}}>
+                Email Notifications
+              </Text>
 
               <Switch
                 value={bidUpdates}
@@ -114,20 +112,16 @@ export default function SettingScreen({navigation}) {
                 }}
                 thumbColor={utils.colors.white}
               />
+
             </View>
 
-         
-
             <View className="flex-row items-center justify-between py-5">
-              <View>
-                <Text
-                  className="text-base font-semibold"
-                  style={{color: utils.colors.black}}>
-                  SMS Notifications
-                </Text>
 
-               
-              </View>
+              <Text
+                className="text-base font-semibold"
+                style={{color: utils.colors.black}}>
+                SMS Notifications
+              </Text>
 
               <Switch
                 value={marketingEmails}
@@ -138,68 +132,78 @@ export default function SettingScreen({navigation}) {
                 }}
                 thumbColor={utils.colors.white}
               />
+
             </View>
+
           </View>
-          
+
           <View
             className="rounded-3xl px-5"
             style={{
               backgroundColor: utils.colors.white,
             }}>
 
-            <Row title="Theme" value="Light" />
-
-          
-
-            <Row title="Language" value="English" />
-
-          
-
-            <Row title="Currency" value="INR(₹)" />
-          </View>
- <View
-              style={{
-                height: 1,
-                backgroundColor: utils.colors.lightGrey,
-              }}
+            <Row
+              title="Theme"
+              value="Light"
             />
+
+            <Row
+              title="Language"
+              value="English"
+            />
+
+            <Row
+              title="Currency"
+              value="INR(₹)"
+            />
+
+          </View>
+
+          <View
+            style={{
+              height: 1,
+              backgroundColor: utils.colors.lightGrey,
+            }}
+          />
+
           <View
             className="mt-2 rounded-3xl px-5"
             style={{
               backgroundColor: utils.colors.white,
-             
             }}>
 
             <Row title="Help & Support" />
 
-          
-
             <Row title="Terms & Conditions" />
 
-           
-
             <Row title="Privacy Policy" />
+
           </View>
-<View
-              style={{
-                height: 1,
-                backgroundColor: utils.colors.lightGrey,
-              }}
-              className='w-400 mt-32 mb-5'
-            />
-         
-            <TouchableOpacity
-                       activeOpacity={0.7}
-                       onPress={handleLogout}>
-                       <Text
-                         className="text-lg font-bold ml-5"
-                         style={{color: utils.colors.red}}>
-                         Logout
-                       </Text>
-            </TouchableOpacity>
+
+          <View
+            className="mt-10 mb-5"
+            style={{
+              height: 1,
+              backgroundColor: utils.colors.lightGrey,
+            }}
+          />
+
+          <TouchableOpacity
+            onPress={handleLogout}>
+
+            <Text
+              className="text-lg font-bold ml-5"
+              style={{color: utils.colors.red}}>
+              Logout
+            </Text>
+
+          </TouchableOpacity>
 
         </View>
+
       </ScrollView>
+
     </SafeAreaView>
   );
 }

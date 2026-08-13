@@ -9,7 +9,6 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {
   ArrowLeft,
   Check,
-  Package,
 } from 'lucide-react-native';
 import utils from '../../utils';
 
@@ -51,56 +50,70 @@ const TrackOrderScreen = ({navigation}) => {
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
+
       <ScrollView
         className="flex-1"
         contentContainerStyle={{
-            paddingHorizontal: 24,
-            paddingBottom: 30,
-          }}
+          flexGrow: 1,
+          paddingHorizontal: 24,
+          paddingBottom: 30,
+        }}
         showsVerticalScrollIndicator={false}>
+
         <View className="pt-4">
+
           <TouchableOpacity
             onPress={() => navigation.goBack()}
-            className="w-10 h-10 rounded-full items-center justify-center">
+            className="w-10 h-10 items-center justify-center">
+
             <ArrowLeft
               size={25}
               color={utils.colors.black}
             />
+
           </TouchableOpacity>
+
         </View>
 
         <View className="mt-5">
 
           <View
-            className="mt-1 p-5"
-            style={{borderColor: utils.colors.lightGrey}}>
-            <View className="flex-row items-center">
+            className="p-5"
+            style={{
+              borderColor: utils.colors.lightGrey,
+            }}>
 
-              <View className="ml-4">
-                <Text
-                  className="text-lg font-bold"
-                  style={{color: utils.colors.black}}>
-                  Order #ORD123456
-                </Text>
+            <View>
 
-                <Text
-                  className="mt-1"
-                  style={{color: utils.colors.grey}}>
-                  iPhone 14 Pro Max 256GB
-                </Text>
-              </View>
+              <Text
+                className="text-lg font-bold"
+                style={{color: utils.colors.black}}>
+                Order #ORD123456
+              </Text>
+
+              <Text
+                className="mt-1"
+                style={{color: utils.colors.grey}}>
+                iPhone 14 Pro Max 256GB
+              </Text>
+
             </View>
 
             <View className="mt-10">
+
               {TRACKING_DATA.map((item, index) => (
                 <View
                   key={item.title}
                   className="flex-row"
                   style={{
                     minHeight:
-                      index === TRACKING_DATA.length - 1 ? 70 : 88,
+                      index === TRACKING_DATA.length - 1
+                        ? 70
+                        : 88,
                   }}>
+
                   <View className="items-center">
+
                     <View
                       className="h-9 w-9 rounded-full items-center justify-center"
                       style={{
@@ -110,6 +123,7 @@ const TrackOrderScreen = ({navigation}) => {
                         borderWidth: 2,
                         borderColor: utils.colors.theme_color,
                       }}>
+
                       {item.completed ? (
                         <Check
                           size={19}
@@ -124,6 +138,7 @@ const TrackOrderScreen = ({navigation}) => {
                           }}
                         />
                       )}
+
                     </View>
 
                     {index !== TRACKING_DATA.length - 1 && (
@@ -136,9 +151,11 @@ const TrackOrderScreen = ({navigation}) => {
                         }}
                       />
                     )}
+
                   </View>
 
                   <View className="ml-4 flex-1 pb-5">
+
                     <Text
                       className="text-base font-bold"
                       style={{color: utils.colors.black}}>
@@ -150,13 +167,20 @@ const TrackOrderScreen = ({navigation}) => {
                       style={{color: utils.colors.grey}}>
                       {item.date}
                     </Text>
+
                   </View>
+
                 </View>
               ))}
+
             </View>
+
           </View>
+
         </View>
+
       </ScrollView>
+
     </SafeAreaView>
   );
 };

@@ -23,18 +23,15 @@ const FilterScreen = ({navigation}) => {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const [conditionOpen, setConditionOpen] = useState(false);
   const [locationOpen, setLocationOpen] = useState(false);
-   const [multiSliderValue, setMultiSliderValue] = useState([20, 80]);
 
-  const multiSliderValuesChange = (values) => setMultiSliderValue(values);
-
-  const [price, setPrice] = useState(100000);
+  const [price, setPrice] = useState([0, 100000]);
 
   const clearAll = () => {
     setSortBy('Ending Soon');
     setCategory('Electronics');
     setCondition('All');
     setLocation('All Locations');
-    setPrice(100000);
+    setPrice([0, 100000]);
 
     setSortOpen(false);
     setCategoryOpen(false);
@@ -42,23 +39,30 @@ const FilterScreen = ({navigation}) => {
     setLocationOpen(false);
   };
 
+  const changePrice = values => {
+    setPrice(values);
+  };
+
   return (
     <SafeAreaView
       className="flex-1"
       style={{backgroundColor: utils.colors.white}}>
+
       <KeyboardAvoidingView
         className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+
         <ScrollView
           className="flex-1"
           contentContainerStyle={{
             flexGrow: 1,
-            paddingHorizontal:24,
+            paddingHorizontal: 24,
             paddingBottom: 30,
           }}
-          >
+          showsVerticalScrollIndicator={false}>
 
           <View className="flex-row items-center justify-between pt-5 mb-8">
+
             <Text
               className="text-2xl font-bold"
               style={{color: utils.colors.black}}>
@@ -72,6 +76,7 @@ const FilterScreen = ({navigation}) => {
                 Clear All
               </Text>
             </TouchableOpacity>
+
           </View>
 
           <Text
@@ -89,6 +94,7 @@ const FilterScreen = ({navigation}) => {
             }}
             className="h-14 flex-row items-center justify-between px-4 rounded-xl border"
             style={{borderColor: utils.colors.grey}}>
+
             <Text
               className="text-base"
               style={{color: utils.colors.black}}>
@@ -99,10 +105,12 @@ const FilterScreen = ({navigation}) => {
               size={20}
               color={utils.colors.grey}
             />
+
           </TouchableOpacity>
 
           {sortOpen && (
-            <View className="px-4 mb-5 rounded-xl border  mt-2">
+            <View className="px-4 mb-5 rounded-xl border mt-2">
+
               <TouchableOpacity
                 onPress={() => {
                   setSortBy('Ending Soon');
@@ -146,6 +154,7 @@ const FilterScreen = ({navigation}) => {
                   Price High to Low
                 </Text>
               </TouchableOpacity>
+
             </View>
           )}
 
@@ -164,6 +173,7 @@ const FilterScreen = ({navigation}) => {
             }}
             className="h-14 flex-row items-center justify-between px-4 rounded-xl border"
             style={{borderColor: utils.colors.grey}}>
+
             <Text
               className="text-base"
               style={{color: utils.colors.black}}>
@@ -174,10 +184,12 @@ const FilterScreen = ({navigation}) => {
               size={20}
               color={utils.colors.grey}
             />
+
           </TouchableOpacity>
 
           {categoryOpen && (
-            <View className="px-4 mb-5 rounded-xl border  mt-2">
+            <View className="px-4 mb-5 rounded-xl border mt-2">
+
               <TouchableOpacity
                 onPress={() => {
                   setCategory('Electronics');
@@ -221,10 +233,12 @@ const FilterScreen = ({navigation}) => {
                   Home
                 </Text>
               </TouchableOpacity>
+
             </View>
           )}
 
           <View className="mb-6 mt-6">
+
             <Text
               className="text-base font-bold mb-3"
               style={{color: utils.colors.black}}>
@@ -232,30 +246,53 @@ const FilterScreen = ({navigation}) => {
             </Text>
 
             <View className="flex-row justify-between">
+
               <Text style={{color: utils.colors.black}}>
-                ₹0
+                ₹{price[0].toLocaleString('en-IN')}
               </Text>
 
               <Text style={{color: utils.colors.black}}>
-                ₹{price}
+                {price[1] >= 100000
+                  ? '₹1,00,000+'
+                  : `₹${price[1].toLocaleString('en-IN')}`}
               </Text>
+
             </View>
 
-      <View>
-      <Text>Min: {multiSliderValue[0]} - Max: {multiSliderValue[1]}</Text>
-      <MultiSlider
-        values={multiSliderValue}
-        sliderLength={280}
-        onValuesChange={multiSliderValuesChange}
-        min={0}
-        max={100}
-        allowOverlap={false}
-        snapped={true}
-        trackColor={utils.colors.theme_color}
-        thumbColor={utils.colors.theme_color}
-      />
-    </View>
+            <View className="items-center mt-1">
 
+              <MultiSlider
+                values={price}
+                sliderLength={280}
+                onValuesChange={changePrice}
+                min={0}
+                max={100000}
+                step={1000}
+                allowOverlap={false}
+                snapped={false}
+                selectedStyle={{
+                  backgroundColor: utils.colors.theme_color,
+                  height: 4,
+                }}
+                unselectedStyle={{
+                  backgroundColor: '#D9D9D9',
+                  height: 4,
+                }}
+                markerStyle={{
+                  height: 16,
+                  width: 16,
+                  borderRadius: 8,
+                  backgroundColor: utils.colors.theme_color,
+                }}
+                pressedMarkerStyle={{
+                  height: 18,
+                  width: 18,
+                  borderRadius: 9,
+                  backgroundColor: utils.colors.theme_color,
+                }}
+              />
+
+            </View>
 
           </View>
 
@@ -274,6 +311,7 @@ const FilterScreen = ({navigation}) => {
             }}
             className="h-14 flex-row items-center justify-between px-4 rounded-xl border"
             style={{borderColor: utils.colors.grey}}>
+
             <Text
               className="text-base"
               style={{color: utils.colors.black}}>
@@ -284,10 +322,12 @@ const FilterScreen = ({navigation}) => {
               size={20}
               color={utils.colors.grey}
             />
+
           </TouchableOpacity>
 
           {conditionOpen && (
-            <View className="px-4 mb-5 rounded-xl border  mt-2">
+            <View className="px-4 mb-5 rounded-xl border mt-2">
+
               <TouchableOpacity
                 onPress={() => {
                   setCondition('All');
@@ -320,6 +360,7 @@ const FilterScreen = ({navigation}) => {
                   Used
                 </Text>
               </TouchableOpacity>
+
             </View>
           )}
 
@@ -338,6 +379,7 @@ const FilterScreen = ({navigation}) => {
             }}
             className="h-14 flex-row items-center justify-between px-4 rounded-xl border"
             style={{borderColor: utils.colors.grey}}>
+
             <Text
               className="text-base"
               style={{color: utils.colors.black}}>
@@ -348,10 +390,12 @@ const FilterScreen = ({navigation}) => {
               size={20}
               color={utils.colors.grey}
             />
+
           </TouchableOpacity>
 
           {locationOpen && (
-            <View className="px-4 mb-5 rounded-xl border  mt-2">
+            <View className="px-4 mb-5 rounded-xl border mt-2">
+
               <TouchableOpacity
                 onPress={() => {
                   setLocation('All Locations');
@@ -395,6 +439,7 @@ const FilterScreen = ({navigation}) => {
                   Delhi
                 </Text>
               </TouchableOpacity>
+
             </View>
           )}
 
@@ -402,15 +447,19 @@ const FilterScreen = ({navigation}) => {
             className="rounded-xl py-4 mt-6"
             style={{backgroundColor: utils.colors.theme_color}}
             onPress={() => navigation.navigate('ProductListing')}>
+
             <Text
               className="text-center text-lg font-bold"
               style={{color: utils.colors.white}}>
               Apply Filters
             </Text>
+
           </TouchableOpacity>
 
         </ScrollView>
+
       </KeyboardAvoidingView>
+
     </SafeAreaView>
   );
 };

@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react';
 import {
   View,
@@ -9,19 +8,15 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Eye, EyeOff} from 'lucide-react-native';
 import utils from '../../utils';
 
 const ResetPasswordScreen = () => {
-  const [showCurrentPassword, setShowCurrentPassword] =
-    useState(false);
-
-  const [showNewPassword, setShowNewPassword] =
-    useState(false);
-
-  const [showConfirmPassword, setShowConfirmPassword] =
-    useState(false);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
     <SafeAreaView
@@ -32,9 +27,7 @@ const ResetPasswordScreen = () => {
 
       <KeyboardAvoidingView
         className="flex-1"
-        behavior={
-          Platform.OS === 'ios' ? 'padding' : undefined
-        }>
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
 
         <ScrollView
           className="flex-1"
@@ -82,11 +75,8 @@ const ResetPasswordScreen = () => {
 
               <TouchableOpacity
                 onPress={() =>
-                  setShowCurrentPassword(
-                    !showCurrentPassword,
-                  )
+                  setShowCurrentPassword(!showCurrentPassword)
                 }
-                activeOpacity={0.7}
                 className="w-10 h-10 items-center justify-center">
 
                 {showCurrentPassword ? (
@@ -130,10 +120,7 @@ const ResetPasswordScreen = () => {
               />
 
               <TouchableOpacity
-                onPress={() =>
-                  setShowNewPassword(!showNewPassword)
-                }
-                activeOpacity={0.7}
+                onPress={() => setShowNewPassword(!showNewPassword)}
                 className="w-10 h-10 items-center justify-center">
 
                 {showNewPassword ? (
@@ -178,11 +165,8 @@ const ResetPasswordScreen = () => {
 
               <TouchableOpacity
                 onPress={() =>
-                  setShowConfirmPassword(
-                    !showConfirmPassword,
-                  )
+                  setShowConfirmPassword(!showConfirmPassword)
                 }
-                activeOpacity={0.7}
                 className="w-10 h-10 items-center justify-center">
 
                 {showConfirmPassword ? (
@@ -202,7 +186,6 @@ const ResetPasswordScreen = () => {
             </View>
 
             <TouchableOpacity
-              activeOpacity={0.8}
               className="h-14 rounded-xl items-center justify-center mt-10"
               style={{
                 backgroundColor: utils.colors.theme_color,
@@ -229,4 +212,3 @@ const ResetPasswordScreen = () => {
 };
 
 export default ResetPasswordScreen;
-

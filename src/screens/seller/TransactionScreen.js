@@ -23,7 +23,7 @@ const DATA = [
   
 ];
 
-export default function TransactionScreen() {
+export default function TransactionScreen({navigation}) {
   
     const renderActivityItem = ({ item }) => (
     <ScrollView>
