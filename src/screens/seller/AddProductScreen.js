@@ -25,10 +25,14 @@ export default function AddProductScreen({ navigation }) {
 };
   return (
       <SafeAreaView
-      
-      style={{backgroundColor: utils.colors.white}}>
+      edges={['top', 'left', 'right']}
+      className="flex-1"
+      style={{
+        backgroundColor: utils.colors.white,
+      }}>
+
       <KeyboardAvoidingView
-       
+        className="flex-1"
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView
          

@@ -6,7 +6,7 @@ import {ChevronRight} from 'lucide-react-native';
 
 
 
-export default function EarningScreen() {
+export default function EarningScreen({navigation}) {
 
 
   return (

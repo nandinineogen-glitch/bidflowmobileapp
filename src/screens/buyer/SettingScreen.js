@@ -9,7 +9,6 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ChevronRight, ChevronDown} from 'lucide-react-native';
 import utils from '../../utils';
-import LogoutScreen from './LogoutScreen';
 export default function SettingScreen({navigation}) {
   const [auctionAlerts, setAuctionAlerts] = useState(true);
   const [bidUpdates, setBidUpdates] = useState(false);

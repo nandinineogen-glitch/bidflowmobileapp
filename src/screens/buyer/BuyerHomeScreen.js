@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react';
 import {
   View,
@@ -9,8 +8,8 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
-  ScrollView,
 } from 'react-native';
+
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Search, Clock3, ChevronRight} from 'lucide-react-native';
 import utils from '../../utils';
@@ -41,7 +40,6 @@ const CATEGORIES = [
     name: 'Laptops',
     image: utils.assets.onboarding_bid,
   },
- 
 ];
 
 const AUCTIONS = [
@@ -90,6 +88,14 @@ const AUCTIONS = [
 const BuyerHomeScreen = ({navigation}) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
+  const selectCategory = category => {
+    if (selectedCategory === category) {
+      setSelectedCategory('All');
+    } else {
+      setSelectedCategory(category);
+    }
+  };
+
   const getAuctions = () => {
     if (selectedCategory === 'All') {
       return AUCTIONS;
@@ -100,31 +106,22 @@ const BuyerHomeScreen = ({navigation}) => {
     );
   };
 
-  const selectCategory = category => {
-    if (selectedCategory === category) {
-      setSelectedCategory('All');
-    } else {
-      setSelectedCategory(category);
-    }
-  };
-
   const formatPrice = price => {
     return `₹${price.toLocaleString('en-IN')}`;
   };
 
   const renderCategory = ({item}) => {
-    const isSelected = selectedCategory === item.name;
+    const selected = selectedCategory === item.name;
 
     return (
       <TouchableOpacity
-        activeOpacity={0.8}
         onPress={() => selectCategory(item.name)}
         className="items-center mr-5">
 
         <View
           className="w-16 h-14 rounded-2xl items-center justify-center"
           style={{
-            backgroundColor: isSelected
+            backgroundColor: selected
               ? utils.colors.theme_color
               : '#F7F7FA',
           }}>
@@ -140,7 +137,7 @@ const BuyerHomeScreen = ({navigation}) => {
         <Text
           className="text-[11px] font-semibold mt-2"
           style={{
-            color: isSelected
+            color: selected
               ? utils.colors.theme_color
               : utils.colors.grey,
           }}>
@@ -154,12 +151,7 @@ const BuyerHomeScreen = ({navigation}) => {
   const renderAuction = ({item}) => {
     return (
       <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() =>
-          navigation.navigate('LiveAuction', {
-            auction: item,
-          })
-        }
+        onPress={() => navigation.navigate('LiveAuction')}
         className="flex-row items-center py-4 border-b"
         style={{
           borderColor: utils.colors.lightGrey,
@@ -237,8 +229,11 @@ const BuyerHomeScreen = ({navigation}) => {
     );
   };
 
+  const auctions = getAuctions();
+
   return (
     <SafeAreaView
+      edges={['top', 'left', 'right']}
       className="flex-1"
       style={{
         backgroundColor: utils.colors.white,
@@ -246,17 +241,9 @@ const BuyerHomeScreen = ({navigation}) => {
 
       <KeyboardAvoidingView
         className="flex-1"
-        behavior={
-          Platform.OS === 'ios' ? 'padding' : undefined
-        }>
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
 
-        <ScrollView
-          className="flex-1"
-          showsVerticalScrollIndicator={false}
-          
-          contentContainerStyle={{
-            paddingBottom: 30,
-          }}>
+        <View className="flex-1">
 
           <View className="px-5 pt-4">
 
@@ -267,14 +254,11 @@ const BuyerHomeScreen = ({navigation}) => {
                 style={{
                   color: utils.colors.black,
                 }}>
-                Hello, John 
+                Hello, John
               </Text>
 
               <TouchableOpacity
-                activeOpacity={0.8}
-                onPress={() =>
-                  navigation.navigate('Profile')
-                }
+                onPress={() => navigation.navigate('Profile')}
                 className="w-12 h-12 rounded-full overflow-hidden">
 
                 <Image
@@ -310,7 +294,6 @@ const BuyerHomeScreen = ({navigation}) => {
             </View>
 
             <TouchableOpacity
-              activeOpacity={0.9}
               className="h-28 rounded-2xl mt-5 px-5 flex-row items-center overflow-hidden"
               style={{
                 backgroundColor: utils.colors.theme_color,
@@ -347,11 +330,9 @@ const BuyerHomeScreen = ({navigation}) => {
               </Text>
 
               <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('Categories')
-                }>
+                onPress={() => navigation.navigate('Categories')}>
 
-                <Search
+                <ChevronRight
                   size={22}
                   color={utils.colors.black}
                 />
@@ -362,18 +343,22 @@ const BuyerHomeScreen = ({navigation}) => {
 
           </View>
 
-          <FlatList
-            data={CATEGORIES}
-            horizontal
-            renderItem={renderCategory}
-            keyExtractor={item => item.id}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{
-              paddingHorizontal: 30,
-            }}
-          />
+          <View className="h-24">
 
-          <View className="px-5 mt-7">
+            <FlatList
+              data={CATEGORIES}
+              horizontal
+              renderItem={renderCategory}
+              keyExtractor={item => item.id}
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{
+                paddingHorizontal: 30,
+              }}
+            />
+
+          </View>
+
+          <View className="flex-1 px-5 mt-5">
 
             <Text
               className="text-lg font-black mb-2"
@@ -383,18 +368,18 @@ const BuyerHomeScreen = ({navigation}) => {
               Live Auctions
             </Text>
 
-            {getAuctions().length > 0 ? (
-
+            {auctions.length > 0 ? (
               <FlatList
-                data={getAuctions()}
+                data={auctions}
                 renderItem={renderAuction}
                 keyExtractor={item => item.id}
-                scrollEnabled={true}
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{
+                  paddingBottom: 0,
+                }}
               />
-
             ) : (
-
-              <View className="items-center py-14">
+              <View className="flex-1 items-center justify-center">
 
                 <Text
                   style={{
@@ -404,12 +389,11 @@ const BuyerHomeScreen = ({navigation}) => {
                 </Text>
 
               </View>
-
             )}
 
           </View>
 
-        </ScrollView>
+        </View>
 
       </KeyboardAvoidingView>
 
@@ -418,4 +402,3 @@ const BuyerHomeScreen = ({navigation}) => {
 };
 
 export default BuyerHomeScreen;
-

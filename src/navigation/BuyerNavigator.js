@@ -14,6 +14,7 @@ import NotificationScreen from '../screens/buyer/NotificationScreen';
 import SettingScreen from '../screens/seller/SettingScreen';
 import OrderDetails from '../screens/buyer/OrderDetails';
 import TrackOrder from '../screens/buyer/TrackOrder';
+import LogoutScreen from '../screens/buyer/LogoutScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,7 +42,7 @@ export default function BuyerNavigator() {
       <Stack.Screen name="Settings" component={SettingScreen}/>
       <Stack.Screen name='Order' component={OrderDetails} />
       <Stack.Screen name='TrackOrder' component={TrackOrder} /> 
-
+      <Stack.Screen name="LogoutScreen" component={LogoutScreen} />
     </Stack.Navigator>
     );
 }

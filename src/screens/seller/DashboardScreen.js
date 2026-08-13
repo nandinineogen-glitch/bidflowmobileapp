@@ -85,9 +85,14 @@ export default function DashboardScreen({navigation}) {
 
   return (
  
-   <SafeAreaView
-      className="flex-1"
-      style={{backgroundColor: utils.colors.white}}>
+    <SafeAreaView
+         edges={['top', 'left', 'right']}
+         className="flex-1"
+         style={{
+           backgroundColor: utils.colors.white,
+         }}>
+   
+        
      
         
        
@@ -151,23 +156,23 @@ export default function DashboardScreen({navigation}) {
 
       
       <View className="flex-row justify-between px-4 py-4">
-       
-        <View className="border rounded-xl items-center flex-1 py-3 mx-1" style={{ borderColor: utils.colors.lightGrey }}>
+        
+        <TouchableOpacity className="border rounded-xl items-center flex-1 py-3 mx-1" >
           <Text style={{ color: utils.colors.gray }} className="text-center">Active Auctions</Text>
           <Text style={{ color: utils.colors.black }} className="text-2xl font-bold mt-2">12</Text>
-        </View>
+        </TouchableOpacity>
         
         
-        <View className="border rounded-xl items-center flex-1 py-3 mx-1"  style={{ borderColor: utils.colors.lightGrey }} >
+        <TouchableOpacity className="border rounded-xl items-center flex-1 py-3 mx-1"   >
           <Text style={{ color: utils.colors.gray }} className="text-center">Total Orders</Text>
           <Text style={{ color: utils.colors.black }} className="text-2xl font-bold mt-2">36</Text>
-        </View>
+        </TouchableOpacity>
         
       
-        <View className="border rounded-xl items-center flex-1 py-3 mx-1">
+        <TouchableOpacity className="border rounded-xl items-center flex-1 py-3 mx-1">
           <Text style={{ color: utils.colors.gray }} className="text-center">Total Earnings</Text>
           <Text style={{ color: utils.colors.black }} className="text-2xl font-bold mt-2">₹1,24,560</Text>
-        </View>
+        </TouchableOpacity>
       </View>
 
      

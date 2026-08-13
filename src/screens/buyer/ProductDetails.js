@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   Bell,
   Heart,
@@ -15,7 +15,7 @@ import {
 } from 'lucide-react-native';
 import utils from '../../utils';
 
-export default function AuctionDetailsScreen({navigation, route}) {
+export default function AuctionDetailsScreen({ navigation, route }) {
   const auction = route?.params?.auction || {
     title: 'iPhone 14 Pro Max 256GB',
     subtitle: 'Deep Purple',
@@ -33,7 +33,7 @@ export default function AuctionDetailsScreen({navigation, route}) {
   return (
     <SafeAreaView
       className="flex-1"
-      style={{backgroundColor: utils.colors.white}}>
+      style={{ backgroundColor: utils.colors.white }}>
       <ScrollView
         className="flex-1"
         contentContainerStyle={{
@@ -43,29 +43,29 @@ export default function AuctionDetailsScreen({navigation, route}) {
         showsVerticalScrollIndicator={false}>
         <View className="px-5 pt-2">
           <View className="flex-row items-center justify-between mb-4">
-            <View/>
+            <View />
 
             <View className="items-center justify-start ml-2">
-  <TouchableOpacity
-    className="h-10 w-10 items-center justify-center"
-    onPress={() => navigation.navigate('Notification')}
-  >
-    <Bell
-      size={24}
-      color={utils.colors.theme_color}
-    />
-  </TouchableOpacity>
+              <TouchableOpacity
+                className="h-10 w-10 items-center justify-center"
+                onPress={() => navigation.navigate('Notification')}
+              >
+                <Bell
+                  size={24}
+                  color={utils.colors.theme_color}
+                />
+              </TouchableOpacity>
 
-  <TouchableOpacity
-    className="h-10 w-10 items-center justify-center mt-1"
-    onPress={() => {}}
-  >
-    <Heart
-      size={24}
-      color={utils.colors.gray}
-    />
-  </TouchableOpacity>
-</View>
+              <TouchableOpacity
+                className="h-10 w-10 items-center justify-center mt-1"
+                onPress={() => { }}
+              >
+                <Heart
+                  size={24}
+                  color={utils.colors.gray}
+                />
+              </TouchableOpacity>
+            </View>
 
           </View>
 
@@ -73,7 +73,7 @@ export default function AuctionDetailsScreen({navigation, route}) {
             className="w-full rounded-3xl items-center justify-center overflow-hidden"
             style={{
               height: 260,
-              
+
             }}>
             <Image
               source={auction.image}
@@ -88,13 +88,13 @@ export default function AuctionDetailsScreen({navigation, route}) {
           <View className="mt-5">
             <Text
               className="text-2xl font-black"
-              style={{color: utils.colors.black}}>
+              style={{ color: utils.colors.black }}>
               {auction.title}
             </Text>
 
             <Text
               className="text-lg mt-1 font-semibold"
-              style={{color: utils.colors.black}}>
+              style={{ color: utils.colors.black }}>
               {auction.subtitle}
             </Text>
 
@@ -102,20 +102,20 @@ export default function AuctionDetailsScreen({navigation, route}) {
               <View>
                 <Text
                   className="text-2xl font-black"
-                  style={{color: utils.colors.black}}>
+                  style={{ color: utils.colors.black }}>
                   ₹{auction.price.toLocaleString('en-IN')}
                 </Text>
               </View>
 
               <Text
                 className="text-base font-semibold"
-                style={{color: utils.colors.grey}}>
+                style={{ color: utils.colors.grey }}>
                 {auction.highestBidLabel || 'Highest Bid'}
               </Text>
 
               <Text
                 className="text-base font-semibold"
-                style={{color: utils.colors.grey}}>
+                style={{ color: utils.colors.grey }}>
                 {auction.bids} Bids
               </Text>
             </View>
@@ -128,7 +128,7 @@ export default function AuctionDetailsScreen({navigation, route}) {
 
               <Text
                 className="text-lg font-bold ml-2"
-                style={{color: utils.colors.red}}>
+                style={{ color: utils.colors.red }}>
                 {auction.time}
               </Text>
             </View>
@@ -136,7 +136,7 @@ export default function AuctionDetailsScreen({navigation, route}) {
             <View className="mt-4">
               <Text
                 className="text-base"
-                style={{color: utils.colors.grey}}>
+                style={{ color: utils.colors.grey }}>
                 Market Price{' '}
                 <Text
                   style={{
@@ -145,7 +145,7 @@ export default function AuctionDetailsScreen({navigation, route}) {
                   ₹{auction.marketPrice}
                 </Text>{' '}
                 <Text
-                  style={{color: utils.colors.green}}
+                  style={{ color: utils.colors.green }}
                   className="font-bold">
                   ({auction.discount}% off)
                 </Text>
@@ -154,7 +154,7 @@ export default function AuctionDetailsScreen({navigation, route}) {
 
             <Text
               className="text-lg font-black mt-6"
-              style={{color: utils.colors.black}}>
+              style={{ color: utils.colors.black }}>
               Product Details
             </Text>
 
@@ -162,13 +162,13 @@ export default function AuctionDetailsScreen({navigation, route}) {
               <View className="flex-row items-center justify-between py-3">
                 <Text
                   className="text-base font-semibold"
-                  style={{color: utils.colors.grey}}>
+                  style={{ color: utils.colors.grey }}>
                   Condition
                 </Text>
 
                 <Text
                   className="text-base font-semibold"
-                  style={{color: utils.colors.black}}>
+                  style={{ color: utils.colors.black }}>
                   {auction.condition}
                 </Text>
               </View>
@@ -176,13 +176,13 @@ export default function AuctionDetailsScreen({navigation, route}) {
               <View className="flex-row items-center justify-between py-3">
                 <Text
                   className="text-base font-semibold"
-                  style={{color: utils.colors.grey}}>
+                  style={{ color: utils.colors.grey }}>
                   Location
                 </Text>
 
                 <Text
                   className="text-base font-semibold"
-                  style={{color: utils.colors.black}}>
+                  style={{ color: utils.colors.black }}>
                   {auction.location}
                 </Text>
               </View>
@@ -192,7 +192,7 @@ export default function AuctionDetailsScreen({navigation, route}) {
               <TouchableOpacity
                 activeOpacity={0.8}
                 className="w-14 h-14 rounded-2xl items-center justify-center border"
-                style={{borderColor: utils.colors.lightGrey}}>
+                style={{ borderColor: utils.colors.lightGrey }}>
                 <Heart
                   size={22}
                   color={utils.colors.black}
@@ -202,11 +202,11 @@ export default function AuctionDetailsScreen({navigation, route}) {
               <TouchableOpacity
                 activeOpacity={0.8}
                 className="flex-1 h-14 rounded-2xl items-center justify-center border mx-3"
-                style={{borderColor: utils.colors.lightGrey}}>
-               
+                style={{ borderColor: utils.colors.lightGrey }}>
+
                 <Text
                   className="text-sm font-bold mt-1"
-                  style={{color: utils.colors.black}}>
+                  style={{ color: utils.colors.black }}>
                   Chat
                 </Text>
               </TouchableOpacity>
@@ -214,11 +214,11 @@ export default function AuctionDetailsScreen({navigation, route}) {
               <TouchableOpacity
                 activeOpacity={0.85}
                 className="flex-[1.6] h-14 rounded-2xl items-center justify-center"
-                style={{backgroundColor: utils.colors.theme_color}}
+                style={{ backgroundColor: utils.colors.theme_color }}
                 onPress={() => navigation.navigate('LiveAuction')}>
-                <Text
+                <Text 
                   className="text-base font-bold"
-                  style={{color: utils.colors.white}}>
+                  style={{ color: utils.colors.white }}>
                   Place Bid
                 </Text>
               </TouchableOpacity>
