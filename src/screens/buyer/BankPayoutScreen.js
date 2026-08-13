@@ -235,6 +235,33 @@ export default function BankPayoutScreen({navigation}) {
 
         </ScrollView>
 
+<<<<<<< HEAD
+=======
+        <TouchableOpacity
+          onPress={handleSave}
+          className="rounded-xl py-4 mt-28 mb-6"
+          style={{ backgroundColor: utils.colors.theme_color }}
+        >
+          <Text
+            className="text-center text-lg font-bold"
+            style={{ color: utils.colors.white }}
+          >
+            Save Details
+          </Text>
+        </TouchableOpacity>
+
+          <TouchableOpacity
+            className=" py-3 rounded-xl mt-1"
+            onPress={handleSave}>
+            <Text
+              className="text-lg font-bold text-center"
+              style={{color: utils.colors.black}}>
+              Skip
+            </Text>
+          </TouchableOpacity>
+      </View>
+      </ScrollView>
+>>>>>>> 5868ec724bf3af1af56aaa9ff8b75a6d6db523eb
       </KeyboardAvoidingView>
 
     </SafeAreaView>

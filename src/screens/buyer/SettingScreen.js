@@ -9,7 +9,10 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ChevronRight} from 'lucide-react-native';
 import utils from '../../utils';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5868ec724bf3af1af56aaa9ff8b75a6d6db523eb
 export default function SettingScreen({navigation}) {
   const [auctionAlerts, setAuctionAlerts] = useState(true);
   const [bidUpdates, setBidUpdates] = useState(false);

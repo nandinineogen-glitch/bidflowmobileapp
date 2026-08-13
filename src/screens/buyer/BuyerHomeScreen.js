@@ -332,7 +332,7 @@ const BuyerHomeScreen = ({navigation}) => {
               <TouchableOpacity
                 onPress={() => navigation.navigate('Categories')}>
 
-                <Search
+                <ChevronRight
                   size={22}
                   color={utils.colors.black}
                 />
